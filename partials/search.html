@@ -1,0 +1,28 @@
+<!-- <h1>{{ status }}</h1> -->
+
+<div id="customSearch">
+	<form novalidate>
+		<input ng-model="query"></input>
+		<button ng-click="search(query,sida)">Search stuff</button>
+	</form>
+</div>
+
+<img src="http://fc04.deviantart.net/fs70/f/2013/094/8/d/loading_logofinal_by_zegerdon-d60eb1v.gif" ng-show="loading"/>
+
+<div ng-show="showingResults">
+	<p>Totalt antal sökträffar: {{ antalAnnonser }}</p>
+	<!-- <input ng-model="sida"></input> -->
+	Sida: <select ng-model="sida" id="sidePicker">
+
+		<!-- <option>Mjao</option> -->
+	</select>
+</div>
+<div ng-repeat="job in jobs">
+	<div class="jobBlock">
+		<p>
+			<h4> {{ job.arbetsplatsnamn }}</h4>
+			<small>{{ job.kommunnamn }}</small>
+			{{ job.annonsrubrik }}
+		</p>
+	</div>
+</div>
