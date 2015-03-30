@@ -1,20 +1,9 @@
 jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore) {
   var savedJobs = [];
   var searchResults = [];
-  // var loggedIn = false;
   var session = {};
-
-  var userRoles = {
-    all: "*",
-    user: "user",
-    company: "company",
-    admin: "admin"
-  }
-
   this.loggedIn = false;
-  // this.loggedIn = function(){
-  //   return  loggedIn;
-  // }
+  this.role = "guest";
 
   this.getJobs = $resource('php/getShit.php');
   this.login  = $resource('php/login.php');
@@ -28,16 +17,16 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore) {
     return searchResults;
   }
 
-  this.createSession = function(sessionID, userID, role){
+  this.createSession = function(sessionID, userID, role, username){
     session['sessionID'] =  sessionID;
     session["userID"] = userID;
     session["role"] = role;
+    session["username"] = username;
     this.loggedIn = true;
+    this.role = role;
     console.log(session);
-    // $rootScope.loggedIn = role;
   }
-
-
+  
   return this;
 
 });

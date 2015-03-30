@@ -1,3 +1,9 @@
+var guestSites = ["partials/home.html", "partials/search.html", "partials/login.html"];
+var userSites = guestSites.slice();
+userSites.push("partials/profile.html");
+var companySites = guestSites.slice();
+companySites.push("partials/company.html", "partials/createJob.html");
+
 var jobbaExtraApp = angular.module('jobbaExtra', ['ngRoute','ngResource', 'ngCookies']);
 jobbaExtraApp.config(['$routeProvider',
   function($routeProvider) {
@@ -31,31 +37,23 @@ jobbaExtraApp.config(['$routeProvider',
       });
   }]).run(function($rootScope, $location, Jobb){
     $rootScope.$on("$routeChangeStart", function(event, next, current){
-      if(Jobb.loggedIn ===  false){
-        if(next.templateUrl ==  "partials/login.html"){
-          // Already heading to login, no change needed
-        } else {
+
+      var role  = Jobb.role;
+      if(role == "admin"){
+        //No changes, full access
+      } else if(role == "company"){
+        if(companySites.indexOf(next.templateUrl)<0){
+          $location.path("/login");
+        }
+      } else if(role == "user"){
+        if(["partials/home.html", "partials/search.html", "partials/login.html","partials/profile.html"].indexOf(next.templateUrl)<0){
+          $location.path("/login");
+        }
+      } else { // Guest user
+        if(["partials/home.html", "partials/search.html", "partials/login.html"].indexOf(next.templateUrl)<0){
           $location.path("/login");
         }
       }
-      // console.log(Jobb.loggedIn);
     })
   });
 
-// angular.module(...)
-//  .config( ['$routeProvider', function($routeProvider) {...}] )
-//  .run( function($rootScope, $location) {
-
-//     // register listener to watch route changes
-//     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-//       if ( $rootScope.loggedUser == null ) {
-//         // no logged user, we should be going to #login
-//         if ( next.templateUrl == "partials/login.html" ) {
-//           // already going to #login, no redirect needed
-//         } else {
-//           // not going to #login, we should redirect now
-//           $location.path( "/login" );
-//         }
-//       }         
-//     });
-//  })

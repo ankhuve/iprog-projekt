@@ -25,6 +25,8 @@
     <script src="js/homeCtrl.js"></script>
     <script src="js/loginCtrl.js"></script>
     <script src="js/appCtrl.js"></script>
+    <script src="js/profileCtrl.js"></script>
+    <script src="js/companyCtrl.js"></script>
 
 </head>
 <body ng-controller="AppCtrl">
@@ -32,23 +34,12 @@
 		<a ng-href="#/home"><img class="headerLogo" src="img/jobbaextra_logo.png"></a>
 		<div id="navLinks">
 			<a ng-href="#/search"><h4 class="navLink">Leta jobb</h4></a>
-			<h4 class="navLink">Leta arbetskraft</h4>
-			<h4 class="navLink">Om oss</h4>
+			<a ng-href="#/company"><h4 class="navLink">Leta arbetskraft</h4></a>
+			<a ng-href="#/about"><h4 class="navLink">Om oss</h4></a>
 		</div>
 	</nav>
-	<center>
-		<div id="splash">
-			<h2>Vi letar efter dig</h2>
-		</div>
-	</center>
-<!-- 	<div ng-if="currentUser">Welcome, {{ currentUser.name }}</div>
-	<div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>
-	<div ng-switch on="currentUser.role">
-	  <div ng-switch-when="userRoles.admin">You're admin.</div>
-	  <div ng-switch-when="userRoles.editor">You're editor.</div>
-	  <div ng-switch-default>You're something else.</div>
-	</div> -->
+
 	<div ng-view></div>
-	<!-- <div login-dialog ng-if="!isLoginPage"></div> -->
+
 </body>
 </html>

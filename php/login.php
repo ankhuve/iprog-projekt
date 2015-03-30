@@ -1,18 +1,21 @@
 <?php
-	session_start();
 	include_once("config.php");
 	include_once("functions.php");
 
 	$credentials = $_GET;
-	$return['username'] = $credentials['username'];
-	$return['password'] = $credentials['password'];
+	$userInfo = checkLogin($conn, $credentials['email'], $credentials['password']);
 
-	$return['sessionID'] = session_id();
-
-	checkLogin($conn, $credentials['email'], $credentials['password']);
-	$return['userID'] = 1;
-	$return['role'] = "Admin";
-	$return['valid'] = true;
+	if($userInfo["valid"]){
+		session_start();
+		$return['email'] = $credentials['email'];
+		$return['sessionID'] = session_id();
+		$return['userID'] = $userInfo["id"];
+		$return['role'] = $userInfo["role"];
+		$return['username'] = $userInfo["username"];
+		$return['valid'] = true;
+	} else {
+		$return["valid"] = false;
+	}
 
 	echo json_encode($return);
 

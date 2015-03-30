@@ -2,14 +2,16 @@
 <br/>
 <center>
 <form name="loginForm" ng-submit="login(credentials)" novalidate>
-  <label for="username">Email:</label>
-  <input type="text" id="username"
-         ng-model="credentials.username">
+  <label for="email">Email:</label>
+  <input type="text" id="email"
+         ng-model="credentials.email">
   <label for="password">Lösenord:</label>
   <input type="password" id="password"
          ng-model="credentials.password">
   <button type="submit">Login</button>
 </form>
+
+<div ng-bind="message"></div>
 
 <div ng-show="loggedIn">
 	Välkommen {{ username }}!

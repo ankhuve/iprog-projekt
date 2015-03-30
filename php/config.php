@@ -10,9 +10,4 @@
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     };
-
-	function passwordHash($password){
-		$hashedPassword = hash('sha256', 'CockNBalls'.$password);
-		return $hashedPassword;
-	}
 ?>
