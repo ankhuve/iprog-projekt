@@ -2,7 +2,12 @@ body{
 	background: url("img/jobbaextra_bg.jpg");
 	background-position: center top;
 	background-size: cover;
+	background-repeat: no-repeat;
 	font-family: 'Roboto', sans-serif;
+}
+
+a{
+	text-decoration: none;
 }
 
 h1{
@@ -18,7 +23,8 @@ h2{
 }
 
 h4{
-	font-size: 20pt;
+	font-size: 18pt;
+	color: #ffeec2;
 	font-weight: 100;
 }
 
@@ -44,20 +50,61 @@ h4{
 }
 
 .navLink{
-	display: table-cell;
-	padding-left: 100px; /* ÄNDRA VID MINDRE */
+	display: inline;
+	padding-left: 70px; /* ÄNDRA VID MINDRE */
 }
 
 #splash{
 	background-color: #ff6e3f;
-	height: 60px;
-	margin-top: 20px;
 	padding: 10px;
-	width: 410px;
-	display: table;
+	width: 500px;
+	vertical-align: middle;
 }
 
-#splash h2{
-	display: table-cell;
-	vertical-align: middle;
+#splashText{
+	margin: 0;
+}
+
+.infoBoxes{
+	padding-top: 100px;
+	width: 830px;
+}
+
+.infoBox{
+	/*position: relative;*/
+	padding: 40px;
+	padding-top: 0px;
+	width: 400px;
+	max-width: 400px;
+	height: 250px;
+	background-color: #ffeec2;
+}
+
+.links{
+	padding-top: 20px;
+}
+
+#userInfo{
+	float: left;
+}
+
+#companyInfo{
+	float: right;
+}
+
+.infoTitle{
+	font-family: 'Raleway';
+	font-size: 32px;
+	text-transform: uppercase;
+	padding-top: 5px;
+	color: #71CBD9;
+}
+
+.underlined{
+	border-bottom: solid #ff6e3f 2px;
+}
+
+.infoDescription{
+	text-align: left;
+	padding-top: 15px;
 }
