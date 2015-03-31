@@ -1,9 +1,3 @@
-var guestSites = ["partials/home.html", "partials/search.html", "partials/login.html"];
-var userSites = guestSites.slice();
-userSites.push("partials/profile.html");
-var companySites = guestSites.slice();
-companySites.push("partials/company.html", "partials/createJob.html");
-
 var jobbaExtraApp = angular.module('jobbaExtra', ['ngRoute','ngResource', 'ngCookies']);
 jobbaExtraApp.config(['$routeProvider',
   function($routeProvider) {
@@ -37,23 +31,36 @@ jobbaExtraApp.config(['$routeProvider',
       });
   }]).run(function($rootScope, $location, Jobb){
     $rootScope.$on("$routeChangeStart", function(event, next, current){
+      var guestSites = ["partials/home.html", "partials/search.html", "partials/login.html"];
+      
+      var userSites = guestSites.slice();
+      userSites.push("partials/profile.html");
 
-      var role  = Jobb.role;
-      if(role == "admin"){
-        //No changes, full access
-      } else if(role == "company"){
-        if(companySites.indexOf(next.templateUrl)<0){
-          $location.path("/login");
-        }
-      } else if(role == "user"){
-        if(["partials/home.html", "partials/search.html", "partials/login.html","partials/profile.html"].indexOf(next.templateUrl)<0){
-          $location.path("/login");
-        }
-      } else { // Guest user
-        if(["partials/home.html", "partials/search.html", "partials/login.html"].indexOf(next.templateUrl)<0){
-          $location.path("/login");
+      var companySites = guestSites.slice();
+      companySites.push("partials/company.html", "partials/createJob.html");
+      
+      var role  = Jobb.getRole();
+
+      if(next.templateUrl === undefined){
+        $location.path("/home");
+      } else {
+        if(role == "admin"){
+          //No changes, full access
+        } else if(role == "company"){
+          if(companySites.indexOf(next.templateUrl)<0){
+            $location.path("/login");
+          }
+        } else if(role == "user"){
+          if(userSites.indexOf(next.templateUrl)<0){
+            $location.path("/login");
+          }
+        } else { // Guest user
+          if(guestSites.indexOf(next.templateUrl)<0){
+            $location.path("/login");
+          }
         }
       }
+
     })
   });
 

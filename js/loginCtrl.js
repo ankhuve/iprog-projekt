@@ -4,7 +4,7 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, Jobb) {
     password: ''
   };
 
-
+  $scope.loggedIn = Jobb.isLoggedIn();
   $scope.login = function (credentials) {
     console.log(credentials);
     $scope.loggedIn = false;

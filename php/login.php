@@ -14,7 +14,9 @@
 		$return['username'] = $userInfo["username"];
 		$return['valid'] = true;
 	} else {
+		session_start();
 		$return["valid"] = false;
+		$return["sessionID"] = session_id();
 	}
 
 	echo json_encode($return);
