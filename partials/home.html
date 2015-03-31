@@ -1,12 +1,29 @@
 <center>
 	<div id="splash">
-		<h2>Vi letar efter dig</h2>
+		<h2 id="splashText">Vi letar efter dig</h2>
 	</div>
 </center>
 <center>
-<div class="container full-width">
-	<a ng-href="#/search"><button> Vidare till sök </button></a>
-	<a ng-href="#/login"><button> Logga in </button></a>
-	<a ng-href="#/profile"><button> Redigera  profil </button></a>
-</div>
+	<div class="container full-width">
+	<div class="links">
+		<a ng-href="#/search"><button class="btn"> Vidare till sök </button></a>
+		<a ng-href="#/login"><button class="btn"> Logga in </button></a>
+		<a ng-href="#/profile"><button class="btn"> Redigera  profil </button></a>
+	</div>
+		<div class="infoBoxes">
+			<div class="infoBox" id="userInfo">
+				<div id="header">
+					<h3 class="infoTitle"><span class="underlined">Jobbsökande</span>?</h3>
+				</div>
+				<p class="infoDescription">Här kan man ha massa bra information för de som letar jobb. Man kan skriva att de kan lägga upp sitt CV osv. Bli medlem på den här sidan och få en massa jobb. <br/><br/>Typiskt najs at göra det.</p>
+			</div>
+		
+			<div class="infoBox" id="companyInfo">
+				<div id="header">
+					<h3 class="infoTitle"><span class="underlined">Arbetsgivare</span>?</h3>
+				</div>
+				<p class="infoDescription">Här kan man ha massa bra information för de som letar jobb. Man kan skriva att de kan lägga upp sitt CV osv. Bli medlem på den här sidan och få en massa jobb. <br/><br/>Typiskt najs at göra det.</p>
+			</div>
+		</div>
+	</div>
 </center>
