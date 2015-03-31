@@ -23,22 +23,24 @@
 
     <script src="js/searchCtrl.js"></script>
     <script src="js/homeCtrl.js"></script>
+    <script src="js/loginCtrl.js"></script>
+    <script src="js/appCtrl.js"></script>
+    <script src="js/profileCtrl.js"></script>
+    <script src="js/companyCtrl.js"></script>
 
 </head>
-<body>
+<body ng-controller="AppCtrl">
+	<div ng-show="loggedIn"> Du är inloggad som <div ng-bind="username"></div>!</div>
 	<nav id="header">
-		<img class="headerLogo" src="img/jobbaextra_logo.png">
+		<a ng-href="#/home"><img class="headerLogo" src="img/jobbaextra_logo.png"></a>
 		<div id="navLinks">
-			<h4 class="navLink">Leta jobb</h4>
-			<h4 class="navLink">Leta arbetskraft</h4>
-			<h4 class="navLink">Om oss</h4>
+			<a ng-href="#/search"><h4 class="navLink">Leta jobb</h4></a>
+			<a ng-href="#/company"><h4 class="navLink">Leta arbetskraft</h4></a>
+			<a ng-href="#/about"><h4 class="navLink">Om oss</h4></a>
 		</div>
 	</nav>
-	<center>
-		<div id="splash">
-			<h2>Vi letar efter dig</h2>
-		</div>
-	</center>
+
 	<div ng-view></div>
+
 </body>
 </html>

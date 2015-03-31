@@ -1,5 +1,4 @@
 jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
-	
 	$scope.showingResults = false;
 	$scope.sida = 1;
 
