@@ -10,6 +10,18 @@ a{
 	text-decoration: none;
 }
 
+a:hover{
+	text-decoration: none;
+}
+
+.container{
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 100%;
+}
+
 h1{
 	font-size: 40pt;
 }
@@ -20,6 +32,8 @@ h2{
 	font-size: 30pt;
 	font-weight: 100;
 	margin: 0;
+	-webkit-transition: font-size 0.3s ease; /* Safari */
+	transition: font-size 0.3s ease;
 }
 
 h4{
@@ -51,7 +65,14 @@ h4{
 
 .navLink{
 	display: inline;
-	padding-left: 70px; /* ÄNDRA VID MINDRE */
+	margin-left: 70px; /* ÄNDRA VID MINDRE */
+	-webkit-transition: border-bottom 0.5s ease; /* Safari */
+    transition: border-bottom 0.5s ease;
+    /*transition-timing-function: ease;*/
+}
+
+.navLink:hover{
+	border-bottom: solid 2px #ff6e3f;
 }
 
 #splash{
@@ -59,14 +80,20 @@ h4{
 	padding: 10px;
 	width: 500px;
 	vertical-align: middle;
+	margin-top: 40px;
+	-webkit-transition: height, width 0.3s; /* Safari */
+	transition: height, width 0.3s;
+	transition-timing-function: ease;
+
 }
 
 #splashText{
 	margin: 0;
+
 }
 
 .infoBoxes{
-	padding-top: 100px;
+	padding-top: 60px;
 	width: 830px;
 }
 
@@ -107,4 +134,128 @@ h4{
 .infoDescription{
 	text-align: left;
 	padding-top: 15px;
+}
+
+.registerButtons{
+	padding-top: 100px;
+	width: 830px;
+}
+
+.registerButton{
+	border: 0;
+	margin-bottom: 8px;
+	background-color: #ff6e3f;
+	-webkit-transition: background-color 0.5s; /* Safari */
+    transition: background-color 0.5s;
+    transition-timing-function: ease;
+	border-radius: 45px;
+	padding: 14px;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	margin-top: 34px;
+	height: 45px;
+	width: 330px;
+	margin-left: 35px;
+	margin-right: 35px;
+	font-family: 'Raleway';
+	font-size: 1.4em;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: #ffeec2;
+}
+
+.registerButton:hover{
+	background-color: #FF460A;
+}
+
+#registerUser{
+	float: left;
+}
+
+#registerCompany{
+	float: right;
+}
+
+.alreadyJoined{
+	color: #71CBD9;
+	font-size: 1em;
+	text-transform: uppercase;
+	margin-top: 2em;
+}
+
+.loginLink{
+	font-family: 'Roboto';
+	font-weight: 700;
+	color: inherit;
+	-webkit-transition: color 0.2s; /* Safari */
+    transition: color 0.2s;
+    transition-timing-function: ease;
+	text-decoration: none;
+	margin-left: 0.8em;
+}
+
+.loginLink:hover{
+	text-decoration: none;
+	color: #44E6FF;
+}
+
+.latestJobs{
+	margin-top: 30px;
+	min-height: 300px;
+}
+
+#placeholder{
+	font-size: 90px;
+}
+
+footer{
+	background-color: #202020;
+	min-height: 300px;
+}
+
+#footerLogo{
+	height: 90px;
+	width: auto;
+	margin-top: 60px;
+}
+
+#footerLinks{
+	margin-top: 30px;
+	padding-top: 20px;
+	border-top: solid #2e2e2e 2px;
+	display: table;
+	text-transform: uppercase;
+	color: #ffeec2;
+}
+
+.footerLink{
+	display: inline;
+	padding: 70px;
+}
+
+@media (max-width: 950px){
+	.navLink{
+		display: block;
+		padding-left: 5px;
+		margin-left: 50px;
+		-webkit-transition: border-left 0.5s ease; /* Safari */
+    	transition: border-left 0.5s ease;
+	}
+
+	.navLink:hover{
+		border-left: solid 2px #ff6e3f;
+		border-bottom: none;
+	}
+
+	#navLinks{
+		left: 300px;
+	}
+
+	#splash{
+		width: 400px;
+	}
+
+	#splashText{
+		font-size: 2.5em;
+	}
 }
