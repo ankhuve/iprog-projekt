@@ -1,17 +1,24 @@
 body{
-	background: url("img/jobbaextra_bg.jpg");
-	background-position: center top;
-	background-size: cover;
+	background: url("img/jobbaextra_bg_web.jpg");
+	background-position: center top 170px;
+	background-size: 1920px auto;
 	background-repeat: no-repeat;
 	font-family: 'Roboto', sans-serif;
 }
 
 a{
 	text-decoration: none;
+	color: inherit;
 }
 
 a:hover{
 	text-decoration: none;
+	color: inherit;
+}
+
+a:focus{
+	text-decoration: none;
+	color: inherit;
 }
 
 .container{
@@ -37,42 +44,66 @@ h2{
 }
 
 h4{
-	font-size: 18pt;
+	font-size: 1.2em;
 	color: #ffeec2;
 	font-weight: 100;
 }
 
-#header{
+nav{
 	display: table;
+	width: 100%;
+	background-color: rgb(36,36,36);
+	top: 0px;
+	height: 180px;
+	-webkit-transition: height 0.3s ease; /* Safari */
+	transition: height 0.3s ease;
 }
 
 .headerLogo{
-	height: 120px;
-	width: auto;
-	margin: 35px;
-	margin-left: 70px;
-	display: table-cell;
+	float: left;
+	margin: 25px;
+	margin-bottom: 20px;
+	margin-left: 50px;
+	display: table-row;
+	-webkit-transition: margin 0.3s ease; /* Safari */
+	transition: margin 0.3s ease;
+}
+
+.headerLogo img{
+	height: 80px;
+}
+
+#linksRow{
+	position: relative;
+	text-align: center;
 }
 
 #navLinks{
 	text-transform: uppercase;
 	color: #ffeec2;
-	display: table-cell;
+	background-color: rgb(47,47,47);
 	position: absolute;
-	top: 40px;
-	left: 30%; /* ÄNDRA VID MINDRE */
+	top: 135px;
+	right: 0px;
+	left: 0px;
+}
+
+.linkBox{
+	display: inline-block;
+	height: 45px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .navLink{
-	display: inline;
-	margin-left: 70px; /* ÄNDRA VID MINDRE */
+	border-bottom: solid 1px rgba(0,0,0,0);
+	vertical-align: middle;
 	-webkit-transition: border-bottom 0.5s ease; /* Safari */
     transition: border-bottom 0.5s ease;
-    /*transition-timing-function: ease;*/
 }
 
 .navLink:hover{
-	border-bottom: solid 2px #ff6e3f;
+	border-bottom: solid 1.5px #ff6e3f;
 }
 
 #splash{
@@ -80,7 +111,7 @@ h4{
 	padding: 10px;
 	width: 500px;
 	vertical-align: middle;
-	margin-top: 40px;
+	margin-top: 200px;
 	-webkit-transition: height, width 0.3s; /* Safari */
 	transition: height, width 0.3s;
 	transition-timing-function: ease;
@@ -105,6 +136,8 @@ h4{
 	max-width: 400px;
 	height: 250px;
 	background-color: #ffeec2;
+	-webkit-transition: width 0.3s ease; /* Safari */
+	transition: width 0.3s ease;
 }
 
 .links{
@@ -150,7 +183,7 @@ h4{
     transition-timing-function: ease;
 	border-radius: 45px;
 	padding: 14px;
-	padding-top: 8px;
+	padding-top: 10px;
 	padding-bottom: 10px;
 	margin-top: 34px;
 	height: 45px;
@@ -200,7 +233,7 @@ h4{
 }
 
 .latestJobs{
-	margin-top: 30px;
+	margin-top: 50px;
 	min-height: 300px;
 }
 
@@ -231,24 +264,50 @@ footer{
 .footerLink{
 	display: inline;
 	padding: 70px;
+	-webkit-transition: padding 0.3s; /* Safari */
+	transition: padding 0.3s;
+	transition-timing-function: ease;
 }
 
 @media (max-width: 950px){
+	nav{
+		height: 156px;
+	}
+
+	body{
+		background-position: center top 156px;
+	}
+
+	.headerLogo{
+		margin: 35px;
+	}
+
 	.navLink{
 		display: block;
 		padding-left: 5px;
-		margin-left: 50px;
+		margin-left: 20px;
+		border-left: solid 1.5px rgba(0,0,0,0);
 		-webkit-transition: border-left 0.5s ease; /* Safari */
     	transition: border-left 0.5s ease;
 	}
 
 	.navLink:hover{
-		border-left: solid 2px #ff6e3f;
-		border-bottom: none;
+		border-left: solid 1.5px #ff6e3f;
+		border-bottom: solid 1px rgba(0,0,0,0);
 	}
 
 	#navLinks{
-		left: 300px;
+		position: relative;
+		float: right;
+		width: 250px;
+		top: 0;
+	}
+
+	.linkBox{
+		float: left;
+		height: auto;
+		padding-left: 0;
+		padding-right: 35px;
 	}
 
 	#splash{
@@ -257,5 +316,31 @@ footer{
 
 	#splashText{
 		font-size: 2.5em;
+	}
+}
+
+@media (max-width: 878px){
+	.infoBoxes{
+		width: inherit;
+	}
+
+	.infoBox{
+		width: 350px;
+	}
+
+	.infoTitle {
+		padding-top: 25px;
+	}
+
+	#userInfo{
+		float: none;
+	}
+
+	#companyInfo{
+		float: none;
+	}
+
+	.footerLink {
+		padding: 20px;
 	}
 }

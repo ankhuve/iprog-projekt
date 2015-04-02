@@ -35,12 +35,25 @@
 <body ng-controller="AppCtrl">
 	<div ng-show="loggedIn"> Du är inloggad som <div ng-bind="username"></div>!</div>
 	<nav id="header">
-		<a ng-href="#/home"><img class="headerLogo" src="img/jobbaextra_logo.png"></a>
-		<div id="navLinks">
-			<a ng-href="#/search"><h4 class="navLink">Leta jobb</h4></a>
-			<a ng-href="#/company"><h4 class="navLink">Leta arbetskraft</h4></a>
-			<a ng-href="#/about"><h4 class="navLink">Om oss</h4></a>
-		</div>
+		<a class="headerLogo" ng-href="#/home"><img src="img/jobbaextra_logo.png"></a>
+		
+		<div id="linksRow">
+			<div id="navLinks">
+				<div class="linkBox">
+					<h4><a class="navLink" ng-href="#/home">Start</a></h4>
+				</div>
+				<div class="linkBox">
+					<h4><a class="navLink" ng-href="#/search">Leta jobb</a></h4>
+				</div>
+				<div class="linkBox">
+					<h4><a class="navLink" ng-href="#/company">Leta arbetskraft</a></h4>
+				</div>
+				<div class="linkBox">
+					<h4><a class="navLink" ng-href="#/about">Om oss</a></h4>
+				</div>
+			</div>
+		</div>	
+		
 	</nav>
 
 	<div ng-view></div>
