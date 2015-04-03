@@ -8,7 +8,7 @@ jobbaExtraApp.config(['$routeProvider',
       }).
       when('/search', {
         templateUrl: 'partials/search.html',
-        controller: 'SearchCtrl'
+        controller: 'SearchCtrl as sc'
       }).
       when('/profile', {
         templateUrl: 'partials/profile.html',
@@ -48,14 +48,17 @@ jobbaExtraApp.config(['$routeProvider',
           //No changes, full access
         } else if(role == "company"){
           if(companySites.indexOf(next.templateUrl)<0){
+            Jobb.setLoginMessage("Du har tyvärr inte access.");
             $location.path("/login");
           }
         } else if(role == "user"){
           if(userSites.indexOf(next.templateUrl)<0){
+            Jobb.setLoginMessage("Du har tyvärr inte access.");
             $location.path("/login");
           }
         } else { // Guest user
           if(guestSites.indexOf(next.templateUrl)<0){
+            Jobb.setLoginMessage("Du har tyvärr inte access.");
             $location.path("/login");
           }
         }

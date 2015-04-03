@@ -6,4 +6,6 @@
 
 	//Destroy session
 	session_destroy();
+
+	echo "Session terminated";
 ?>
