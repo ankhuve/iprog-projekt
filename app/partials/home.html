@@ -11,32 +11,35 @@
 			<a ng-href="#/profile"><button class="btn btn-primary"> Redigera  profil </button></a>
 		</div>
 		<div class="infoBoxes">
-			<div class="infoBox" id="userInfo">
-				<div id="infoBoxTitle">
-					<h3 class="infoTitle"><span class="underlined">Jobbsökande</span>?</h3>
+			<div class="boxAndButton" id="userInfo">
+				<div class="infoBox" >
+					<div id="infoBoxTitle">
+						<h3 class="infoTitle"><span class="underlined">Jobbsökande</span>?</h3>
+					</div>
+					<p class="infoDescription">Här kan man ha massa bra information för de som letar jobb. Man kan skriva att de kan lägga upp sitt CV osv. Bli medlem på den här sidan och få en massa jobb. <br/><br/>Typiskt najs att göra det.</p>
 				</div>
-				<p class="infoDescription">Här kan man ha massa bra information för de som letar jobb. Man kan skriva att de kan lägga upp sitt CV osv. Bli medlem på den här sidan och få en massa jobb. <br/><br/>Typiskt najs att göra det.</p>
-			</div>
-		
-			<div class="infoBox" id="companyInfo">
-				<div id="infoBoxTitle">
-					<h3 class="infoTitle"><span class="underlined">Arbetsgivare</span>?</h3>
+				<div id="registerUser">
+					<button class="registerButton">Skapa din profil</button>
+					<br/>
+					<span class="alreadyJoined">Redan medlem? <a class="loginLink" ng-href="#/login">Logga in!</a></span>
 				</div>
-				<p class="infoDescription">Här kan man ha massa bra information för de som letar jobb. Man kan skriva att de kan lägga upp sitt CV osv. Bli medlem på den här sidan och få en massa jobb. <br/><br/>Typiskt najs att göra det.</p>
-			</div>
+			</div>	
+			
+			<div class="boxAndButton" id="companyInfo">
+				<div class="infoBox" >
+					<div id="infoBoxTitle">
+						<h3 class="infoTitle"><span class="underlined">Arbetsgivare</span>?</h3>
+					</div>
+					<p class="infoDescription">Här kan man ha massa bra information för de som letar jobb. Man kan skriva att de kan lägga upp sitt CV osv. Bli medlem på den här sidan och få en massa jobb. <br/><br/>Typiskt najs att göra det.</p>
+				</div>
+				<div class="registerCompany" id="registerCompany">
+					<button class="registerButton" >Registrera ditt företag</button>
+					<br/>
+					<span class="alreadyJoined">Redan kund? <a class="loginLink" ng-href="#/login">Logga in!</a></span>
+				</div>
+			</div>	
 		</div>
-		<div class="registerButtons">
-			<div id="registerUser">
-				<button class="registerButton">Skapa din profil</button>
-				<br/>
-				<span class="alreadyJoined">Redan medlem? <a class="loginLink" ng-href="#/login">Logga in!</a></span>
-			</div>
-			<div class="registerCompany">
-				<button class="registerButton" id="registerCompany">Registrera ditt företag</button>
-				<br/>
-				<span class="alreadyJoined">Redan kund? <a class="loginLink" ng-href="#/login">Logga in!</a></span>
-			</div>
-		</div>
+
 		<div class="latestJobs">
 			<div id="jobsTitle">
 				<h3 class="infoTitle underlined">De senaste jobben</h3>
