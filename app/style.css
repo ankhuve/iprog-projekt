@@ -1,0 +1,63 @@
+body{
+	background: url("img/jobbaextra_bg.jpg");
+	background-position: center top;
+	background-size: cover;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1{
+	font-size: 40pt;
+}
+
+h2{
+	text-transform: uppercase;
+	color: #ffeec2;
+	font-size: 30pt;
+	font-weight: 100;
+	margin: 0;
+}
+
+h4{
+	font-size: 20pt;
+	font-weight: 100;
+}
+
+#header{
+	display: table;
+}
+
+.headerLogo{
+	height: 120px;
+	width: auto;
+	margin: 35px;
+	margin-left: 70px;
+	display: table-cell;
+}
+
+#navLinks{
+	text-transform: uppercase;
+	color: #ffeec2;
+	display: table-cell;
+	position: absolute;
+	top: 40px;
+	left: 30%; /* ÄNDRA VID MINDRE */
+}
+
+.navLink{
+	display: table-cell;
+	padding-left: 100px; /* ÄNDRA VID MINDRE */
+}
+
+#splash{
+	background-color: #ff6e3f;
+	height: 60px;
+	margin-top: 20px;
+	padding: 10px;
+	width: 410px;
+	display: table;
+}
+
+#splash h2{
+	display: table-cell;
+	vertical-align: middle;
+}
