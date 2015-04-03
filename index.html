@@ -35,28 +35,28 @@
 <body ng-controller="AppCtrl">
 	<div ng-show="loggedIn"> Du är inloggad som <div ng-bind="username"></div>!</div>
 	<nav id="header">
-		<a class="headerLogo" ng-href="#/home"><img src="img/jobbaextra_logo.png"></a>
-		
+		<a class="headerLogo" ng-click="closeMenu()" ng-href="#/home"><img src="img/jobbaextra_logo.png"></a>
+		<img id="hamburgerIcon" src="img/thin_burger.png" ng-click="toggleMenu()">
 		<div id="linksRow">
-			<div id="navLinks">
+			<div class="navLinks">
 				<div class="linkBox">
-					<h4><a class="navLink" ng-href="#/home">Start</a></h4>
+					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/home">Start</a></h4>
 				</div>
 				<div class="linkBox">
-					<h4><a class="navLink" ng-href="#/search">Leta jobb</a></h4>
+					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/search">Leta jobb</a></h4>
 				</div>
 				<div class="linkBox">
-					<h4><a class="navLink" ng-href="#/company">Leta arbetskraft</a></h4>
+					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/company">Leta arbetskraft</a></h4>
 				</div>
 				<div class="linkBox">
-					<h4><a class="navLink" ng-href="#/about">Om oss</a></h4>
+					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/about">Om oss</a></h4>
 				</div>
 			</div>
 		</div>	
 		
 	</nav>
 
-	<div ng-view></div>
+	<div ng-click="closeMenu()" ng-view></div>
 
 </body>
 </html>
