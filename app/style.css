@@ -1,8 +1,32 @@
 body{
-	background: url("img/jobbaextra_bg.jpg");
-	background-position: center top;
-	background-size: cover;
+	background: url("img/jobbaextra_bg_web.jpg");
+	background-position: center top 170px;
+	background-size: 1920px auto;
+	background-repeat: no-repeat;
 	font-family: 'Roboto', sans-serif;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover{
+	text-decoration: none;
+	color: inherit;
+}
+
+a:focus{
+	text-decoration: none;
+	color: inherit;
+}
+
+.container{
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 100%;
 }
 
 h1{
@@ -15,49 +39,343 @@ h2{
 	font-size: 30pt;
 	font-weight: 100;
 	margin: 0;
+	-webkit-transition: font-size 0.3s ease; /* Safari */
+	transition: font-size 0.3s ease;
 }
 
 h4{
-	font-size: 20pt;
+	font-size: 1.2em;
+	color: #ffeec2;
 	font-weight: 100;
 }
 
-#header{
+nav{
 	display: table;
+	width: 100%;
+	background-color: rgb(36,36,36);
+	top: 0px;
+	height: 180px;
+	-webkit-transition: height 0.3s ease; /* Safari */
+	transition: height 0.3s ease;
 }
 
 .headerLogo{
-	height: 120px;
-	width: auto;
-	margin: 35px;
-	margin-left: 70px;
-	display: table-cell;
+	float: left;
+	margin: 25px;
+	margin-bottom: 20px;
+	margin-left: 50px;
+	display: table-row;
+	-webkit-transition: margin 0.3s ease; /* Safari */
+	transition: margin 0.3s ease;
+}
+
+.headerLogo img{
+	height: 80px;
+}
+
+#linksRow{
+	position: relative;
+	text-align: center;
 }
 
 #navLinks{
 	text-transform: uppercase;
 	color: #ffeec2;
-	display: table-cell;
+	background-color: rgb(47,47,47);
 	position: absolute;
-	top: 40px;
-	left: 30%; /* ÄNDRA VID MINDRE */
+	top: 135px;
+	right: 0px;
+	left: 0px;
+}
+
+.linkBox{
+	display: inline-block;
+	height: 45px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .navLink{
-	display: table-cell;
-	padding-left: 100px; /* ÄNDRA VID MINDRE */
+	border-bottom: solid 1px rgba(0,0,0,0);
+	vertical-align: middle;
+	-webkit-transition: border-bottom 0.5s ease; /* Safari */
+    transition: border-bottom 0.5s ease;
+}
+
+.navLink:hover{
+	border-bottom: solid 1.5px #ff6e3f;
 }
 
 #splash{
 	background-color: #ff6e3f;
-	height: 60px;
-	margin-top: 20px;
 	padding: 10px;
-	width: 410px;
-	display: table;
+	width: 500px;
+	vertical-align: middle;
+	margin-top: 200px;
+	-webkit-transition: height, width 0.3s; /* Safari */
+	transition: height, width 0.3s;
+	transition-timing-function: ease;
+
 }
 
-#splash h2{
-	display: table-cell;
-	vertical-align: middle;
+#splashText{
+	margin: 0;
+
+}
+
+.infoBoxes{
+	padding-top: 60px;
+	width: 830px;
+}
+
+.infoBox{
+	/*position: relative;*/
+	padding: 40px;
+	padding-top: 0px;
+	width: 400px;
+	max-width: 400px;
+	height: 250px;
+	background-color: #ffeec2;
+	-webkit-transition: width 0.3s ease; /* Safari */
+	transition: width 0.3s ease;
+}
+
+.links{
+	padding-top: 20px;
+}
+
+#userInfo{
+	float: left;
+}
+
+#companyInfo{
+	float: right;
+}
+
+.infoTitle{
+	font-family: 'Raleway';
+	font-size: 32px;
+	text-transform: uppercase;
+	padding-top: 5px;
+	color: #71CBD9;
+}
+
+.underlined{
+	border-bottom: solid #ff6e3f 2px;
+}
+
+.infoDescription{
+	text-align: left;
+	padding-top: 15px;
+}
+
+.registerButtons{
+	padding-top: 100px;
+	width: 830px;
+}
+
+.registerButton{
+	border: 0;
+	margin-bottom: 8px;
+	background-color: #ff6e3f;
+	-webkit-transition: background-color 0.5s; /* Safari */
+    transition: background-color 0.5s;
+    transition-timing-function: ease;
+	border-radius: 45px;
+	padding: 14px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 34px;
+	height: 45px;
+	width: 330px;
+	margin-left: 35px;
+	margin-right: 35px;
+	font-family: 'Raleway';
+	font-size: 1.4em;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: #ffeec2;
+}
+
+.registerButton:hover{
+	background-color: #FF460A;
+}
+
+#registerUser{
+	float: left;
+}
+
+#registerCompany{
+	float: right;
+}
+
+.alreadyJoined{
+	color: #71CBD9;
+	font-size: 1em;
+	text-transform: uppercase;
+	margin-top: 2em;
+}
+
+.loginLink{
+	font-family: 'Roboto';
+	font-weight: 700;
+	color: inherit;
+	-webkit-transition: color 0.2s; /* Safari */
+    transition: color 0.2s;
+    transition-timing-function: ease;
+	text-decoration: none;
+	margin-left: 0.8em;
+}
+
+.loginLink:hover{
+	text-decoration: none;
+	color: #44E6FF;
+}
+
+.latestJobs{
+	margin-top: 50px;
+	min-height: 300px;
+}
+
+#placeholder{
+	font-size: 90px;
+}
+
+footer{
+	background-color: #202020;
+	min-height: 300px;
+}
+
+#footerLogo{
+	height: 90px;
+	width: auto;
+	margin-top: 60px;
+}
+
+#footerLinks{
+	margin-top: 30px;
+	padding-top: 20px;
+	border-top: solid #2e2e2e 2px;
+	display: table;
+	text-transform: uppercase;
+	color: #ffeec2;
+}
+
+.footerLink{
+	display: inline;
+	padding: 70px;
+	-webkit-transition: padding 0.3s; /* Safari */
+	transition: padding 0.3s;
+	transition-timing-function: ease;
+}
+
+@media (max-width: 950px){
+	nav{
+		height: 156px;
+	}
+
+	body{
+		background-position: center top 156px;
+	}
+
+	.headerLogo{
+		margin: 35px;
+	}
+
+	.navLink{
+		display: block;
+		padding-left: 5px;
+		margin-left: 20px;
+		border-left: solid 1.5px rgba(0,0,0,0);
+		-webkit-transition: border-left 0.5s ease; /* Safari */
+    	transition: border-left 0.5s ease;
+	}
+
+	.navLink:hover{
+		border-left: solid 1.5px #ff6e3f;
+		border-bottom: solid 1px rgba(0,0,0,0);
+	}
+
+	#navLinks{
+		position: relative;
+		float: right;
+		width: 250px;
+		top: 0;
+	}
+
+	.linkBox{
+		float: left;
+		height: auto;
+		padding-left: 0;
+		padding-right: 35px;
+	}
+
+	#splash{
+		width: 400px;
+	}
+
+	#splashText{
+		font-size: 2.5em;
+	}
+}
+
+@media (max-width: 878px){
+	.infoBoxes{
+		width: inherit;
+	}
+
+	.infoBox{
+		width: 100%;
+	}
+
+	.infoTitle {
+		padding-top: 25px;
+	}
+
+	#userInfo{
+		float: none;
+	}
+
+	#companyInfo{
+		float: none;
+	}
+
+	.footerLink {
+		padding: 5px;
+		display: block;
+	}
+
+	#placeholder{
+		font-size: 40px;
+	}
+
+	.registerButton {
+		margin-right: 0;
+		margin-left: 0;
+		width: 250px;
+		font-size: 1.1em;
+	}
+
+	.registerButtons{
+		width: inherit;
+		padding-top: 20px;
+	}
+
+	#registerCompany{
+		float: none;
+	}
+
+	.container{
+		padding: 0;
+	}
+}
+
+@media (max-width: 485px){
+	#splash{
+		width: 100%;
+	}
+
+	#navLinks{
+		width: 100%;
+	}
 }
