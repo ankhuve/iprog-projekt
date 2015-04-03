@@ -112,8 +112,6 @@ nav{
 	vertical-align: middle;
 	-webkit-transition: border-bottom 0.5s ease; /* Safari */
     transition: border-bottom 0.5s ease;
-    -webkit-transition: display 0.3s ease; /* Safari */
-	transition: display 0.3s ease;
 }
 
 .navLink:hover{
@@ -187,13 +185,14 @@ nav{
 
 .registerButtons{
 	padding-top: 100px;
-	/*width: 830px;*/
 }
 
 .registerButton{
 	border: 0;
 	margin-bottom: 8px;
 	background-color: #ff6e3f;
+	transition: 0.3s ease;
+	-webkit-transition: 0.3s ease;
 	-webkit-transition: background-color 0.5s ease; /* Safari */
     transition: background-color 0.5s ease;
 	border-radius: 45px;
@@ -451,5 +450,12 @@ footer{
 
 	#linksRow{
 		text-align: left;
+	}
+}
+
+@media (max-width: 360px){
+	.registerButton{
+		width: 290px;
+		font-size: 1.3em;
 	}
 }
