@@ -22,5 +22,11 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,Jobb) {
 		$(".navLink").removeClass("navLinkAnimation");
 		active = false;
 	}		
-	
+
+	$scope.logout = function(){
+		Jobb.terminateSession;
+		Jobb.killSession();
+		$scope.loggedIn = false;
+		$scope.username = "";
+	}
 })
