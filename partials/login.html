@@ -1,7 +1,7 @@
 <br/>
 <br/>
 <center>
-<form name="loginForm" ng-submit="login(credentials)" novalidate>
+<form name="loginForm" ng-submit="login(credentials)" novalidate ng-hide="loggedIn">
   <label for="email">Email:</label>
   <input type="text" id="email"
          ng-model="credentials.email">
@@ -12,9 +12,12 @@
 </form>
 
 <div ng-bind="message"></div>
+<div ng-show="loggedIn">Du är redan inloggad. Klicka här för att logga ut <button ng-click="logout()"> Logga ut </button> </div>
 
-<div ng-show="loggedIn">
+
+
+<!-- <div ng-show="loggedIn">
 	Välkommen {{ username }}!
-</div>
+</div> -->
 
 </center>

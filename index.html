@@ -30,7 +30,7 @@
 
 </head>
 <body ng-controller="AppCtrl">
-	<div ng-show="loggedIn"> Du är inloggad som <div ng-bind="username"></div>!</div>
+	<div ng-show="loggedIn"> Du &auml;r inloggad som <span ng-bind="username"></span>!<button ng-click="logout()">Logga ut</button></div>
 	<nav id="header">
 		<a ng-href="#/home"><img class="headerLogo" src="img/jobbaextra_logo.png"></a>
 		<div id="navLinks">
