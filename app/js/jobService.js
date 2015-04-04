@@ -2,7 +2,14 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   var savedJobs = [];
   var searchResults = [];
   var loginMessage = "";
-  
+  // var pendingJob = {};
+
+  if($cookieStore.get("pendingID")!=undefined){
+    // console.log("Pending ID cookie found!");
+    var pendingID = $cookieStore.get("pendingID");
+    // console.log("Pending ID: "+pendingID)
+  }
+
   if($cookieStore.get("token") != undefined){
     var loggedIn = true;
     var role = $cookieStore.get("role");
@@ -14,6 +21,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   }
 
   this.getJobs = $resource('php/getShit.php');
+  this.getJob = $resource('php/getJob.php');
   this.login  = $resource('php/login.php');
   this.checkLogin = $resource('php/checkLogin.php');
   this.terminateSession = $resource('php/terminateSession.php');
@@ -25,6 +33,33 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   this.setLoginMessage = function(message){
     loginMessage = message;
   }
+
+  this.addPendingID = function(annonsID){
+    $cookieStore.put("pendingID",annonsID);
+    pendingID = annonsID;
+  }
+
+  this.removePendingID =function(){
+    $cookieStore.remove("pendingID");
+    pendingID = "";
+  }
+
+  this.getPendingID = function(){
+    return pendingID;
+  }
+
+  // this.addPendingJob =  function(jobb){
+  //   console.log(jobb);
+  //   pendingJob = jobb;
+  // }
+
+  // this.removePendingJob = function(){
+  //   pendingJob = {};
+  // }
+
+  // this.getPendingJob = function(){
+  //   return  pendingJob;
+  // }
 
   this.setRole = function(inputRole){
     role = inputRole;

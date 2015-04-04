@@ -2,6 +2,10 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	$scope.showingResults = false;
 	$scope.sida = 1;
 
+	$scope.addPending = function(annonsID){
+		Jobb.addPendingID(annonsID);
+	}
+
 	$scope.search = function(keyword,sida){
 		$scope.loading = true;
 		console.log(keyword);
@@ -21,4 +25,5 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 		});
 	}
+
 });

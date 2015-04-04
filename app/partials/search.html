@@ -11,18 +11,15 @@
 
 <div ng-show="showingResults">
 	<p>Totalt antal sökträffar: {{ antalAnnonser }}</p>
-	<!-- <input ng-model="sida"></input> -->
 	Sida: <select ng-model="sida" id="sidePicker">
-
-		<!-- <option>Mjao</option> -->
 	</select>
 </div>
 <div ng-repeat="job in jobs">
-	<div class="jobBlock">
+	<a ng-href="#/job" ng-click="addPending(job.annonsid)"><div class="jobBlock">
 		<p>
 			<h4> {{ job.arbetsplatsnamn }}</h4>
 			<small>{{ job.kommunnamn }}</small>
 			{{ job.annonsrubrik }}
 		</p>
-	</div>
+	</div></a>
 </div>
