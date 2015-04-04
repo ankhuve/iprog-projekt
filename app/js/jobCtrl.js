@@ -4,7 +4,6 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, Jobb) {
 	if($scope.annonsID != undefined){
 		$scope.jobb = Jobb.getJob.get({id:$scope.annonsID},function(data){
 			console.log(data.platsannons);
-			// Jobb.addPendingJob(data);
 			$scope.annonsRubrik = data.platsannons.annons.annonsrubrik;
 			$scope.annonsText = data.platsannons.annons.annonstext;
 			$scope.kontakt = data.platsannons.ansokan.epostadress;

@@ -8,7 +8,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 	$scope.search = function(keyword,sida){
 		$scope.loading = true;
-		console.log(keyword);
 		Jobb.getJobs.get({nyckelord:keyword,antalrader:10,sida:sida},function(data){
 			var options = "";
 			for(var i = 1; i <= data.matchningslista.antal_sidor; i ++){
@@ -24,6 +23,12 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 			Jobb.addSearchResults(data.matchningslista.matchningdata);
 
 		});
+	}
+
+	if(Jobb.getPendingQuery()!=undefined){
+		$scope.search(Jobb.getPendingQuery(),$scope.sida);
+		$scope.query = Jobb.getPendingQuery();
+		Jobb.removePendingQuery();
 	}
 
 });
