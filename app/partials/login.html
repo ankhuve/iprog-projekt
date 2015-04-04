@@ -1,7 +1,7 @@
 <br/>
 <br/>
 <center>
-<form name="loginForm" ng-submit="login(credentials)" novalidate ng-hide="loggedIn">
+<form name="loginForm" ng-submit="login(credentials)" novalidate ng-show="!loggedIn">
   <label for="email">Email:</label>
   <input type="text" id="email"
          ng-model="credentials.email">

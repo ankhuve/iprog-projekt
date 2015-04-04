@@ -13,7 +13,6 @@
 	}
 
 	function checkLogin($conn, $email, $password){
-
 		$hashedPassword = passwordHash($password);
 		$checkIfExistsQuery = "SELECT count(*) numUsers FROM je_user WHERE email='".$email."' AND password = '".$hashedPassword."';";
 		$numUsers = queryDb($conn, $checkIfExistsQuery)->fetch_object()->numUsers;
@@ -24,6 +23,24 @@
 			return $userInfo = array("id"=>$result->id, "username"=>$result->username, "role"=>$result->role, "valid"=>true);
 		} else {
 			return $userInfo = array("valid"=>false);
+		}
+	}
+
+	function generateToken($sid,$username){
+		return hash('sha256','PillurEndStunes'.time().$sid.$username);
+	}
+
+	function tokenCheck(){
+		session_start();
+		$serverToken = str_replace('\"',"",$_SESSION["token"]);
+		$clientToken = str_replace('\"',"",$_COOKIE["token"]);
+		$serverSession = str_replace('\"',"",session_id());
+		$clientSession = str_replace('\"',"",$_COOKIE["sessionID"]);
+
+		if(($serverToken == $clientToken) && ($serverSession == $clientSession)){
+			return true;
+		} else {
+			return false;
 		}
 	}
 ?>

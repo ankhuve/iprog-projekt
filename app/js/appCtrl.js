@@ -1,15 +1,15 @@
 jobbaExtraApp.controller('AppCtrl', function ($scope,Jobb) {
+	
 	$scope.loggedIn = Jobb.isLoggedIn();
-	console.log(Jobb.isLoggedIn());
-	// $scope.username = Jobb.getSession()["username"];
-// Övergripande controller som kommer finnas över alla sidor.
-	// $scope.loggedIn = Jobb.isLoggedIn;
+	$scope.username = Jobb.getLoggedInUser();
+
 	var active = false;
+
 	$scope.toggleMenu = function(){
 		if(!active){
 			$(".navLinks").addClass("navLinksAnimation");
 			$(".navLink").addClass("navLinkAnimation");
-			active = true;;
+			active = true;
 		}else{
 			$(".navLinks").removeClass("navLinksAnimation");
 			$(".navLink").removeClass("navLinkAnimation");
@@ -24,9 +24,14 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,Jobb) {
 	}		
 
 	$scope.logout = function(){
-		Jobb.terminateSession;
-		Jobb.killSession();
 		$scope.loggedIn = false;
 		$scope.username = "";
+		Jobb.terminateSession.get();
+		Jobb.killSession();
+	    Jobb.setLoggedIn(false);
+    	Jobb.setRole("guest");
+    	Jobb.terminateSession.get({},function(data){
+      		console.log(data)});
+    	Jobb.killSession();
 	}
 })

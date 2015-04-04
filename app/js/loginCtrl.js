@@ -5,21 +5,21 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
   };
 
   $scope.message = Jobb.getLoginMessage();
-
   $scope.loggedIn = Jobb.isLoggedIn();
+  $scope.loggedInUser = Jobb.getLoggedInUser();
+
   $scope.login = function (credentials) {
-    console.log(credentials);
-    $scope.loggedIn = false;
     Jobb.login.get({email:credentials['email'],password:credentials['password']},function(data){
       console.log(data);
       if(data['valid']){
         Jobb.setLoginMessage("");
         $scope.message = '';
-        $scope.loggedIn = true;
+        Jobb.setLoggedIn(true);
+        Jobb.setLoggedInUser(data["username"]);
+        Jobb.setRole(data["role"]);
         $scope.$parent.loggedIn = true;
         $scope.$parent.username = data["username"];
-        $scope.username = data['username'];
-        Jobb.createSession(data['sessionID'],data['userID'],data['role'],data['username']);
+        Jobb.createSession(data['sessionID'],data['userID'],data['role'],data['username'],data["token"]);
         $location.path("/home");
       } else {
         $scope.message = "Ogiltigt användarnamn eller lösenord, försök igen!";
@@ -28,13 +28,15 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
   }
 
   $scope.logout = function(){
+    Jobb.setLoggedIn(false);
+    Jobb.setRole("guest");
+    Jobb.setLoggedInUser("");
     $scope.loggedIn = false;
     $scope.$parent.loggedIn = false;
-    delete $scope.$parent.username;
-    Jobb.terminateSession;
+    $scope.$parent.username = "";
+    Jobb.terminateSession.get({},function(data){
+      console.log(data)});
     Jobb.killSession();
-    // Jobb.setLoginMessage("Du är nu utloggad.");
-    // $scope.message = Jobb.getMessage();
     $scope.message = "Du är nu utloggad";
   }
 })
