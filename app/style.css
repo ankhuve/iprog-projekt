@@ -51,6 +51,8 @@ h4{
 	font-weight: 100;
 }
 
+/* ################################# */
+/* ########## START NAVBAR ######### */
 nav{
 	display: table;
 	width: 100%;
@@ -112,12 +114,73 @@ nav{
 	vertical-align: middle;
 	-webkit-transition: border-bottom 0.5s ease; /* Safari */
     transition: border-bottom 0.5s ease;
-    -webkit-transition: display 0.3s ease; /* Safari */
-	transition: display 0.3s ease;
 }
 
 .navLink:hover{
 	border-bottom: solid 1.5px #ff6e3f;
+}
+/* ########## END NAVBAR ######### */
+/* ############################### */
+
+
+.searchBar{
+	margin-top: 100px;
+	width: 400px;
+}
+
+#orangeBG{
+	background-color: #ff6e3f;
+	width: 400px;
+	height: 50px;
+	border-radius: 50px;
+}
+
+#searchBarIcon{
+	background-image: url(img/search_icon.png);
+	position: relative;
+	background-size: 20px 20px;
+	height: 20px;
+	width: 20px;
+	top: -35px;
+	left: 18px;
+	float: left;
+}
+
+.jobSearchForm{
+	text-align: left;
+	height: 44px;
+	width: 320px;
+	float: left;
+	margin: 3px;
+	border-radius: 50px;
+	background-color: rgba(255,255,255,1);
+	padding: 5px;
+	font-size: 20px;
+	padding-left: 40px;
+	border: 0;..
+}
+
+.jobSearchForm:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.searchButton{
+	width: 70px;
+	height: 50px;
+	margin-left: -5px;
+	background-color: rgba(0,0,0,0);
+	border: 0;
+	font-size: 24px;
+	font-family: 'Raleway';
+	font-weight: 700;
+	color: #ffeec2;
+	float: left;
+}
+
+.searchButton:focus {
+  outline-color: transparent;
+  outline-style: none;
 }
 
 #splash{
@@ -187,13 +250,14 @@ nav{
 
 .registerButtons{
 	padding-top: 100px;
-	/*width: 830px;*/
 }
 
 .registerButton{
 	border: 0;
 	margin-bottom: 8px;
 	background-color: #ff6e3f;
+	transition: 0.3s ease;
+	-webkit-transition: 0.3s ease;
 	-webkit-transition: background-color 0.5s ease; /* Safari */
     transition: background-color 0.5s ease;
 	border-radius: 45px;
@@ -283,6 +347,15 @@ footer{
 	transition: padding 0.3s;
 	transition-timing-function: ease;
 }
+
+
+
+/* #################################################### */
+/* ############## START OF RESPONSIVENESS ############# */
+/* #################################################### */
+
+
+
 
 @media (max-width: 950px){
 	nav{
@@ -389,6 +462,22 @@ footer{
 		width: 100%;
 	}
 
+	#orangeBG{
+		width: 340px;
+	}
+
+	.searchBar{
+		width: 340px;
+	}
+
+	#searchBarIcon{
+		left: 18px;
+	}
+
+	.jobSearchForm{
+		width: 260px;
+	}
+
 	body {
 		background-position: center top 50px;
 	}
@@ -451,5 +540,28 @@ footer{
 
 	#linksRow{
 		text-align: left;
+	}
+}
+
+@media (max-width: 360px){
+	#orangeBG{
+		width: 95%;
+	}
+
+	.searchBar{
+		width: 95%;
+	}
+
+	#searchBarIcon{
+		left: 18px;
+	}
+
+	.jobSearchForm{
+		width: 75%;
+	}
+
+	.registerButton{
+		width: 290px;
+		font-size: 1.3em;
 	}
 }
