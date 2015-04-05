@@ -1,23 +1,18 @@
 <br/>
 <br/>
 <center>
-<form name="loginForm" ng-submit="login(credentials)" novalidate ng-show="!loggedIn">
-  <label for="email">Email:</label>
-  <input type="text" id="email"
-         ng-model="credentials.email">
-  <label for="password">Lösenord:</label>
-  <input type="password" id="password"
-         ng-model="credentials.password">
-  <button type="submit">Login</button>
-</form>
+	<div class="loginContainer" ng-show="!loggedIn">
+		<h2 id="loginHeader">Logga in </h2>
+		<form name="loginForm" ng-submit="login(credentials)" novalidate>
+			  <input class="loginInput" type="text" id="email" ng-model="credentials.email" placeholder="Email">
+			  <input class="loginInput" type="password" id="password" ng-model="credentials.password" placeholder="Lösenord">
+			  <button class="loginInput" id="loginSubmit" type="submit">Logga in</button>
+		</form>
+		<div class="registerText"> Saknar du användare?<br/>
+		<strong><a ng-href="#/register">Klicka här för att registrera dig</a></strong></div>
+	</div>
 
 <div ng-bind="message"></div>
 <div ng-show="loggedIn">Du är redan inloggad. Klicka här för att logga ut <button ng-click="logout()"> Logga ut </button> </div>
-
-
-
-<!-- <div ng-show="loggedIn">
-	Välkommen {{ username }}!
-</div> -->
 
 </center>

@@ -47,6 +47,10 @@ jobbaExtraApp.config(['$routeProvider',
 
       if(next.templateUrl === undefined){
         $location.path("/home");
+      } else if(next.templateUrl === "partials/profile.html"){
+        if(role === "company"){
+          $location.path("/company");
+        }
       } else {
         if(role == "admin"){
           //No changes, full access

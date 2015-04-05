@@ -49,6 +49,12 @@
 				<div class="linkBox">
 					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/company">Leta arbetskraft</a></h4>
 				</div>
+				<div class="linkBox" ng-show="loggedIn">
+					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/profile">Mina sidor</a></h4>
+				</div>
+				<div class="linkBox" ng-hide="loggedIn">
+					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/login">Logga in</a></h4>
+				</div>
 				<div class="linkBox">
 					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/about">Om oss</a></h4>
 				</div>
