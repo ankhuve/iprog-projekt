@@ -20,6 +20,8 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
 
   this.getJobs = $resource('php/getShit.php');
   this.getJob = $resource('php/getJob.php');
+  this.removeSaved = $resource('php/deleteSavedJob.php');
+  // this.saveJob = $resource('php/saveJob.php');
   this.login  = $resource('php/login.php');
   this.checkLogin = $resource('php/checkLogin.php');
   this.terminateSession = $resource('php/terminateSession.php');
@@ -88,6 +90,25 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
 
   this.getSearchResults = function(){
     return searchResults;
+  }
+
+  this.addSavedJob = function(job){
+    console.log(job);
+    savedJobs.push(job);
+  }
+
+  this.removeSavedJob = function(id){
+    for(var job in savedJobs){
+      if(savedJobs[job].jobID === id){
+        console.log("Job found!");
+        savedJobs.splice(job,1);
+      }
+    }
+    console.log(savedJobs);
+  }
+
+  this.getSavedJobs = function(){
+    return savedJobs;
   }
 
   this.createSession = function(sessionID, userID, userRole, username, token){

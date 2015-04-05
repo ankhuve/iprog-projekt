@@ -1,8 +1,16 @@
 <img src="http://fc04.deviantart.net/fs70/f/2013/094/8/d/loading_logofinal_by_zegerdon-d60eb1v.gif" ng-show="loading"/>
+
+<center>
+	<div style="margin-top:20px;" ng-hide="loading">
+		<a ng-href="#/search"><button>Tillbaka till sök</button></a>
+		<span ng-show="loggedIn">
+			<button ng-click="saveJob(annonsID, annonsrubrik)" ng-hide="jobSaved">Spara annons</button>
+		</span>
+	</div>
+</center>
+
 <div class="singleJob">
-	<center><h2>{{ annonsRubrik }}</h2></center>
-	<p style="color:#E9DEBE">{{ annonsText }}</p>
-	<div>{{ kontakt }}</div><div>Sista ansökningsdag {{ sistaAnsokningsdag }}</div>
+	<center><h2>{{ jobb.annons.annonsrubrik }}</h2></center>
+	<p style="color:#E9DEBE">{{ jobb.annons.annonstext }}</p>
+	<div style="color:rgb(255, 238, 194)">{{ jobb.ansokan.epostadress }}</div><div style="color:rgb(255, 238, 194)">Sista ansökningsdag {{ jobb.ansokan.sista_ansokningsdag | date:'yyyy-MM-dd' }}</div>
 </div>
-
-

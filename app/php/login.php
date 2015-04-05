@@ -16,6 +16,7 @@
 		$token = generateToken(session_id(),$userInfo["username"]);
 		$return['token'] = $token;
 		$_SESSION['token'] = $token;
+		$_SESSION['userID'] = $userInfo["id"];
 	} else {
 		$return["valid"] = false;
 	}

@@ -1,4 +1,11 @@
 <div class="container full-width">
-	<center><h1>Profile page</h1></center>
-	<center><p>Inloggad som {{ username }}.</p></center>
+	<center><h2 class="sideHeader">Mina sidor</h2></center>
+	<center><h3 id="profileUsername">{{ username }}</h3></center>
+	<div class="savedJobs">
+		<center><h3> Sparade jobb </h3></center>
+		<hr style="border:1px solid #FFEEC2; width:80%;">
+		<div ng-repeat="job in savedJobs">
+			<span ng-click="removeSaved(job.jobID)" class="glyphicon glyphicon-remove"></span> <a ng-href="#/job" ng-click="addPendingID(job.jobID)">{{ job.jobHeader }}</a>
+		</div>
+	</div>
 </div>

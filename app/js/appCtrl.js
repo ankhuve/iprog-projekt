@@ -26,7 +26,7 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
 	$scope.logout = function(){
 		$scope.loggedIn = false;
 		$scope.username = "";
-		Jobb.terminateSession.get();
+		// Jobb.terminateSession.get();
 		Jobb.killSession();
 	    Jobb.setLoggedIn(false);
     	Jobb.setRole("guest");

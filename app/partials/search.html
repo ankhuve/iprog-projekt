@@ -19,6 +19,9 @@
 			<h4><small>{{ job.kommunnamn }}</small> {{ job.arbetsplatsnamn }}</h4>
 			{{ job.annonsrubrik }}
 		</p>
+		<div class="publishDate">
+			Publicerad {{ job.publiceraddatum | date:'yyyy-MM-dd' }}
+		</div>
 	</div></a>
 </div>
 <!-- <div ng-repeat="sida in sidor">

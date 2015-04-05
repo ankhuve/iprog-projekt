@@ -377,11 +377,14 @@ footer{
 }
 
 .jobBlock {
+	position:relative;
+	padding-left:10px;
+	padding-right:10px;
 	width: 45%;
 	float:left;
 	margin:2%;
 	min-width:300px;
-	min-height:100px;
+	min-height:120px;
   	background-color: rgba(255, 110, 63,0.95);
 	color:#FFFFE6;
 }
@@ -441,12 +444,42 @@ h4 small{
 	margin-top:95px;
 }
 
+.publishDate{
+	position:absolute;
+	bottom:5px;
+}
+
+.savedJobs {
+	background-color:rgb(36,36,36);
+	color:#FFEEC2;
+	width:200px;
+	margin-left:10px;
+	padding-left:10px;
+	padding-right: 10px;
+	padding-bottom:10px;
+	padding-top:5px;
+}
+
+.sideHeader {
+	width:50%;
+	min-width:300px;
+	background-color:#FF6E3F;
+	margin-top:30px;
+}
+#profileUsername{
+  	width: 40%;
+  	min-width: 200px;
+  	background-color: rgb(36,36,36);
+  	color: #ffeec2;
+  	margin-top:10px;
+}
+
 /* #################################################### */
 /* ############## START OF RESPONSIVENESS ############# */
 /* #################################################### */
 
 
-@media (max-width: 950px){
+@media (max-width: 954px){
 	nav{
 		height: 156px;
 	}
