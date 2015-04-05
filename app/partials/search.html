@@ -1,14 +1,27 @@
 <!-- <h1>{{ status }}</h1> -->
 
-<div id="customSearch">
+<!-- <div id="customSearch">
 	<form novalidate>
 		<input id="customSearchbar" placeholder="Hitta ett jobb" ng-model="query"></input>
 		<button id="customSearchButton" ng-click="search(query,sida)">Sök</button>
+		<button id="customFilterButton" ng-click="toggleFilter()"><span class="glyphicon glyphicon-chevron-down"></span><span>Filtrera</span></button>
 	</form>
-</div>
+</div> -->
+<center>
+	<div class="searchBar">
+		<div id="orangeBG">
 
-<div ng-show="showingResults">
-	<p id="numSearchResults">Totalt antal sökträffar: {{ antalAnnonser }}</p>
+			<form novalidate>
+				<input class="jobSearchForm" ng-model="query" placeholder="Hitta ett jobb"></input>
+				<button class="searchButton" ng-click="search(query,sida)">SÖK</button>
+			</form>
+			
+		</div>
+		<span id="searchBarIcon"></span>
+	</div>
+</center>
+<div ng-show="showingResults" id="numSearchResults">
+	<h4>Antal sökträffar: {{ antalAnnonser }}</h4>
 </div>
 
 <img src="http://fc04.deviantart.net/fs70/f/2013/094/8/d/loading_logofinal_by_zegerdon-d60eb1v.gif" ng-show="loading"/>

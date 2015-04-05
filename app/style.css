@@ -356,21 +356,35 @@ footer{
 }
 
 #customSearchbar {
-  	width: 80%;
+	background-color:rgba(30,30,30,0.5);
+	color:#FFEEC2;
+  	width: 55%;
 	height: 35px;
 	margin-top: 5px;
 	margin-left: 3%;
-	border-radius: 30px;
+	/*border-radius: 30px;*/
 	border: none;
 	text-align: center;
 }
 
 #customSearchButton {
-	width: 15%;
-	background-color: rgb(36,36,36);
+	width: 17%;
+	background-color:#242424;
 	border: 1px solid;
 	color: #FF7519;
-	border-radius: 30px;
+	/*border-radius: 30px;*/
+	height: 35px;
+	margin-top: 5px;
+	padding: 0px;
+}
+
+#customFilterButton {
+	width: 17%;
+	background-color: rgb(36,36,36);
+	/*border: 1px solid;*/
+	border:none;
+	color: #FF7519;
+	/*border-radius: 30px;*/
 	height: 35px;
 	margin-top: 5px;
 	padding: 0px;
@@ -474,6 +488,19 @@ h4 small{
   	margin-top:10px;
 }
 
+.loggedInHeader{
+	background-color:#242424;
+	color:#FFEEC2;
+	text-align:right;
+	padding-right:20px;
+	padding-top:10px;
+}
+
+.logoutButton {
+	background-color:#FF6E3F;
+	color:#FFEEC2;
+	border:none;
+}
 /* #################################################### */
 /* ############## START OF RESPONSIVENESS ############# */
 /* #################################################### */

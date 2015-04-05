@@ -6,6 +6,10 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		Jobb.addPendingID(annonsID);
 	}
 
+	$scope.toggleFilter = function(){
+		console.log("mjao");
+	}
+
 	$scope.search = function(keyword,sida){
 		$scope.loading = true;
 		$scope.sida = sida;
