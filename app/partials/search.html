@@ -1,17 +1,42 @@
 <!-- <h1>{{ status }}</h1> -->
+<center>
+	<div class="searchBar">
+		<div id="orangeBG">
+			<form novalidate>
+				<input class="jobSearchForm" ng-model="query" placeholder="Hitta ett jobb" autofocus="autofocus"></input>
+				<button class="searchButton" ng-click="search(query, sida)">SÖK</button>
+				<div class="spinner" ng-show="loading">
+					<div class="spinner-container container1">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container2">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container3">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<span id="searchBarIcon"></span>
+	</div>
+	<div ng-show="showingResults" id="numSearchResults">
+		<h4>Antal sökträffar: {{ antalAnnonser }}</h4>
+	</div>
+</center>
 
-<div id="customSearch">
-	<form novalidate>
-		<input id="customSearchbar" placeholder="Hitta ett jobb" ng-model="query"></input>
-		<button id="customSearchButton" ng-click="search(query,sida)">Sök</button>
-	</form>
-</div>
 
-<div ng-show="showingResults">
-	<p id="numSearchResults">Totalt antal sökträffar: {{ antalAnnonser }}</p>
-</div>
-
-<img src="http://fc04.deviantart.net/fs70/f/2013/094/8/d/loading_logofinal_by_zegerdon-d60eb1v.gif" ng-show="loading"/>
+<!-- 
+<img src="http://fc04.deviantart.net/fs70/f/2013/094/8/d/loading_logofinal_by_zegerdon-d60eb1v.gif" ng-show="loading"/> -->
 
 <div ng-repeat="job in jobs">
 	<a ng-href="#/job" ng-click="addPending(job.annonsid)"><div class="jobBlock">
