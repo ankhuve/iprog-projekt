@@ -1,4 +1,4 @@
-jobbaExtraApp.controller('AppCtrl', function ($scope,Jobb) {
+jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
 	
 	$scope.loggedIn = Jobb.isLoggedIn();
 	$scope.username = Jobb.getLoggedInUser();
@@ -33,5 +33,6 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,Jobb) {
     	Jobb.terminateSession.get({},function(data){
       		console.log(data)});
     	Jobb.killSession();
+    	$location.path("/home");
 	}
 })

@@ -8,12 +8,20 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 	$scope.search = function(keyword,sida){
 		$scope.loading = true;
+		$scope.sida = sida;
 		Jobb.getJobs.get({nyckelord:keyword,antalrader:10,sida:sida},function(data){
-			var options = "";
+			console.log(data);
+			// var options = "";
+			$scope.sidor = [];
 			for(var i = 1; i <= data.matchningslista.antal_sidor; i ++){
-				options += '<option>'+i+'</option>';
+				if(i != $scope.sida){
+					$scope.sidor.push(i);
 				}
-			document.getElementById('sidePicker').innerHTML = options;
+				
+			// 	options += '<option>'+i+'</option>';
+			}
+			console.log($scope.sidor);
+			// document.getElementById('sidePicker').innerHTML = options;
 			
 			$scope.antalAnnonser = data.matchningslista.antal_platsannonser;
 			$scope.jobs = data.matchningslista.matchningdata;

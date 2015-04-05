@@ -2,24 +2,28 @@
 
 <div id="customSearch">
 	<form novalidate>
-		<input ng-model="query"></input>
-		<button ng-click="search(query,sida)">Search stuff</button>
+		<input id="customSearchbar" placeholder="Hitta ett jobb" ng-model="query"></input>
+		<button id="customSearchButton" ng-click="search(query,sida)">Sök</button>
 	</form>
+</div>
+
+<div ng-show="showingResults">
+	<p id="numSearchResults">Totalt antal sökträffar: {{ antalAnnonser }}</p>
 </div>
 
 <img src="http://fc04.deviantart.net/fs70/f/2013/094/8/d/loading_logofinal_by_zegerdon-d60eb1v.gif" ng-show="loading"/>
 
-<div ng-show="showingResults">
-	<p>Totalt antal sökträffar: {{ antalAnnonser }}</p>
-	Sida: <select ng-model="sida" id="sidePicker">
-	</select>
-</div>
 <div ng-repeat="job in jobs">
 	<a ng-href="#/job" ng-click="addPending(job.annonsid)"><div class="jobBlock">
 		<p>
-			<h4> {{ job.arbetsplatsnamn }}</h4>
-			<small>{{ job.kommunnamn }}</small>
+			<h4><small>{{ job.kommunnamn }}</small> {{ job.arbetsplatsnamn }}</h4>
 			{{ job.annonsrubrik }}
 		</p>
 	</div></a>
 </div>
+<!-- <div ng-repeat="sida in sidor">
+	<div class="sidePicker" ng-click="search(query,sida)">
+		{{sida}}
+	</div>
+</div> -->
+
