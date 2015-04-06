@@ -1,6 +1,10 @@
 <br/>
 <br/>
 <center>
+	<div class="messageBox" ng-show="hasLoginMessage || loggedIn">
+		<div ng-bind="message"></div>
+		<div ng-show="loggedIn">Inloggad som {{loggedInUser}}. <button class="logoutButton" ng-click="logout()"> Logga ut </button> </div>
+	</div>
 	<div class="loginContainer" ng-show="!loggedIn">
 		<h2 id="loginHeader">Logga in </h2>
 		<form name="loginForm" ng-submit="login(credentials)" novalidate>
@@ -12,7 +16,6 @@
 		<strong><a ng-href="#/register">Klicka här för att registrera dig</a></strong></div>
 	</div>
 
-<div ng-bind="message"></div>
-<div ng-show="loggedIn">Du är redan inloggad. Klicka här för att logga ut <button ng-click="logout()"> Logga ut </button> </div>
+
 
 </center>

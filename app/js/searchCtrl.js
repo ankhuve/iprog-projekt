@@ -1,13 +1,19 @@
 jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	$scope.showingResults = false;
-	$scope.sida = 1;
+	$scope.sida = 1
+	$scope.toggledFilter = false;
 
 	$scope.addPending = function(annonsID){
 		Jobb.addPendingID(annonsID);
 	}
 
 	$scope.toggleFilter = function(){
-		console.log("mjao");
+		if($scope.toggledFilter){
+			$scope.toggledFilter = false;
+		} else {
+			$scope.toggledFilter = true;
+		}
+		// console.log("mjao");
 	}
 
 	$scope.search = function(keyword,sida){

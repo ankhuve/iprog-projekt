@@ -1,19 +1,22 @@
 jobbaExtraApp.controller('ProfileCtrl',function ($scope, $http, $location, Jobb) {
   	$scope.username = Jobb.getLoggedInUser();
   	$scope.savedJobs = Jobb.getSavedJobs();
-  	$http.get('php/getSavedJobs.php').success(function(data){
-  		if(data["valid"]){
-  			for(var job in data.savedJobs){
-  				Jobb.addSavedJob(data.savedJobs[job]);
-  			}
-  		} else {
-  			Jobb.killSession();
-	    	Jobb.terminateSession.get({},function(data){
-      			$location.path("/login");
-      		});
-  		}
-  		console.log(data);
-  	})
+  	$scope.savedJobs.length;
+  	if($scope.savedJobs.length === 0){
+	  	$http.get('php/getSavedJobs.php').success(function(data){
+	  		if(data["valid"]){
+	  			for(var job in data.savedJobs){
+	  				Jobb.addSavedJob(data.savedJobs[job]);
+	  			}
+	  		} else {
+	  			Jobb.killSession();
+		    	Jobb.terminateSession.get({},function(data){
+	      			$location.path("/login");
+	      		});
+	  		}
+	  	})
+  	}
+
 
 
 	$scope.addPendingID = function(id){
