@@ -38,6 +38,7 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 			console.log(data.matchningslista.matchningdata);
 			$scope.loading = false;
 			$scope.showingResults = true;
+			$("#numSearchResults").animate({opacity: 1}, 300);
 			Jobb.addSearchResults(data.matchningslista.matchningdata);
 
 		});
