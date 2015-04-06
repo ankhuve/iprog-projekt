@@ -31,7 +31,16 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   }
 
   this.setLoginMessage = function(message){
+    console.log(message);
     loginMessage = message;
+  }
+
+  this.hasLoginMessage = function(){
+    if(loginMessage === ""){
+      return false;
+    }else {
+      return true;
+    }
   }
 
   this.addPendingID = function(annonsID){

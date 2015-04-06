@@ -35,4 +35,7 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
     	Jobb.killSession();
     	$location.path("/home");
 	}
+	$scope.clearLoginMessage = function(){
+		Jobb.setLoginMessage("");
+	}
 })

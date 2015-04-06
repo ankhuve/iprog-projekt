@@ -7,6 +7,7 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
   $scope.message = Jobb.getLoginMessage();
   $scope.loggedIn = Jobb.isLoggedIn();
   $scope.loggedInUser = Jobb.getLoggedInUser();
+  $scope.hasLoginMessage = Jobb.hasLoginMessage();
 
   $scope.login = function (credentials) {
     Jobb.login.get({email:credentials['email'],password:credentials['password']},function(data){
@@ -23,6 +24,7 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
         $location.path("/home");
       } else {
         $scope.message = "Ogiltigt användarnamn eller lösenord, försök igen!";
+        $scope.hasLoginMessage = true;
       }
     });
   }
@@ -31,6 +33,7 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
     Jobb.setLoggedIn(false);
     Jobb.setRole("guest");
     Jobb.setLoggedInUser("");
+    // Jobb.setLoginMessage("");
     $scope.loggedIn = false;
     $scope.$parent.loggedIn = false;
     $scope.$parent.username = "";

@@ -1,6 +1,7 @@
 jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 	$scope.loggedIn = Jobb.isLoggedIn();
 	$scope.annonsID = Jobb.getPendingID();
+
 	$scope.loading = true;
 	$scope.jobSaved = false;
 
@@ -9,10 +10,8 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 			console.log(data.platsannons);
 			$scope.jobb = data.platsannons;
 			$scope.annonsrubrik = data.platsannons.annons.annonsrubrik;
-			// $scope.annonsText = data.platsannons.annons.annonstext;
-			// $scope.kontakt = data.platsannons.ansokan.epostadress;
-			// $scope.sistaAnsokningsdag = data.platsannons.ansokan.sista_ansokningsdag;
 			$scope.loading = false;
+			// console.log({"jobID":$scope.jobb.annons.annonsid, "jobHeader":$scope.jobb.annons.annonsrubrik});
 		})
 	} else {
 		$location.path("/search");
@@ -28,8 +27,9 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 				console.log(data);
 				if(data["valid"]){
 					$scope.jobSaved = true;
-					$scope.$apply();
+					Jobb.addSavedJob({"jobID":$scope.jobb.annons.annonsid, "jobHeader":$scope.jobb.annons.annonsrubrik});
 					Jobb.removePendingID();
+					$scope.$apply();
 				} else {
 					alert("Din session har tagit slut, du kommer nu loggas ut.");
 					$scope.$parent.logout();

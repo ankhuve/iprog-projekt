@@ -56,17 +56,17 @@ jobbaExtraApp.config(['$routeProvider',
           //No changes, full access
         } else if(role == "company"){
           if(companySites.indexOf(next.templateUrl)<0){
-            Jobb.setLoginMessage("Du har tyvärr inte access.");
+            Jobb.setLoginMessage("Du har tyvärr inte access till den begärda sidan.");
             $location.path("/login");
           }
         } else if(role == "user"){
           if(userSites.indexOf(next.templateUrl)<0){
-            Jobb.setLoginMessage("Du har tyvärr inte access.");
+            Jobb.setLoginMessage("Du har tyvärr inte access till den begärda sidan.");
             $location.path("/login");
           }
         } else { // Guest user
           if(guestSites.indexOf(next.templateUrl)<0){
-            Jobb.setLoginMessage("Du har tyvärr inte access.");
+            Jobb.setLoginMessage("Du har tyvärr inte access till den begärda sidan.");
             $location.path("/login");
           }
         }
