@@ -202,13 +202,12 @@ nav{
 }
 
 
--/* ############### START LOADING ANIMATION ###############*/
+/* ############### START LOADING ANIMATION ###############*/
 
 .spinner {
-	width: 20px;
-	height: 20px;
 	position: relative;
-	left: 100px;
+	float: right;
+	left: -113px;
 	top: 15px;
 }
 
@@ -216,7 +215,6 @@ nav{
 	width: 6px;
 	height: 6px;
 	background-color: #6e6e6e;
-
 	border-radius: 100%;
 	position: absolute;
 	-webkit-animation: bouncedelay 1.2s infinite ease-in-out;
@@ -228,8 +226,8 @@ nav{
 
 .spinner .spinner-container {
 	position: absolute;
-	width: 100%;
-	height: 100%;
+	width: 20px;
+	height: 20px;
 }
 
 .container2 {
@@ -512,14 +510,20 @@ footer{
 }
 
 #customFilterButton {
-	width: 17%;
+	width: 90px;
 	background-color: rgb(36,36,36);
 	border:none;
 	color: #FF7519;
 	height: 35px;
-	margin-top: 5px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
 	padding: 0px;
 }
+
+#customFilterButton:focus{
+	outline-color: transparent;
+	outline-style: none;
+	}
 
 .filterDiv{
 	background-color:rgb(36,36,36);

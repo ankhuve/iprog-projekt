@@ -42,11 +42,12 @@
 			</form>
 		</div>
 		<span id="searchBarIcon"></span>
-		<button id="customFilterButton" ng-click="toggleFilter()"><span class="glyphicon glyphicon-chevron-down"></span><span> Filtrera</span></button>
 		<div class="filterDiv" ng-show="toggledFilter">
 			Filter stuff goes here<br/>
 			Moar stuff
 		</div>
+		<button id="customFilterButton" ng-click="toggleFilter()"><span>Filtrera</span><br/><span class="glyphicon glyphicon-chevron-down"></span></button>
+		
 	</div>
 	<div ng-show="showingResults" id="numSearchResults">
 		<h4>Antal sökträffar: {{ antalAnnonser }}</h4>
