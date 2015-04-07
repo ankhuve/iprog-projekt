@@ -14,11 +14,12 @@
 <center> -->
 
 <center>
-	<div class="searchBar">
-		<div id="orangeBG">
+	<div class="searchBar searchPage">
+		<div id="orangeBG" class="searchPage">
 			<form novalidate>
-				<input class="jobSearchForm" ng-model="query" placeholder="Hitta ett jobb" autofocus="autofocus"></input>
-				<button class="searchButton" ng-click="search(query, sida)">SÖK</button>
+				<input class="jobSearchForm searchPage" ng-model="query" placeholder="Hitta ett jobb" autofocus="autofocus"></input>
+				<button class="searchButton searchPage" ng-click="search(query, sida)">SÖK</button>
+				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()">FILTRERA <span class="glyphicon glyphicon-chevron-right"></span></button>
 				<div class="spinner" ng-show="loading">
 					<div class="spinner-container container1">
 						<div class="circle1"></div>
@@ -41,12 +42,12 @@
 				</div>
 			</form>
 		</div>
-		<span id="searchBarIcon"></span>
+		<span id="searchBarIcon" class="searchPage"></span>
 		<div class="filterDiv" ng-show="toggledFilter">
 			Filter stuff goes here<br/>
 			Moar stuff
 		</div>
-		<button id="customFilterButton" ng-click="toggleFilter()"><span>Filtrera</span><br/><span class="glyphicon glyphicon-chevron-down"></span></button>
+		<button id="customFilterButton" ng-click="toggleFilter()"><span>Filtrera</span><br/></button>
 		
 	</div>
 	<div ng-show="showingResults" id="numSearchResults">
