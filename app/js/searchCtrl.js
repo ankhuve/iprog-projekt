@@ -13,7 +13,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		} else {
 			$scope.toggledFilter = true;
 		}
-		// console.log("mjao");
 	}
 
 	$scope.search = function(keyword,sida){

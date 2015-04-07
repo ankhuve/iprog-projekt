@@ -128,7 +128,47 @@ nav{
 	width: 400px;
 }
 
+.searchBar.searchPage{
+	width: 700px;
+}
 
+#orangeBG.searchPage{
+	width: 700px;
+	height: 70px;
+}
+
+.jobSearchForm.searchPage{
+	height: 64px;
+	font-size: 28px;
+	width: 450px;
+}
+
+.searchButton.searchPage{
+	height: 70px;
+	font-size: 30px;
+	margin-left: 5px;
+}
+
+#searchBarIcon.searchPage{
+	top: -45px;
+}
+
+.filterButton.searchButton{
+	width: 140px;
+	font-size: 20px;
+	float: right;
+	margin-right: 10px;
+}
+
+.filterButton.searchButton span{
+	font-size: 18px;
+}
+
+.filterDiv{
+	background-color:rgb(36,36,36);
+	color:#FFEEC2;
+	float: right;
+}
 
 #orangeBG{
 	background-color: #ff6e3f;
@@ -524,13 +564,6 @@ footer{
 	outline-color: transparent;
 	outline-style: none;
 	}
-
-.filterDiv{
-	background-color:rgb(36,36,36);
-	color:#FFEEC2;
-	padding-left:10%;
-	padding-right:10%;
-}
 
 .jobBlock {
 	position:relative;
