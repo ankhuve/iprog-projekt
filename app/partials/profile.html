@@ -4,6 +4,9 @@
 	<div class="savedJobs">
 		<center><h3> Sparade jobb </h3></center>
 		<hr style="border:1px solid #FFEEC2; width:80%;">
+		<div ng-hide="hasSavedJobs()">
+			Du har inga sparade jobbannonser
+		</div>
 		<div ng-repeat="job in savedJobs()">
 			<span ng-click="removeSaved(job.jobID)" class="glyphicon glyphicon-remove"></span> <a ng-href="#/job" ng-click="addPendingID(job.jobID)">{{ job.jobHeader }}</a>
 		</div>

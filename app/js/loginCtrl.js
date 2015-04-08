@@ -27,17 +27,15 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
       console.log(data);
       if(data['valid']){
         Jobb.setLoginMessage("");
-        // $scope.message = '';
         Jobb.setLoggedIn(true);
         Jobb.setLoggedInUser(data["username"]);
         Jobb.setRole(data["role"]);
         Jobb.createSession(data['sessionID'],data['userID'],data['role'],data['username'],data["token"]);
+        Jobb.getSavedJobsFromDb();
         $location.path("/home");
       } else {
         Jobb.setLoginMessage("Ogiltigt användarnamn eller lösenord, försök igen!");
-        // $scope.hasLoginMessage = true;
       }
-      // $rootScope.$digest();
     });
   }
 
@@ -45,12 +43,7 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
     Jobb.setLoggedIn(false);
     Jobb.setRole("guest");
     Jobb.setLoggedInUser("");
-    // $scope.loggedIn = false;
-    // $scope.$parent.loggedIn = false;
-    // $scope.$parent.username = "";
-    // $scope.$parent.showSearchEmployee = true;
     Jobb.terminateSession.get({},function(data){
-      // console.log(data)
     });
     Jobb.killSession();
     $scope.message = "Du är nu utloggad";
