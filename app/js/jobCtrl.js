@@ -5,7 +5,6 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 	if($scope.annonsID != undefined){
 		$scope.jobb = Jobb.getJob.get({id:$scope.annonsID},function(data){
 			$scope.jobb = data.platsannons;
-			// console.log($scope.jobb);
 			$scope.loading = false;
 		})
 	} else {
@@ -21,7 +20,6 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 	}
 
 	$scope.jobSaved = function(jobID){
-		// console.log(jobID);
 		$scope.savedJobs = $scope.getSavedJobs();
 		for(var job in $scope.savedJobs){
 			if($scope.savedJobs[job].jobID == jobID){

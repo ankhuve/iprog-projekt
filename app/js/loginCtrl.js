@@ -22,6 +22,10 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
     }
   } 
 
+  $scope.setUserAsRequested = function(){
+    Jobb.setRequestedUserType("user");
+  }
+
   $scope.login = function (credentials) {
     Jobb.login.get({email:credentials['email'],password:credentials['password']},function(data){
       console.log(data);

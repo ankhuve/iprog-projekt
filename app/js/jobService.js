@@ -3,6 +3,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   var searchResults = [];
   var loginMessage = "";
   var pendingQuery;
+  var requestedUserType = "user";
 
   if($cookieStore.get("pendingID")!=undefined){
     var pendingID = $cookieStore.get("pendingID");
@@ -15,8 +16,6 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     $http.get('php/getSavedJobs.php').success(function(data){
       if(data["valid"]){
         savedJobs = data["savedJobs"];
-        // console.log("Valid data in jobService load, saving jobs...");
-        // console.log(savedJobs);
       }
     })
   } else {
@@ -28,9 +27,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   this.getSavedJobsFromDb = function(){
     $http.get('php/getSavedJobs.php').success(function(data){
       if(data["valid"]){
-        // console.log("Valid data in getSavedJobsFromDb-request, saving jobs...")
         savedJobs = data["savedJobs"];
-        // console.log(savedJobs);
       } else {
         console.log("Failed to get saved jobs from DB");
       }
@@ -83,7 +80,6 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   }
 
   this.setLoggedInUser = function(username){
-    // console.log("logged in user set: "+username);
     loggedInUser = username;
   }
 
@@ -112,23 +108,27 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   }
 
   this.addSavedJob = function(job){
-    // console.log("Saving job:");
-    // console.log(job);
     savedJobs.push(job);
   }
 
   this.removeSavedJob = function(id){
     for(var job in savedJobs){
       if(savedJobs[job].jobID === id){
-        // console.log("Job found!");
         savedJobs.splice(job,1);
       }
     }
-    // console.log(savedJobs);
   }
 
   this.getSavedJobs = function(){
     return savedJobs;
+  }
+
+  this.getRequestedUserType = function(){
+    return requestedUserType;
+  }
+
+  this.setRequestedUserType = function(userType){
+    requestedUserType = userType;
   }
 
   this.createSession = function(sessionID, userID, userRole, username, token){

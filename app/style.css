@@ -642,6 +642,50 @@ h4 small{
 	padding:0px;
 }
 
+.registerInput {
+	width: 70%;
+	background-color: rgba(30,30,30,0.8);
+	border: none;
+	margin-bottom: 10px;
+	height: 30px;
+	color: #ffeec2;
+	padding-left: 20px;
+	padding-right:20px;
+}
+
+.verifiedInput{
+	color:#219321;
+}
+
+.registerInput#register{
+	background-color: #FF6E3F;
+	padding:0px;
+	width: 234px;
+}
+
+.registerInput#register:disabled{
+	background-color: #535353;
+	color: #323232;
+}
+
+.registerDropdown{
+	background-color: rgba(30,30,30,0.8);
+	color: #ffeec2;
+ 	width: 234px;
+	border: none;
+	margin-bottom: 10px;
+	height: 30px;
+	padding-left:20px;
+	/* Om man vill gömma den fula vita grejen i Firefox kan man ha denna */
+	/*-moz-appearance: none;*/
+}
+
+.validFeedback{
+	margin-left:10px;
+}
+
+
+
 #loginHeader {
 	padding-top:10px;
 	margin-bottom:30px;

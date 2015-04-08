@@ -30,12 +30,16 @@ jobbaExtraApp.config(['$routeProvider',
         templateUrl: 'partials/job.html',
         controller: 'JobCtrl'
       }).
+      when('/register',{
+        templateUrl: 'partials/register.html',
+        controller: 'RegisterCtrl'
+      }).
       otherwise({
         redirectTo: '/home'
       });
   }]).run(function($rootScope, $location, Jobb){
     $rootScope.$on("$routeChangeStart", function(event, next, current){
-      var guestSites = ["partials/home.html", "partials/search.html", "partials/login.html","partials/job.html"];
+      var guestSites = ["partials/home.html", "partials/search.html", "partials/login.html","partials/job.html", "partials/register.html"];
       
       var userSites = guestSites.slice();
       userSites.push("partials/profile.html");
