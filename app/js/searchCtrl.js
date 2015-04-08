@@ -3,11 +3,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	$scope.sida = 1
 	$scope.toggledFilter = false;
 
-	// $scope.originalSearch = function(){
-	// 	Jobb.setPage(1);
-	// 	Jobb.addSearchResults([]);
-	// }
-
 	$scope.addPending = function(annonsID){
 		Jobb.addPendingID(annonsID);
 	}
@@ -35,7 +30,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 			$scope.antalAnnonser = data.matchningslista.antal_platsannonser;
 			$scope.jobs = data.matchningslista.matchningdata;
-			// console.log(data.matchningslista.matchningdata);
 			$scope.loading = false;
 			$scope.showingResults = true;
 			$("#numSearchResults").animate({opacity: 1}, 300);

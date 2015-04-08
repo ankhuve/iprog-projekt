@@ -4,9 +4,8 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 	$scope.loading = true;
 	if($scope.annonsID != undefined){
 		$scope.jobb = Jobb.getJob.get({id:$scope.annonsID},function(data){
-			// console.log(data.platsannons);
 			$scope.jobb = data.platsannons;
-			$scope.annonsrubrik = data.platsannons.annons.annonsrubrik;
+			// console.log($scope.jobb);
 			$scope.loading = false;
 		})
 	} else {
@@ -22,6 +21,7 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 	}
 
 	$scope.jobSaved = function(jobID){
+		// console.log(jobID);
 		$scope.savedJobs = $scope.getSavedJobs();
 		for(var job in $scope.savedJobs){
 			if($scope.savedJobs[job].jobID == jobID){
@@ -32,17 +32,38 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 	}
 
 	$scope.saveJob = function(annonsID, annonsrubrik){
-        $http.post("php/saveJob.php", {annonsID:annonsID, annonsrubrik:annonsrubrik}).success(function(data, status) {
-        	if(data["valid"]){
-        		Jobb.addSavedJob({"jobID":$scope.jobb.annons.annonsid, "jobHeader":$scope.jobb.annons.annonsrubrik});
-        	} else {
-				alert("Din session har tagit slut, du kommer nu loggas ut.");
-				$scope.$parent.logout();
-        	}
-        })
+		$.ajax({
+			url: 'php/saveJob.php',
+			type: 'POST',
+			data: {annonsID:annonsID,annonsrubrik:annonsrubrik},
+			dataType: 'json',
+			success: function(data){
+				if(data["valid"]){
+					Jobb.addSavedJob({"jobID":$scope.jobb.annons.annonsid,"jobHeader":$scope.jobb.annons.annonsrubrik});
+					$scope.$apply();
+				} else {
+					alert("Din session har tagit slut, du kommer nu loggas ut.");
+					$scope.$parent.logout();				
+				}
+			}
+		})
 	}
 
 	$scope.removeSaved = function(jobID){
-		Jobb.removeSavedJob(jobID);
+		$.ajax({
+			url: 'php/deleteSavedJob.php',
+			type: 'POST',
+			data: {id:jobID},
+			dataType: 'JSON',
+			success: function(data){
+				if(data["valid"]){
+					Jobb.removeSavedJob(jobID);
+					$scope.$apply();
+				} else {
+					alert("Din session har tagit slut, du kommer nu loggas ut.");
+					$scope.$parent.logout();				
+				}
+			}
+		})
 	}
 });

@@ -21,7 +21,7 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
     	Jobb.setLoggedInUser("");
     	Jobb.killSession();
     	Jobb.terminateSession.get({},function(data){
-      		// console.log(data)
+      		// console.log(data);
       	});
     	$location.path("/home");
 	}
@@ -30,23 +30,23 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
 		Jobb.setLoginMessage("");
 	}
 
-	$scope.active = false;
+	var active = false;
 
 	$scope.toggleMenu = function(){
 		if(!$scope.active){
 			$(".navLinks").addClass("navLinksAnimation");
 			$(".navLink").addClass("navLinkAnimation");
-			$scope.active = true;
+			active = true;
 		}else{
 			$(".navLinks").removeClass("navLinksAnimation");
 			$(".navLink").removeClass("navLinkAnimation");
-			$scope.active = false;
+			active = false;
 		}
 	}
 
 	$scope.closeMenu = function(){
 		$(".navLinks").removeClass("navLinksAnimation");
 		$(".navLink").removeClass("navLinkAnimation");
-		$scope.active = false;
+		active = false;
 	}		
 })
