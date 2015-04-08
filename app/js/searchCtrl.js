@@ -3,6 +3,11 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	$scope.sida = 1
 	$scope.toggledFilter = false;
 
+	// $scope.originalSearch = function(){
+	// 	Jobb.setPage(1);
+	// 	Jobb.addSearchResults([]);
+	// }
+
 	$scope.addPending = function(annonsID){
 		Jobb.addPendingID(annonsID);
 	}
@@ -13,7 +18,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		} else {
 			$scope.toggledFilter = true;
 		}
-		// console.log("mjao");
 	}
 
 	$scope.search = function(keyword,sida){
@@ -21,26 +25,21 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		$scope.sida = sida;
 		Jobb.getJobs.get({nyckelord:keyword,antalrader:10,sida:sida},function(data){
 			console.log(data);
-			// var options = "";
-			$scope.sidor = [];
-			for(var i = 1; i <= data.matchningslista.antal_sidor; i ++){
-				if(i != $scope.sida){
-					$scope.sidor.push(i);
-				}
-				
-			// 	options += '<option>'+i+'</option>';
-			}
-			console.log($scope.sidor);
-			// document.getElementById('sidePicker').innerHTML = options;
-			
+			// $scope.sidor = [];
+			// for(var i = 1; i <= data.matchningslista.antal_sidor; i ++){
+			// 	if(i != $scope.sida){
+			// 		$scope.sidor.push(i);
+			// 	}
+			// }
+			// console.log($scope.sidor);
+
 			$scope.antalAnnonser = data.matchningslista.antal_platsannonser;
 			$scope.jobs = data.matchningslista.matchningdata;
-			console.log(data.matchningslista.matchningdata);
+			// console.log(data.matchningslista.matchningdata);
 			$scope.loading = false;
 			$scope.showingResults = true;
 			$("#numSearchResults").animate({opacity: 1}, 300);
 			Jobb.addSearchResults(data.matchningslista.matchningdata);
-
 		});
 	}
 

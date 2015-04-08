@@ -7,7 +7,7 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
   $scope.message = function(){
     return Jobb.getLoginMessage();
   }
-  // $scope.message = Jobb.getLoginMessage();
+  
   $scope.loggedInUser = Jobb.getLoggedInUser();
 
   $scope.loggedIn = function(){
@@ -20,7 +20,6 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
     } else {
       return true;
     }
-    // return Jobb.hasLoginMessage();
   } 
 
   $scope.login = function (credentials) {

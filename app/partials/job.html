@@ -1,10 +1,9 @@
-<!-- <img src="http://fc04.deviantart.net/fs70/f/2013/094/8/d/loading_logofinal_by_zegerdon-d60eb1v.gif" ng-show="loading"/> -->
-
 <center>
 	<div class="jobButtons" ng-hide="loading">
 		<a ng-href="#/search"><button class="singleJobButton">Tillbaka till sök</button></a>
-		<span ng-show="loggedIn">
-			<button class="singleJobButton save" ng-click="saveJob(annonsID, annonsrubrik)" ng-hide="jobSaved">Spara annons</button>
+		<span ng-show="loggedIn()">
+			<button class="singleJobButton save" ng-click="saveJob(annonsID, annonsrubrik)" ng-hide="jobSaved(annonsID)">Spara annons</button>
+			<button class="singleJobButton removeSaved" ng-show="jobSaved(annonsID)" ng-click="removeSaved(annonsID)"> Ta bort från sparade jobb </button>
 		</span>
 	</div>
 </center>

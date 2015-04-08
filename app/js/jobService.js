@@ -1,4 +1,4 @@
-jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
+jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   var savedJobs = [];
   var searchResults = [];
   var loginMessage = "";
@@ -12,6 +12,13 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
     var loggedIn = true;
     var role = $cookieStore.get("role");
     var loggedInUser = $cookieStore.get("username");
+    $http.get('php/getSavedJobs.php').success(function(data){
+      if(data["valid"]){
+        savedJobs = data["savedJobs"];
+        // console.log("Valid data, saving jobs");
+        // console.log(savedJobs);
+      }
+    })
   } else {
     var loggedIn = false;
     var role = "guest";
@@ -32,14 +39,6 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   this.setLoginMessage = function(message){
     loginMessage = message;
   }
-
-  // this.hasLoginMessage = function(){
-  //   if(loginMessage === ""){
-  //     return false;
-  //   }else {
-  //     return true;
-  //   }
-  // }
 
   this.addPendingID = function(annonsID){
     $cookieStore.put("pendingID",annonsID);
@@ -101,6 +100,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   }
 
   this.addSavedJob = function(job){
+    console.log("Saving job:");
     console.log(job);
     savedJobs.push(job);
   }
