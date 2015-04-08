@@ -5,11 +5,17 @@ jobbaExtraApp.controller('RegisterCtrl', function ($scope,Jobb) {
 		{displayName:"Företag", value:"company", companyName:''}
 	]
 
+	if(Jobb.getRequestedUserType() === "company"){
+		var requestedUserType = $scope.userTypes[1];
+	} else {
+		var requestedUserType = $scope.userTypes[0];
+	}
+
 	$scope.credentials = {
 		email: '',
 		password: '',
 		retypedPassword: '',
-		userType: $scope.userTypes[0]
+		userType: requestedUserType
 	};
 
 	$scope.loggedInUser = Jobb.getLoggedInUser();
@@ -61,7 +67,6 @@ jobbaExtraApp.controller('RegisterCtrl', function ($scope,Jobb) {
 				return false;
 			} else {
 				if($scope.credentials.userType.companyName.length < 1){
-					// console.log($scope.credentials.userType.companyName.length);
 					return false;
 				} else {
 					return true;

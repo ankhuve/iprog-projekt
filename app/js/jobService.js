@@ -3,6 +3,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   var searchResults = [];
   var loginMessage = "";
   var pendingQuery;
+  var requestedUserType = "user";
 
   if($cookieStore.get("pendingID")!=undefined){
     var pendingID = $cookieStore.get("pendingID");
@@ -120,6 +121,14 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
 
   this.getSavedJobs = function(){
     return savedJobs;
+  }
+
+  this.getRequestedUserType = function(){
+    return requestedUserType;
+  }
+
+  this.setRequestedUserType = function(userType){
+    requestedUserType = userType;
   }
 
   this.createSession = function(sessionID, userID, userRole, username, token){
