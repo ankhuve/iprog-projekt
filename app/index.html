@@ -34,7 +34,7 @@
 
 </head>
 <body ng-controller="AppCtrl">
-	<div class="loggedInHeader" ng-show="loggedIn"> Du &auml;r inloggad som {{ username }}! <button class="logoutButton" ng-click="logout()">Logga ut</button></div>
+	<div class="loggedInHeader" ng-show="loggedIn()"> Du &auml;r inloggad som {{ username() }}! <button class="logoutButton" ng-click="logout()">Logga ut</button></div>
 	<nav id="header">
 		<a class="headerLogo" ng-click="closeMenu()" ng-href="#/home"><img src="img/jobbaextra_logo.png"></a>
 		<img id="hamburgerIcon" src="img/thin_burger.png" ng-click="toggleMenu()">
@@ -46,13 +46,13 @@
 				<div class="linkBox">
 					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/search">Leta jobb</a></h4>
 				</div>
-				<div class="linkBox">
+				<div class="linkBox" ng-show="showSearchEmployee()">
 					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/company">Leta arbetskraft</a></h4>
 				</div>
-				<div class="linkBox" ng-show="loggedIn">
+				<div class="linkBox" ng-show="loggedIn()">
 					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/profile">Mina sidor</a></h4>
 				</div>
-				<div class="linkBox" ng-hide="loggedIn">
+				<div class="linkBox" ng-hide="loggedIn()">
 					<h4><a class="navLink" ng-click="closeMenu();clearLoginMessage()" ng-href="#/login">Logga in</a></h4>
 				</div>
 				<div class="linkBox">

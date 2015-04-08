@@ -1,41 +1,52 @@
 jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
-	
-	$scope.loggedIn = Jobb.isLoggedIn();
-	$scope.username = Jobb.getLoggedInUser();
+	$scope.loggedIn = function(){
+		return Jobb.isLoggedIn();
+	}
 
-	var active = false;
+	$scope.username = function(){
+		return Jobb.getLoggedInUser();
+	}
+
+	$scope.showSearchEmployee = function(){
+		if(Jobb.getRole()==="user"){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	$scope.logout = function(){
+	    Jobb.setLoggedIn(false);
+    	Jobb.setRole("guest");
+    	Jobb.setLoggedInUser("");
+    	Jobb.killSession();
+    	Jobb.terminateSession.get({},function(data){
+      		// console.log(data)
+      	});
+    	$location.path("/home");
+	}
+	
+	$scope.clearLoginMessage = function(){
+		Jobb.setLoginMessage("");
+	}
+
+	$scope.active = false;
 
 	$scope.toggleMenu = function(){
-		if(!active){
+		if(!$scope.active){
 			$(".navLinks").addClass("navLinksAnimation");
 			$(".navLink").addClass("navLinkAnimation");
-			active = true;
+			$scope.active = true;
 		}else{
 			$(".navLinks").removeClass("navLinksAnimation");
 			$(".navLink").removeClass("navLinkAnimation");
-			active = false;
+			$scope.active = false;
 		}
 	}
 
 	$scope.closeMenu = function(){
 		$(".navLinks").removeClass("navLinksAnimation");
 		$(".navLink").removeClass("navLinkAnimation");
-		active = false;
+		$scope.active = false;
 	}		
-
-	$scope.logout = function(){
-		$scope.loggedIn = false;
-		$scope.username = "";
-		// Jobb.terminateSession.get();
-		Jobb.killSession();
-	    Jobb.setLoggedIn(false);
-    	Jobb.setRole("guest");
-    	Jobb.terminateSession.get({},function(data){
-      		console.log(data)});
-    	Jobb.killSession();
-    	$location.path("/home");
-	}
-	$scope.clearLoginMessage = function(){
-		Jobb.setLoginMessage("");
-	}
 })

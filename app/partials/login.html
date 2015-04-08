@@ -1,11 +1,11 @@
 <br/>
 <br/>
 <center>
-	<div class="messageBox" ng-show="hasLoginMessage || loggedIn">
-		<div ng-bind="message"></div>
-		<div ng-show="loggedIn">Inloggad som {{loggedInUser}}. <button class="logoutButton" ng-click="logout()"> Logga ut </button> </div>
+	<div class="messageBox" ng-show="hasLoginMessage() || loggedIn()">
+		<div ng-bind="message()"></div>
+		<div ng-show="loggedIn()">Inloggad som {{loggedInUser}}. <button class="logoutButton" ng-click="logout()"> Logga ut </button> </div>
 	</div>
-	<div class="loginContainer" ng-show="!loggedIn">
+	<div class="loginContainer" ng-hide="loggedIn()">
 		<h2 id="loginHeader">Logga in </h2>
 		<form name="loginForm" ng-submit="login(credentials)" novalidate>
 			  <input class="loginInput" type="text" id="email" ng-model="credentials.email" placeholder="Email">

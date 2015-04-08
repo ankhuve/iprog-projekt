@@ -4,28 +4,40 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
     password: ''
   };
 
-  $scope.message = Jobb.getLoginMessage();
-  $scope.loggedIn = Jobb.isLoggedIn();
+  $scope.message = function(){
+    return Jobb.getLoginMessage();
+  }
+  
   $scope.loggedInUser = Jobb.getLoggedInUser();
-  $scope.hasLoginMessage = Jobb.hasLoginMessage();
+
+  $scope.loggedIn = function(){
+    return Jobb.isLoggedIn();  
+  }
+  
+  $scope.hasLoginMessage = function(){
+    if(Jobb.getLoginMessage() === ""){
+      return false;
+    } else {
+      return true;
+    }
+  } 
 
   $scope.login = function (credentials) {
     Jobb.login.get({email:credentials['email'],password:credentials['password']},function(data){
       console.log(data);
       if(data['valid']){
         Jobb.setLoginMessage("");
-        $scope.message = '';
+        // $scope.message = '';
         Jobb.setLoggedIn(true);
         Jobb.setLoggedInUser(data["username"]);
         Jobb.setRole(data["role"]);
-        $scope.$parent.loggedIn = true;
-        $scope.$parent.username = data["username"];
         Jobb.createSession(data['sessionID'],data['userID'],data['role'],data['username'],data["token"]);
         $location.path("/home");
       } else {
-        $scope.message = "Ogiltigt användarnamn eller lösenord, försök igen!";
-        $scope.hasLoginMessage = true;
+        Jobb.setLoginMessage("Ogiltigt användarnamn eller lösenord, försök igen!");
+        // $scope.hasLoginMessage = true;
       }
+      // $rootScope.$digest();
     });
   }
 
@@ -33,12 +45,13 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
     Jobb.setLoggedIn(false);
     Jobb.setRole("guest");
     Jobb.setLoggedInUser("");
-    // Jobb.setLoginMessage("");
-    $scope.loggedIn = false;
-    $scope.$parent.loggedIn = false;
-    $scope.$parent.username = "";
+    // $scope.loggedIn = false;
+    // $scope.$parent.loggedIn = false;
+    // $scope.$parent.username = "";
+    // $scope.$parent.showSearchEmployee = true;
     Jobb.terminateSession.get({},function(data){
-      console.log(data)});
+      // console.log(data)
+    });
     Jobb.killSession();
     $scope.message = "Du är nu utloggad";
   }
