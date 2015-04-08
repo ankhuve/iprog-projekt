@@ -21,7 +21,6 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   this.getJobs = $resource('php/getShit.php');
   this.getJob = $resource('php/getJob.php');
   this.removeSaved = $resource('php/deleteSavedJob.php');
-  // this.saveJob = $resource('php/saveJob.php');
   this.login  = $resource('php/login.php');
   this.checkLogin = $resource('php/checkLogin.php');
   this.terminateSession = $resource('php/terminateSession.php');
@@ -31,17 +30,16 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   }
 
   this.setLoginMessage = function(message){
-    console.log(message);
     loginMessage = message;
   }
 
-  this.hasLoginMessage = function(){
-    if(loginMessage === ""){
-      return false;
-    }else {
-      return true;
-    }
-  }
+  // this.hasLoginMessage = function(){
+  //   if(loginMessage === ""){
+  //     return false;
+  //   }else {
+  //     return true;
+  //   }
+  // }
 
   this.addPendingID = function(annonsID){
     $cookieStore.put("pendingID",annonsID);
@@ -74,6 +72,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore,$http) {
   }
 
   this.setLoggedInUser = function(username){
+    console.log("logged in user set: "+username);
     loggedInUser = username;
   }
 
