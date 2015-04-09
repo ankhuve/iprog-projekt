@@ -1,8 +1,12 @@
 <?php
-	$nyckelord = urlencode(utf8_decode($_GET['nyckelord']));
+	$nyckelord = urlencode($_GET['nyckelord']);
 	$sida = urlencode($_GET['sida']);
 	$antalRader = urlencode($_GET['antalrader']);
 	$service_url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?anstallningstyp=2&nyckelord='.$nyckelord.'&sida='.$sida.'&antalrader='.$antalRader;
+	if (!empty($_GET['lanid'])) {
+		$lanid = urlencode($_GET['lanid']);
+		$service_url .= '&lanid='.$lanid;
+	}
 
 	$curl = curl_init($service_url);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
