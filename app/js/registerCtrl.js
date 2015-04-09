@@ -90,6 +90,19 @@ jobbaExtraApp.controller('RegisterCtrl', function ($scope,Jobb) {
 	}
 
 	$scope.register = function(credentials){
+		$.ajax({
+			url: 'php/newUser.php',
+			type: 'POST',
+			data: {credentials:credentials},
+			dataType: 'JSON',
+			success: function(data){
+				console.log(data);
+			},
+			error: function(data){
+				console.log(data);
+			}
+		})
+		// $scope.$apply();
 		console.log(credentials);
 	}
 
