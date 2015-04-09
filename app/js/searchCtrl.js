@@ -1,7 +1,23 @@
 jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	$scope.showingResults = false;
+	$scope.counties = Jobb.getCountyList();
 	$scope.sida = 1
 	$scope.toggledFilter = false;
+	$scope.selectedCounty = "";
+
+	$scope.getSelectedCountyID = function(){
+		return($scope.selectedCounty['id']);
+	}
+
+	$scope.searchOptions = {
+		nyckelord:"",
+		antalrader:10,
+		sida:$scope.sida,
+	};
+
+	$scope.updateSearchOptions = function(param, val){
+		$scope.searchOptions[param] = val;
+	}
 
 	$scope.addPending = function(annonsID){
 		Jobb.addPendingID(annonsID);
@@ -17,8 +33,10 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 	$scope.search = function(keyword,sida){
 		$scope.loading = true;
-		$scope.sida = sida;
-		Jobb.getJobs.get({nyckelord:keyword,antalrader:10,sida:sida},function(data){
+		$scope.searchOptions["nyckelord"] = keyword;
+		console.log($scope.selectedCounty['id']);
+		console.log($scope.searchOptions);
+		Jobb.getJobs.get($scope.searchOptions, function(data){
 			console.log(data);
 			// $scope.sidor = [];
 			// for(var i = 1; i <= data.matchningslista.antal_sidor; i ++){
@@ -42,5 +60,14 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		$scope.query = Jobb.getPendingQuery();
 		Jobb.removePendingQuery();
 	}
+	
+	$scope.getCountyNames = function(){
+		
+		console.log($scope.counties);
+  		// return $scope.counties;
+	}
 
+	$scope.setChosenCounty = function(county){
+		console.log(county);
+	}
 });
