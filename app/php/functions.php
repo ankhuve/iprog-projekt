@@ -30,6 +30,10 @@
 		return hash('sha256','PillurEndStunes'.time().$sid.$username);
 	}
 
+	function generateValidateToken($email){
+		return hash('sha256',$email.'youKnowNothing');
+	}
+
 	function tokenCheck(){
 		session_start();
 		$serverToken = str_replace('\"',"",$_SESSION["token"]);
