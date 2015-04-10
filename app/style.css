@@ -680,6 +680,13 @@ h4 small{
 	/*-moz-appearance: none;*/
 }
 
+#registerSpinner{
+	height: 14px;
+	margin-left: 10px;
+	margin-right: 20px;
+	display: inline-block;
+}
+
 .validFeedback{
 	margin-left:10px;
 }

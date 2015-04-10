@@ -1,4 +1,6 @@
-jobbaExtraApp.controller('RegisterCtrl', function ($scope,Jobb) {
+jobbaExtraApp.controller('RegisterCtrl', function ($scope,$location,Jobb) {
+	$scope.loading = false;
+	$scope.hasError = false;
 
 	$scope.userTypes = [
 		{displayName:"Privatperson", value:"user"},
@@ -90,6 +92,7 @@ jobbaExtraApp.controller('RegisterCtrl', function ($scope,Jobb) {
 	}
 
 	$scope.register = function(credentials){
+		$scope.loading = true;
 		$.ajax({
 			url: 'php/newUser.php',
 			type: 'POST',
@@ -97,13 +100,35 @@ jobbaExtraApp.controller('RegisterCtrl', function ($scope,Jobb) {
 			dataType: 'JSON',
 			success: function(data){
 				console.log(data);
+				if(data["Kool beans"]){
+					Jobb.login.get({email:$scope.credentials['email'],password:$scope.credentials['password']},function(loginData){
+						console.log(loginData);
+	      				if(loginData['valid']){
+	        				Jobb.setLoginMessage("");
+	        				Jobb.setLoggedIn(true);
+	        				Jobb.setLoggedInUser(loginData["username"]);
+	        				Jobb.setRole(loginData["role"]);
+	        				Jobb.createSession(loginData['sessionID'],loginData['userID'],loginData['role'],loginData['username'],loginData["token"]);
+	        				if($scope.credentials.userType.value === "company"){
+	        					$location.path("/company");
+	        				} else {
+	        					$location.path("/profile");
+	        				}
+	  					} else {
+	  						$scope.loading = false;
+	        				console.log("Failed to log in after registration, registration most likely failed.");
+	      				}
+	    			});
+				}else{
+					$scope.loading = false;
+					$scope.hasError = true;
+					
+				} 
 			},
 			error: function(data){
 				console.log(data);
 			}
 		})
-		// $scope.$apply();
-		console.log(credentials);
 	}
 
 });

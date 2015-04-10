@@ -34,7 +34,7 @@
 
 	$hashedPassword = passwordHash($password);
 	if($userType["value"] == "company" && !$return["companyExists"] && !$return["userExists"]){
-		$createCompanyUserQuery = "INSERT INTO je_user(email,username,password,role) VALUES ('".$email."','".$email."','".$hashedPassword."','user');";
+		$createCompanyUserQuery = "INSERT INTO je_user(email,username,password,role) VALUES ('".$email."','".$email."','".$hashedPassword."','company');";
 		$createCompanyQuery = "INSERT INTO je_company(name) VALUES('".$companyName."')";
 
 		$getUserIDQuery = "SELECT id FROM je_user WHERE email = '".$email."' AND password = '".$hashedPassword."';";
@@ -70,7 +70,7 @@
 
 		$return["Kool beans"] = true;
 	} else if ($userType["value"] == "user" && !$return["userExists"]){
-		$createPrivateUserQuery = "INSERT INTO je_user(email,username,password,role) VALUES ('".$email."','".$email."','".$hashedPassword."','company');";
+		$createPrivateUserQuery = "INSERT INTO je_user(email,username,password,role) VALUES ('".$email."','".$email."','".$hashedPassword."','user');";
 		queryDb($conn, $createPrivateUserQuery);
 
 		$getUserIDQuery = "SELECT id FROM je_user WHERE email = '".$email."' AND password = '".$hashedPassword."';";

@@ -21,7 +21,26 @@
 
 			<input class="registerInput" type="text" id="companyName" ng-model="credentials.userType.companyName" placeholder="Företagsnamn" ng-show="companyType()" required><span class="glyphicon glyphicon-ok validFeedback" ng-class="{verifiedInput : credentials.userType.companyName.length}" ng-show="companyType()"></span>
 
-			<button class="registerInput" id="register" ng-disabled="!validEmail() || !sufficientPassword() || !retypedValid() || !userTypeDataCheck()" type="submit">Registrera {{credentials.userType.displayName | lowercase}}</button>
+			<button class="registerInput" id="register" ng-disabled="!validEmail() || !sufficientPassword() || !retypedValid() || !userTypeDataCheck()" type="submit">Registrera {{credentials.userType.displayName | lowercase}}</button>				<div class="spinner" id="registerSpinner">
+					<div class="spinner-container container1">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container2">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container3">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+				</div>
 		</form>
 
 	</div>
