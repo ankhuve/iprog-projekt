@@ -17,9 +17,33 @@
 	<div class="searchBar searchPage">
 		<div id="orangeBG" class="searchPage">
 			<form novalidate>
+
 				<input class="jobSearchForm searchPage" ng-model="query" placeholder="Hitta ett jobb" autofocus="autofocus"></input>
+				<span id="searchBarIcon" class="searchPage"></span>
 				<button class="searchButton searchPage" ng-click="search(query, sida)">SÖK</button>
-				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()">FILTRERA <span class="glyphicon glyphicon-chevron-right"></span></button>
+
+				<div class="filters" ng-show="toggledFilter">
+					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
+						<option value="" disabled selected>Välj län..</option>
+					</select>
+					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
+						<option value="" disabled selected>Välj län..</option>
+					</select>
+					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
+						<option value="" disabled selected>Välj län..</option>
+					</select>
+					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
+						<option value="" disabled selected>Välj län..</option>
+					</select>
+					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
+						<option value="" disabled selected>Välj län..</option>
+					</select>
+					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
+						<option value="" disabled selected>Välj län..</option>
+					</select>
+				</div>
+
+				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()">FILTRERA <br/><span class="glyphicon glyphicon-chevron-down"></span></button>
 				<div class="spinner" ng-show="loading">
 					<div class="spinner-container container1">
 						<div class="circle1"></div>
@@ -42,17 +66,6 @@
 				</div>
 			</form>
 		</div>
-		<span id="searchBarIcon" class="searchPage"></span>
-		<div class="filters" ng-show="toggledFilter">
-			<select ng-show="counties" class="registerDropdown" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
-				<option value="" disabled selected>Välj län..</option>
-			</select><br/>
-			<button ng-click="getSelectedCountyID()" class="btn btn-primary">Klicka</button>
-			
-		
-		</div>
-		<button id="customFilterButton" ng-click="toggleFilter()"><span>Filtrera</span><br/></button>
-		
 	</div>
 	<div ng-show="showingResults" id="numSearchResults">
 		<h4>Antal sökträffar: {{ antalAnnonser }}</h4>

@@ -17,30 +17,31 @@
 
 		  	<input class="registerInput" type="password" id="retypedPassword" ng-model="credentials.retypedPassword" placeholder="Upprepa lösenord" required><span class="glyphicon glyphicon-ok validFeedback" ng-class="{verifiedInput : retypedValid()}"></span>
 
-			<select ng-model="credentials.userType" ng-options="type.displayName for type in userTypes" class="registerDropdown"></select>
+			<select ng-model="credentials.userType" ng-options="type.displayName for type in userTypes" class="dropdown"></select>
 
 			<input class="registerInput" type="text" id="companyName" ng-model="credentials.userType.companyName" placeholder="Företagsnamn" ng-show="companyType()" required><span class="glyphicon glyphicon-ok validFeedback" ng-class="{verifiedInput : credentials.userType.companyName.length}" ng-show="companyType()"></span>
 
-			<button class="registerInput" id="register" ng-disabled="!validEmail() || !sufficientPassword() || !retypedValid() || !userTypeDataCheck()" type="submit">Registrera {{credentials.userType.displayName | lowercase}}</button>				<div class="spinner" id="registerSpinner">
-					<div class="spinner-container container1">
-						<div class="circle1"></div>
-						<div class="circle2"></div>
-						<div class="circle3"></div>
-						<div class="circle4"></div>
-					</div>
-					<div class="spinner-container container2">
-						<div class="circle1"></div>
-						<div class="circle2"></div>
-						<div class="circle3"></div>
-						<div class="circle4"></div>
-					</div>
-					<div class="spinner-container container3">
-						<div class="circle1"></div>
-						<div class="circle2"></div>
-						<div class="circle3"></div>
-						<div class="circle4"></div>
-					</div>
+			<button class="registerInput" id="register" ng-disabled="!validEmail() || !sufficientPassword() || !retypedValid() || !userTypeDataCheck()" type="submit">Registrera {{credentials.userType.displayName | lowercase}}</button>
+			<div class="spinner" id="registerSpinner" ng-show="loading">
+				<div class="spinner-container container1">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
 				</div>
+				<div class="spinner-container container2">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container3">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+			</div>
 		</form>
 
 	</div>
