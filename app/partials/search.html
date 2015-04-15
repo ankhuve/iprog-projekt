@@ -22,7 +22,7 @@
 				<span id="searchBarIcon" class="searchPage"></span>
 				<button class="searchButton searchPage" ng-click="search(query, sida)">SÖK</button>
 
-				<div class="filters" ng-show="toggledFilter">
+				<div class="filters">
 					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
 						<option value="" disabled selected>Välj län..</option>
 					</select>
@@ -43,7 +43,7 @@
 					</select>
 				</div>
 
-				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()">FILTRERA <br/><span class="glyphicon glyphicon-chevron-down"></span></button>
+				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()">FILTRERA<br/><span id="filterToggleArrow" class="glyphicon glyphicon-chevron-down"></span></button>
 				<div class="spinner" ng-show="loading">
 					<div class="spinner-container container1">
 						<div class="circle1"></div>

@@ -25,8 +25,14 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 	$scope.toggleFilter = function(){
 		if($scope.toggledFilter){
+			$(".searchFilter").removeClass("filtersAnimation");
+			$("#filterToggleArrow").removeClass("glyphicon-chevron-up");
+			$("#filterToggleArrow").addClass("glyphicon-chevron-down");
 			$scope.toggledFilter = false;
 		} else {
+			$(".searchFilter").addClass("filtersAnimation");
+			$("#filterToggleArrow").removeClass("glyphicon-chevron-down");
+			$("#filterToggleArrow").addClass("glyphicon-chevron-up");
 			$scope.toggledFilter = true;
 		}
 	}
