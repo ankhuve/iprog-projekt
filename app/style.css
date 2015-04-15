@@ -304,6 +304,22 @@ nav{
 	margin: 0;
 }
 
+.aboutInfo {
+	color: rgb(255, 238, 194);
+	background-color: rgb(255, 110, 63);
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
+	text-align: center;
+	margin-top:20px;
+	padding:20px;
+}
+
+.aboutDivider {
+	width:80%;
+	border-color:rgb(255,238,194);
+}
+
 
 /* ############### START LOADING ANIMATION ###############*/
 
@@ -634,11 +650,17 @@ footer{
 	padding-right:10px;
 	width: 45%;
 	float:left;
-	margin:2%;
+	margin-left:2.5%;
+	margin-right:2.5%;
+	margin-top:20px;
 	min-width:300px;
 	min-height:120px;
   	background-color: rgba(255, 110, 63,0.95);
 	color:#FFFFE6;
+}
+
+.jobsContainer{
+	margin-bottom:30px;
 }
 
 h4 small{
@@ -917,7 +939,33 @@ h4 small{
 	}
 }
 
+@media (max-width: 685px){
+	.jobBlock{
+		width:90%;
+		margin-left:5%;
+		margin-right:5%;
+		margin-top:15px;
+		min-width:250px;
+	}
+}
+
 @media (max-width: 503px){
+
+	.aboutInfo {
+		/*color: rgb(255, 238, 194);*/
+		/*background-color: rgb(255, 110, 63);*/
+		width: 80%;
+		margin-left: 10%;
+		margin-right: 10%;
+		/*text-align: center;*/
+		margin-top:20px;
+		padding:10px;
+	}
+
+	.aboutDivider{
+		width:90%;
+	}
+
 	#splash{
 		width: 100%;
 	}
