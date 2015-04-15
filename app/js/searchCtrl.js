@@ -62,7 +62,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	}
 	
 	$scope.getCountyNames = function(){
-		
 		console.log($scope.counties);
   		// return $scope.counties;
 	}
