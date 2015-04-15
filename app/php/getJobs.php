@@ -3,6 +3,7 @@
 	$sida = urlencode($_GET['sida']);
 	$antalRader = urlencode($_GET['antalrader']);
 	$service_url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?anstallningstyp=2&nyckelord='.$nyckelord.'&sida='.$sida.'&antalrader='.$antalRader;
+	
 	if (!empty($_GET['lanid'])) {
 		$lanid = urlencode($_GET['lanid']);
 		$service_url .= '&lanid='.$lanid;

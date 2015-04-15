@@ -306,7 +306,7 @@ nav{
 
 .aboutInfo {
 	color: rgb(255, 238, 194);
-	background-color: rgb(255, 110, 63);
+	background-color: rgb(36,36,36);
 	width: 60%;
 	margin-left: 20%;
 	margin-right: 20%;
@@ -315,9 +315,14 @@ nav{
 	padding:20px;
 }
 
+.aboutHeader{
+	text-transform: none;
+	font-weight:400;
+}
+
 .aboutDivider {
 	width:80%;
-	border-color:rgb(255,238,194);
+	border-color:rgb(255,110,63);
 }
 
 
@@ -648,10 +653,10 @@ footer{
 	position:relative;
 	padding-left:10px;
 	padding-right:10px;
-	width: 45%;
+	width: 45.5%;
 	float:left;
-	margin-left:2.5%;
-	margin-right:2.5%;
+	margin-left:3%;
+	/*margin-right:2.5%;*/
 	margin-top:20px;
 	min-width:300px;
 	min-height:120px;

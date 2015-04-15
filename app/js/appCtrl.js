@@ -19,6 +19,7 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
 	    Jobb.setLoggedIn(false);
     	Jobb.setRole("guest");
     	Jobb.setLoggedInUser("");
+    	Jobb.clearSavedJobs();
     	Jobb.killSession();
     	Jobb.terminateSession.get({},function(data){
       		// console.log(data);

@@ -34,10 +34,10 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     })
   }
 
-  this.getJobs = $resource('php/getShit.php');
+  this.getJobs = $resource('php/getJobs.php');
   this.getJob = $resource('php/getJob.php');
   this.removeSaved = $resource('php/deleteSavedJob.php');
-  this.login  = $resource('php/login.php');
+  this.login = $resource('php/login.php');
   this.checkLogin = $resource('php/checkLogin.php');
   this.terminateSession = $resource('php/terminateSession.php');
 
@@ -121,6 +121,10 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
 
   this.getSavedJobs = function(){
     return savedJobs;
+  }
+
+  this.clearSavedJobs = function(){
+    savedJobs = [];
   }
 
   this.getRequestedUserType = function(){
