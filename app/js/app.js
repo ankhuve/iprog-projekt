@@ -55,17 +55,17 @@ jobbaExtraApp.config(['$routeProvider',
 
       if(next.templateUrl === undefined){
         $location.path("/home");
-      } else if(next.templateUrl === "partials/profile.html"){
-        if(role === "company"){
-          $location.path("/company");
-        }
       } else {
         if(role == "admin"){
           //No changes, full access
-        } else if(role == "company"){
+        } else if (role == "company"){
           if(companySites.indexOf(next.templateUrl)<0){
-            Jobb.setLoginMessage("Du har tyvärr inte access till den begärda sidan.");
-            $location.path("/login");
+            if(next.templateUrl === "partials/profile.html"){
+              $location.path("/company");
+            } else {
+              Jobb.setLoginMessage("Du har tyvärr inte access till den begärda sidan.");
+              $location.path("/login");              
+            }
           }
         } else if(role == "user"){
           if(userSites.indexOf(next.templateUrl)<0){
@@ -74,7 +74,11 @@ jobbaExtraApp.config(['$routeProvider',
           }
         } else { // Guest user
           if(guestSites.indexOf(next.templateUrl)<0){
-            Jobb.setLoginMessage("Du har tyvärr inte access till den begärda sidan.");
+            if(next.templateUrl === "partials/company.html"){
+              Jobb.setLoginMessage("Du måste logga in som företagsanvändare för att få access till denna sida.");
+            } else {
+              Jobb.setLoginMessage("Du har tyvärr inte access till den begärda sidan.");
+            }
             $location.path("/login");
           }
         }

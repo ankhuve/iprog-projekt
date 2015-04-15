@@ -2,7 +2,7 @@ jobbaExtraApp.controller('ProfileCtrl',function ($scope, $http, $location, Jobb)
   	$scope.username = Jobb.getLoggedInUser();
   	
   	$scope.savedJobs = function(){
-  		console.log(Jobb.getSavedJobs());
+  		// console.log(Jobb.getSavedJobs());
   		return Jobb.getSavedJobs();
   	}
 
@@ -11,7 +11,7 @@ jobbaExtraApp.controller('ProfileCtrl',function ($scope, $http, $location, Jobb)
 	}
 
 	$scope.removeSaved = function(id){
-		console.log("To be removed: "+id);
+		// console.log("To be removed: "+id);
 		$.ajax({
 			url: 'php/deleteSavedJob.php',
 			type: 'POST',

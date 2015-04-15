@@ -28,7 +28,6 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
 
   $scope.login = function (credentials) {
     Jobb.login.get({email:credentials['email'],password:credentials['password']},function(data){
-      console.log(data);
       if(data['valid']){
         Jobb.setLoginMessage("");
         Jobb.setLoggedIn(true);
@@ -47,6 +46,7 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
     Jobb.setLoggedIn(false);
     Jobb.setRole("guest");
     Jobb.setLoggedInUser("");
+    Jobb.clearSavedJobs();
     Jobb.terminateSession.get({},function(data){
     });
     Jobb.killSession();
