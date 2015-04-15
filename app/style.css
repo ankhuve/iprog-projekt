@@ -6,6 +6,8 @@ body{
 	font-family: 'Roboto', sans-serif;
 	-webkit-transition: 0.3s;
 	transition: 0.3s;
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
 }
 
 a{
@@ -49,6 +51,18 @@ h4{
 	font-size: 1.2em;
 	color: #ffeec2;
 	font-weight: 100;
+}
+
+.dropdown{
+	background-color: rgba(30,30,30,0.8);
+	color: #ffeec2;
+ 	width: 234px;
+	border: none;
+	margin-bottom: 10px;
+	height: 30px;
+	padding-left:20px;
+	/* Om man vill gömma den fula vita grejen i Firefox kan man ha denna */
+	/*-moz-appearance: none;*/
 }
 
 /* ################################# */
@@ -187,11 +201,36 @@ nav{
 	width: 555px;
 	color:#FFEEC2;
 	margin-left: 25px;
+	height: auto;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	/*border: solid 2px #DF582D;*/
 	border-top: 0;
 	float: left;
+}
+
+.searchFilter{
+	background-color: rgba(221, 86, 37, 0.8);
+	display: table-cell;
+	float: left;
+ 	width: 175px;
+	margin: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	height: 0px;
+	padding-left:15px;
+	border-radius: 3px;
+	-webkit-transition: 0.3s ease; /* Safari */
+	transition: 0.3s ease;
+	/* Om man vill gömma den fula vita grejen i Firefox kan man ha denna */
+	/*-moz-appearance: none;*/
+}
+
+.filtersAnimation{
+	margin: 5px;
+	height: 30px;
+	-webkit-transition: 0.3s ease; /* Safari */
+	transition: 0.3s ease;
 }
 
 #orangeBG{
@@ -694,31 +733,6 @@ h4 small{
 .registerInput#register:disabled{
 	background-color: #535353;
 	color: #323232;
-}
-
-.dropdown{
-	background-color: rgba(30,30,30,0.8);
-	color: #ffeec2;
- 	width: 234px;
-	border: none;
-	margin-bottom: 10px;
-	height: 30px;
-	padding-left:20px;
-	/* Om man vill gömma den fula vita grejen i Firefox kan man ha denna */
-	/*-moz-appearance: none;*/
-}
-
-.dropdown.searchFilter{
-	background-color: rgba(221, 86, 37, 0.8);
-	display: table-cell;
-	float: left;
- 	width: 175px;
-	margin: 5px;
-	height: 30px;
-	padding-left:15px;
-	border-radius: 3px;
-	/* Om man vill gömma den fula vita grejen i Firefox kan man ha denna */
-	/*-moz-appearance: none;*/
 }
 
 #registerSpinner{
