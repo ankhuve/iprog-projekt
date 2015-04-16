@@ -2,7 +2,7 @@ jobbaExtraApp.controller('ProfileCtrl',function ($scope, $http, $location, Jobb)
   	$scope.username = Jobb.getLoggedInUser();
   	
   	$scope.savedJobs = function(){
-  		// console.log(Jobb.getSavedJobs());
+  		console.log(Jobb.getSavedJobs());
   		return Jobb.getSavedJobs();
   	}
 
