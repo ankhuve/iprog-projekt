@@ -59,23 +59,29 @@
 </center>
 
 <div class="jobsContainer">
-	
-	
 	<div ng-repeat="job in jobs">
-		<a ng-href="#/job" ng-click="addPending(job.annonsid)"><div class="jobBlock">
-			<p>
-				<h4><small>{{ job.kommunnamn }}</small> {{ job.arbetsplatsnamn }}</h4>
-				{{ job.annonsrubrik }}
-			</p>
-			<div class="publishDate">
-				Publicerad {{ job.publiceraddatum | date:'yyyy-MM-dd' }}
+		<a ng-href="#/job" ng-click="addPending(job.annonsid)">
+			<div class="jobBlock">
+				<p>
+					<h4>
+						<small>
+							{{ job.kommunnamn }}
+						</small> 
+						{{ job.arbetsplatsnamn }}
+					</h4>
+					{{ job.annonsrubrik }}
+				</p>
+				<div class="publishDate">
+					Publicerad {{ job.publiceraddatum | date:'yyyy-MM-dd' }}
+				</div>
 			</div>
-		</div></a>
+		</a>
 	</div>
 </div>
-<!-- <div ng-repeat="sida in sidor">
-	<div class="sidePicker" ng-click="search(query,sida)">
-		{{sida}}
-	</div>
-</div> -->
+<!-- </div> -->
+	<!-- <div ng-repeat="sida in sidor">
+		<div class="sidePicker" ng-click="search(query,sida)">
+			{{sida}}
+		</div>
+	</div> -->
 

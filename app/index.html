@@ -36,9 +36,13 @@
 
 </head>
 <body ng-controller="AppCtrl">
-	<div class="loggedInHeader" ng-show="loggedIn()"> Du &auml;r inloggad som {{ username() }}! <button class="logoutButton" ng-click="logout()">Logga ut</button></div>
+
 	<nav id="header">
 		<a class="headerLogo" ng-click="closeMenu()" ng-href="#/home"><img src="img/jobbaextra_logo.png"></a>
+		<div class="loggedInHeader" ng-show="loggedIn()"> 
+			Du &auml;r inloggad som {{ username() }}! 
+			<button class="logoutButton" ng-click="logout()">Logga ut</button>
+		</div>
 		<img id="hamburgerIcon" src="img/thin_burger.png" ng-click="toggleMenu()">
 		<div id="linksRow">
 			<div class="navLinks">
@@ -58,15 +62,24 @@
 					<h4><a class="navLink" ng-click="closeMenu();clearLoginMessage()" ng-href="#/login">Logga in</a></h4>
 				</div>
 				<div class="linkBox">
-					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/about">Om oss</a></h4>
+					<h4><a class="navLink" ng-click="closeMenu()" ng-href="#/about">Om oss</a></h4><button class="logoutButton mediumSizeNav" ng-click="logout()" ng-show="loggedIn()">Logga ut</button>
 				</div>
 			</div>
 		</div>	
 		
 	</nav>
 
-	<div ng-click="closeMenu()" ng-view></div>
+	<div class="view" ng-click="closeMenu()" ng-view></div>
 	
-
+	<footer>
+		<center>
+			<img id="footerLogo" src="img/jobbaextra_logo.png">
+			<div id="footerLinks">
+				<a ng-href="#/search"><h4 class="footerLink">Leta jobb</h4></a>
+				<a ng-href="#/company"><h4 class="footerLink">Leta arbetskraft</h4></a>
+				<a ng-href="#/about"><h4 class="footerLink">Om oss</h4></a>
+			</div>
+		</center>
+	</footer>
 </body>
 </html>
