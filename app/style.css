@@ -201,12 +201,14 @@ nav{
 	width: 555px;
 	color:#FFEEC2;
 	margin-left: 25px;
+	padding-top: 0;
 	height: auto;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
-	/*border: solid 2px #DF582D;*/
 	border-top: 0;
 	float: left;
+	transition: 0.3s ease;
+	-webkit-transition: 0.3s ease;
 }
 
 .searchFilter{
@@ -215,8 +217,8 @@ nav{
 	float: left;
  	width: 175px;
 	margin: 0px;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin-left: 4px;
+	margin-right: 4px;
 	height: 0px;
 	padding-left:15px;
 	border-radius: 3px;
@@ -226,9 +228,21 @@ nav{
 	/*-moz-appearance: none;*/
 }
 
-.filtersAnimation{
-	margin: 5px;
+.searchFilter:hover{
+	background-color: rgba(255, 105, 51, 0.8);
+}
+
+.searchFilterAnimation{
+	margin-bottom: 8px;
+	margin-left: 5px;
+	margin-right: 4px;
 	height: 30px;
+	-webkit-transition: 0.3s ease; /* Safari */
+	transition: 0.3s ease;
+}
+
+.filtersAnimation{
+	padding-top: 10px;
 	-webkit-transition: 0.3s ease; /* Safari */
 	transition: 0.3s ease;
 }
@@ -284,22 +298,32 @@ nav{
 }
 
 .searchButton:focus {
-  outline-color: transparent;
-  outline-style: none;
+	outline-color: transparent;
+	outline-style: none;
 }
 
 #numSearchResults {
-	background-color:rgba(47,47,47,0.65);
-	width: 220px;
-	height: 2.2em;
-	padding: 0.4em;
-	margin-top: 15px;
-	border-radius: 1.7em;
-	border-top: 0;
+	float: left;
+	display: inline-block;
+	position: relative;
 	opacity: 0;
+	margin-top: 50px;
+	width: 100%;
 }
 
 #numSearchResults h4{
+	display: inline;
+	background-color:rgba(47,47,47,0.65);
+	/*width: 220px;*/
+	height: 2.2em;
+	padding: 0.4em;
+	margin-top: 15px;
+	padding: 15px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-radius: 1.7em;
+	border-top: 0;
+	
 	color:#FFFFE6;
 	margin: 0;
 }
