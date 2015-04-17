@@ -4,6 +4,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   var loginMessage = "";
   var pendingQuery;
   var requestedUserType = "user";
+  var numHits = 0;
 
   if($cookieStore.get("pendingID")!=undefined){
     var pendingID = $cookieStore.get("pendingID");
@@ -36,6 +37,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
 
   this.getJobs = $resource('php/getJobs.php');
   this.getJob = $resource('php/getJob.php');
+  this.getLan = $resource('php/getLan.php');
   this.removeSaved = $resource('php/deleteSavedJob.php');
   this.login = $resource('php/login.php');
   this.checkLogin = $resource('php/checkLogin.php');
@@ -100,11 +102,21 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   }
 
   this.addSearchResults = function(results){
+    // console.log(results);
     searchResults = results;
   }
 
   this.getSearchResults = function(){
+    // console.log("Get search results called!");
     return searchResults;
+  }
+
+  this.setNumHits = function(hits){
+    numHits = hits;
+  }
+
+  this.getNumHits = function(){
+    return numHits;
   }
 
   this.addSavedJob = function(job){

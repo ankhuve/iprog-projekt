@@ -1,13 +1,26 @@
 jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
-	$scope.showingResults = false;
+	// $scope.showingResults = false;
 	$scope.counties = Jobb.getCountyList();
-	$scope.sida = 1
+	$scope.sida = 1;
 	$scope.toggledFilter = false;
 	$scope.selectedCounty = "";
 
+	$scope.showingResults = function(){
+		if(Jobb.getSearchResults().length>0){
+			$("#numSearchResults").animate({opacity: 1}, 300);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	$scope.getSelectedCountyID = function(){
 		return($scope.selectedCounty['id']);
-	}
+	};
+
+	$scope.jobs = function(){
+		return Jobb.getSearchResults();
+	};
 
 	$scope.searchOptions = {
 		nyckelord:"",
@@ -17,11 +30,11 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 	$scope.updateSearchOptions = function(param, val){
 		$scope.searchOptions[param] = val;
-	}
+	};
 
 	$scope.addPending = function(annonsID){
 		Jobb.addPendingID(annonsID);
-	}
+	};
 
 	$scope.toggleFilter = function(){
 		if($scope.toggledFilter){
@@ -39,26 +52,22 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		}
 	}
 
+	$scope.antalAnnonser = function(){
+		return Jobb.getNumHits();
+	}
+
 	$scope.search = function(keyword,sida){
 		$scope.loading = true;
 		$scope.searchOptions["nyckelord"] = keyword;
 		console.log($scope.selectedCounty['id']);
 		console.log($scope.searchOptions);
 		Jobb.getJobs.get($scope.searchOptions, function(data){
-			console.log(data);
-			// $scope.sidor = [];
-			// for(var i = 1; i <= data.matchningslista.antal_sidor; i ++){
-			// 	if(i != $scope.sida){
-			// 		$scope.sidor.push(i);
-			// 	}
-			// }
-			// console.log($scope.sidor);
+			Jobb.setNumHits(data.matchningslista.antal_platsannonser);
 
-			$scope.antalAnnonser = data.matchningslista.antal_platsannonser;
-			$scope.jobs = data.matchningslista.matchningdata;
+			// $scope.antalAnnonser = data.matchningslista.antal_platsannonser;
 			$scope.loading = false;
-			$scope.showingResults = true;
-			$("#numSearchResults").animate({opacity: 1}, 300);
+			// $scope.showingResults = true;
+			
 			Jobb.addSearchResults(data.matchningslista.matchningdata);
 		});
 	}
