@@ -22,7 +22,6 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
     	Jobb.clearSavedJobs();
     	Jobb.killSession();
     	Jobb.terminateSession.get({},function(data){
-      		// console.log(data);
       	});
     	$location.path("/home");
 	}
@@ -37,7 +36,6 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
 		if(!$scope.active){
 			$(".navLinks").addClass("navLinksAnimation");
 			$(".navLink").addClass("navLinkAnimation");
-			console.log("öppnade menyn");
 			$scope.active = true;
 		}else{
 			$scope.closeMenu();
