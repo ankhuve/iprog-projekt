@@ -31,23 +31,22 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
 		Jobb.setLoginMessage("");
 	}
 
-	var active = false;
+	$scope.active = false;
 
 	$scope.toggleMenu = function(){
 		if(!$scope.active){
 			$(".navLinks").addClass("navLinksAnimation");
 			$(".navLink").addClass("navLinkAnimation");
-			active = true;
+			console.log("öppnade menyn");
+			$scope.active = true;
 		}else{
-			$(".navLinks").removeClass("navLinksAnimation");
-			$(".navLink").removeClass("navLinkAnimation");
-			active = false;
+			$scope.closeMenu();
 		}
 	}
 
 	$scope.closeMenu = function(){
 		$(".navLinks").removeClass("navLinksAnimation");
 		$(".navLink").removeClass("navLinkAnimation");
-		active = false;
+		$scope.active = false;
 	}		
 })
