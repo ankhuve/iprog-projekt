@@ -8,27 +8,23 @@
 				<button class="searchButton searchPage" ng-click="search(query, sida)">SÖK</button>
 
 				<div class="filters">
-					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
-						<option value="" disabled selected>Välj län..</option>
+					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedID('county'))">
+						<option value="" disabled selected>Välj län...</option>
 					</select>
-					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
-						<option value="" disabled selected>Välj län..</option>
+					<select ng-show="countySelected()" class="dropdown searchFilter" ng-options="municipality.namn for municipality in municipalties" ng-model="selectedMunicipality" ng-change="updateSearchOptions('kommunid', getSelectedID('municipality'))">
+						<option value="" disabled selected>Välj kommun...</option>
 					</select>
-					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
-						<option value="" disabled selected>Välj län..</option>
+					<select ng-show="linesOfWork" class="dropdown searchFilter" ng-options="lineOfWork.namn for lineOfWork in linesOfWork" ng-model="selectedLineOfWork" ng-change="updateSearchOptions('yrkesomradeid', getSelectedID('lineOfWork'))">
+						<option value="" disabled selected>Välj yrkesområde...</option>
 					</select>
-					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
-						<option value="" disabled selected>Välj län..</option>
-					</select>
-					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
-						<option value="" disabled selected>Välj län..</option>
-					</select>
-					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedCountyID())">
-						<option value="" disabled selected>Välj län..</option>
+					<select ng-show="lineOfWorkSelected()" class="dropdown searchFilter" ng-options="profession.namn for profession in professions" ng-model="selectedProfession" ng-change="updateSearchOptions('yrkesgruppid', getSelectedID('professionGroup'))">
+						<option value="" disabled selected>Välj yrkesgrupp...</option>
 					</select>
 				</div>
 
 				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()">FILTRERA<br/><span id="filterToggleArrow" class="glyphicon glyphicon-chevron-down"></span></button>
+
+				<!-- Loading spinner -->
 				<div class="spinner" ng-show="loading">
 					<div class="spinner-container container1">
 						<div class="circle1"></div>
@@ -49,11 +45,12 @@
 						<div class="circle4"></div>
 					</div>
 				</div>
+
 			</form>
 		</div>
 	</div>
 	<br/>
-	<div ng-show="showingResults()" id="numSearchResults">
+	<div ng-show="showingResults() || forceShowResults" id="numSearchResults">
 		<h4>Antal sökträffar: {{ antalAnnonser() }}</h4>
 	</div>
 </center>
@@ -78,10 +75,4 @@
 		</a>
 	</div>
 </div>
-<!-- </div> -->
-	<!-- <div ng-repeat="sida in sidor">
-		<div class="sidePicker" ng-click="search(query,sida)">
-			{{sida}}
-		</div>
-	</div> -->
 

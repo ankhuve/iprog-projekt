@@ -37,7 +37,12 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
 
   this.getJobs = $resource('php/getJobs.php');
   this.getJob = $resource('php/getJob.php');
-  this.getLan = $resource('php/getLan.php');
+
+  // this.getLan = $resource('php/getLan.php');
+  this.getCategory = $resource('php/getCategory.php');
+  this.getYrkesgrupper = $resource('php/getYrkesgrupper.php');
+  this.getKommun = $resource('php/getKommun.php');
+
   this.removeSaved = $resource('php/deleteSavedJob.php');
   this.login = $resource('php/login.php');
   this.checkLogin = $resource('php/checkLogin.php');
@@ -112,6 +117,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   }
 
   this.setNumHits = function(hits){
+    console.log("Set num hits to: "+hits);
     numHits = hits;
   }
 
@@ -163,99 +169,9 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     $cookieStore.remove("username");
   }
 
-  this.getCountyList = function(){
-    return countyIDs;
-  }
+  // this.getCountyList = function(){
+  //   return countyIDs;
+  // }
 
-  // List of all countys and IDs
-  var countyIDs = [{
-  "id": 10,
-  "namn": "Blekinge län",
-  },
-  {
-  "id": 20,
-  "namn": "Dalarnas län",
-  },
-  {
-  "id": 9,
-  "namn": "Gotlands län",
-  },
-  {
-  "id": 21,
-  "namn": "Gävleborgs län",
-  },
-  {
-  "id": 13,
-  "namn": "Hallands län",
-  },
-  {
-  "id": 23,
-  "namn": "Jämtlands län",
-  },
-  {
-  "id": 6,
-  "namn": "Jönköpings län",
-  },
-  {
-  "id": 8,
-  "namn": "Kalmar län",
-  },
-  {
-  "id": 7,
-  "namn": "Kronobergs län",
-  },
-  {
-  "id": 25,
-  "namn": "Norrbottens län",
-  },
-  {
-  "id": 12,
-  "namn": "Skåne län",
-  },
-  {
-  "id": 1,
-  "namn": "Stockholms län",
-  },
-  {
-  "id": 4,
-  "namn": "Södermanlands län",
-  },
-  {
-  "id": 3,
-  "namn": "Uppsala län",
-  },
-  {
-  "id": 17,
-  "namn": "Värmlands län",
-  },
-  {
-  "id": 24,
-  "namn": "Västerbottens län",
-  },
-  {
-  "id": 22,
-  "namn": "Västernorrlands län",
-  },
-  {
-  "id": 19,
-  "namn": "Västmanlands län",
-  },
-  {
-  "id": 14,
-  "namn": "Västra Götalands län",
-  },
-  {
-  "id": 18,
-  "namn": "Örebro län",
-  },
-  {
-  "id": 5,
-  "namn": "Östergötlands län",
-  },
-  {
-  "id": 90,
-  "namn": "Ospecificerad arbetsort",
-  }
-];
   return this;
 });
