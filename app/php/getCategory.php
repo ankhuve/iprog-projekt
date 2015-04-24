@@ -1,7 +1,10 @@
 <?php
-	$jobbID = urlencode(utf8_decode($_GET['id']));
-	$service_url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/'.$jobbID;
-	// echo $return["url"] = $service_url;
+	if($_GET['type'] == 'yrkesomraden'){
+		$service_url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/yrkesomraden';	
+	} else if($_GET['type'] == 'lan') {
+		$service_url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/lan';
+	}
+	
 	
 	$curl = curl_init($service_url);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -12,6 +15,7 @@
      ));
 
 	$curl_response = curl_exec($curl);
+
 	curl_close($curl);
 	echo $curl_response;
 ?>

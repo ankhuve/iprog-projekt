@@ -7,7 +7,23 @@
 	if (!empty($_GET['lanid'])) {
 		$lanid = urlencode($_GET['lanid']);
 		$service_url .= '&lanid='.$lanid;
+
+		if(!empty($_GET['kommunid'])){
+			$kommunid = urlencode($_GET['kommunid']);
+			$service_url .= '&kommunid='.$kommunid;
+		};
 	}
+
+	if(!empty($_GET['yrkesomradeid'])){
+		$yrkesomrade = urlencode($_GET['yrkesomradeid']);
+		$service_url .= '&yrkesomradeid='.$yrkesomrade;
+		if(!empty($_GET['yrkesgruppid'])){
+			$yrkesgruppid = urlencode($_GET['yrkesgruppid']);
+			$service_url .= '&yrkesgruppid='.$yrkesgruppid;
+		}
+	}
+
+
 
 	$curl = curl_init($service_url);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

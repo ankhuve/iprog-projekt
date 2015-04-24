@@ -1,7 +1,6 @@
 <?php
-	$jobbID = urlencode(utf8_decode($_GET['id']));
-	$service_url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/'.$jobbID;
-	// echo $return["url"] = $service_url;
+	$lanid = urlencode($_GET['lanid']);
+	$service_url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/kommuner?lanid='.$lanid;
 	
 	$curl = curl_init($service_url);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -12,6 +11,7 @@
      ));
 
 	$curl_response = curl_exec($curl);
+
 	curl_close($curl);
 	echo $curl_response;
 ?>
