@@ -213,5 +213,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		}
 		return $scope.buttonMessages;
 	}
+	$scope.pageNavSizeTest();
 
 });
