@@ -27,7 +27,7 @@
 					<p class="infoDescription">Här kan man ha massa bra information för de som letar jobb. Man kan skriva att de kan lägga upp sitt CV osv. Bli medlem på den här sidan och få en massa jobb. <br/><br/>Typiskt najs att göra det.</p>
 				</div>
 				<div id="registerUser">
-					<a ng-href="#/register"><button class="registerButton" ng-click="setRegisterType(registerUserTypes[0])">Skapa din profil</button></a>
+					<a ng-href="{{registerRedirect(0)}}"><button class="registerButton" ng-click="setRegisterType(registerUserTypes[0])">Skapa din profil</button></a>
 					<br/>
 					<span class="alreadyJoined">Redan medlem? <a class="loginLink" ng-href="#/login">Logga in!</a></span>
 				</div>
@@ -41,7 +41,7 @@
 					<p class="infoDescription">Här kan man ha massa bra information för de som letar jobb. Man kan skriva att de kan lägga upp sitt CV osv. Bli medlem på den här sidan och få en massa jobb. <br/><br/>Typiskt najs att göra det.</p>
 				</div>
 				<div class="registerCompany" id="registerCompany">
-					<a ng-href="#/register"><button class="registerButton" ng-click="setRegisterType(registerUserTypes[1])">Registrera ditt företag</button></a>
+					<a ng-href="{{registerRedirect(1)}}"><button class="registerButton" ng-click="setRegisterType(registerUserTypes[1])">Registrera ditt företag</button></a>
 					<br/>
 					<span class="alreadyJoined">Redan kund? <a class="loginLink" ng-href="#/login">Logga in!</a></span>
 				</div>
