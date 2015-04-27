@@ -178,4 +178,40 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		$scope.updateSearchOptions("sida",$scope.sida);
 		$scope.search($scope.query,$scope.sida);
 	}
+
+	$(window).resize(function(){ // Listen for window resize to decide size of navigation buttons
+    	$scope.$apply(function(){
+    		$scope.pageNavSizeTest();
+    	});
+	});
+
+	$scope.pageNavSizeTest = function(){ // 
+		if(window.innerWidth < 750){
+			$scope.smallNavButtons = true;
+		} else {
+			$scope.smallNavButtons = false;
+		}
+	}
+
+	$scope.pageNavButtonText = function(){
+		if($scope.smallNavButtons){
+			$scope.buttonMessages = {
+				previous: "",
+				first: "",
+				next: "",
+				last: "",
+				infoText: $scope.sida+" / "+$scope.numPages
+			}
+		} else {
+			$scope.buttonMessages = {
+				previous: "Föregående",
+				first: "Första",
+				next: "Nästa",
+				last: "Sista",
+				infoText: "Visar sida "+$scope.sida+" av "+$scope.numPages
+			}
+		}
+		return $scope.buttonMessages;
+	}
+
 });
