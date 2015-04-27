@@ -17,6 +17,8 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     $http.get('php/getSavedJobs.php').success(function(data){
       if(data["valid"]){
         savedJobs = data["savedJobs"];
+      } else {
+        console.log("Invalid token!");
       }
     })
   } else {
@@ -25,15 +27,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     var loggedInUser = "";
   }
 
-  this.getSavedJobsFromDb = function(){
-    $http.get('php/getSavedJobs.php').success(function(data){
-      if(data["valid"]){
-        savedJobs = data["savedJobs"];
-      } else {
-        console.log("Failed to get saved jobs from DB");
-      }
-    })
-  }
+  this.getSavedJobsFromDb = $resource('php/getSavedJobs.php');
 
   this.getJobs = $resource('php/getJobs.php');
   this.getJob = $resource('php/getJob.php');
@@ -167,11 +161,10 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     $cookieStore.remove("token");
     $cookieStore.remove("role");
     $cookieStore.remove("username");
+    if($cookieStore.get("pendingID")!=undefined){
+      this.removePendingID();
+    };
   }
-
-  // this.getCountyList = function(){
-  //   return countyIDs;
-  // }
 
   return this;
 });
