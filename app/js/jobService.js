@@ -111,7 +111,7 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   }
 
   this.setNumHits = function(hits){
-    console.log("Set num hits to: "+hits);
+    // console.log("Set num hits to: "+hits);
     numHits = hits;
   }
 
@@ -164,6 +164,14 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     if($cookieStore.get("pendingID")!=undefined){
       this.removePendingID();
     };
+  }
+
+  this.dateDifference = function(datePublished){
+    var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+    var firstDate = datePublished;
+    var secondDate = new Date();
+    var diffDays = Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay));
+    return diffDays;
   }
 
   return this;

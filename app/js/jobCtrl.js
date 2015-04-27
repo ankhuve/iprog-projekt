@@ -3,13 +3,27 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 
 	$scope.loading = true;
 	if($scope.annonsID != undefined){
-		$scope.jobb = Jobb.getJob.get({id:$scope.annonsID},function(data){
-			$scope.jobb = data.platsannons;
+		Jobb.getJob.get({id:$scope.annonsID},function(data){
+			$scope.jobMatch = data.platsannons;
+			$scope.jobDescription = $scope.jobMatch.annons.annonstext;
+			var d = new Date($scope.jobMatch.annons.publiceraddatum);
+			$scope.jobPublished = d.toLocaleDateString();
+			// var today = new Date();
+			// today = today.toLocaleDateString();
+			$scope.daysSincePublish = Jobb.dateDifference(d).toFixed(0);
+			console.log(data.platsannons);
 			$scope.loading = false;
 		})
 	} else {
 		$location.path("/search");
 	}
+
+	// $scope.jobDescription = function(){
+	// 	console.log($scope.jobMatch);
+	// 	var description = $scope.jobMatch.annons.annonstext;
+	// 	// console.log(description);
+	// 	return description;
+	// }
 
 	$scope.loggedIn = function(){
 		return Jobb.isLoggedIn();
@@ -37,7 +51,7 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 			dataType: 'json',
 			success: function(data){
 				if(data["valid"]){
-					Jobb.addSavedJob({"jobID":$scope.jobb.annons.annonsid,"jobHeader":$scope.jobb.annons.annonsrubrik});
+					Jobb.addSavedJob({"jobID":$scope.jobMatch.annons.annonsid,"jobHeader":$scope.jobMatch.annons.annonsrubrik});
 					$scope.$apply();
 				} else {
 					alert("Din session har tagit slut, du kommer nu loggas ut.");
