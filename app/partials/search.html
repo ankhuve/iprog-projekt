@@ -78,10 +78,10 @@
 	</div>
 </div>
 <div class="pageSelector" ng-show="showingResults()">
-	<button class="pageSelectorButton" ng-disabled="isFirstPage()" ng-click="changePage('first')"><span class="glyphicon glyphicon-backward"></span> Första </button>
-	<button class="pageSelectorButton" ng-disabled="isFirstPage()" ng-click="changePage('previous')"><span class="glyphicon glyphicon-chevron-left"></span> Föregående </button>
-	<span class="viewingPageNumber">Visar sida {{ sida }} av {{ numPages }}</span>
-	<button class="pageSelectorButton" ng-disabled="isLastPage()" ng-click="changePage('next')"> Nästa <span class="glyphicon glyphicon-chevron-right"></span></button>
-	<button class="pageSelectorButton" ng-disabled="isLastPage()" ng-click="changePage('last')"> Sista <span class="glyphicon glyphicon-forward"></span></button>
+	<button class="pageSelectorButton" ng-disabled="isFirstPage()" ng-click="changePage('first')"><span class="glyphicon glyphicon-backward"></span> {{ pageNavButtonText().first }} </button>
+	<button class="pageSelectorButton" ng-disabled="isFirstPage()" ng-click="changePage('previous')"><span class="glyphicon glyphicon-chevron-left"></span> {{ pageNavButtonText().previous }} </button>
+	<span class="viewingPageNumber">{{ pageNavButtonText().infoText }} </span>
+	<button class="pageSelectorButton" ng-disabled="isLastPage()" ng-click="changePage('next')"> {{ pageNavButtonText().next }}  <span class="glyphicon glyphicon-chevron-right"></span></button>
+	<button class="pageSelectorButton" ng-disabled="isLastPage()" ng-click="changePage('last')"> {{ pageNavButtonText().last }}  <span class="glyphicon glyphicon-forward"></span></button>
 </div>
 
