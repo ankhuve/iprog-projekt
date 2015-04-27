@@ -4,6 +4,7 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	$scope.sida = 1;
 	$scope.toggledFilter = false;
 	$scope.selectedCounty = "";
+	$scope.selectedLineOfWork = "";
 
 	Jobb.getCategory.get(
 		{type:'lan'},
@@ -67,6 +68,16 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		antalrader:10,
 		sida:$scope.sida,
 	};
+
+	$scope.resetFilters = function(){
+		$scope.searchOptions = {
+			nyckelord: $scope.query,
+			antalrader:10,
+			sida:$scope.sida
+		}
+		$scope.selectedCounty = "";
+		$scope.selectedLineOfWork = "";
+	}
 
 	$scope.updateSearchOptions = function(param, val){
 		//Om det är Län som väljs så hämta alla kommuner för detta län. 
