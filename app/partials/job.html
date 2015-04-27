@@ -1,15 +1,22 @@
-<center>
-	<div class="jobButtons" ng-hide="loading">
-		<a ng-href="#/search"><button class="singleJobButton">Tillbaka till sök</button></a>
-		<span ng-show="loggedIn()">
-			<button class="singleJobButton save" ng-click="saveJob(jobb.annons.annonsid, jobb.annons.annonsrubrik)" ng-hide="jobSaved(jobb.annons.annonsid)">Spara annons</button>
-			<button class="singleJobButton removeSaved" ng-show="jobSaved(jobb.annons.annonsid)" ng-click="removeSaved(jobb.annons.annonsid)"> Ta bort från sparade jobb </button>
-		</span>
-	</div>
-</center>
+<div class="singleJob">
+	<center>
+		<div class="jobButtons" ng-hide="loading">
+			<a ng-href="#/search"><button class="singleJobButton">Tillbaka till sök</button></a>
+			<span ng-show="loggedIn()">
+				<button class="singleJobButton save" ng-click="saveJob(jobMatch.annons.annonsid, jobMatch.annons.annonsrubrik)" ng-hide="jobSaved(jobMatch.annons.annonsid)">Spara annons</button>
+				<button class="singleJobButton removeSaved" ng-show="jobSaved(jobMatch.annons.annonsid)" ng-click="removeSaved(jobMatch.annons.annonsid)"> Ta bort från sparade jobb </button>
+			</span>
+		</div>
+	</center>
 
-<div class="singleJob" ng-hide="loading">
-	<center><h2>{{ jobb.annons.annonsrubrik }}</h2></center>
-	<p style="color:#E9DEBE">{{ jobb.annons.annonstext }}</p>
-	<div style="color:rgb(255, 238, 194)">{{ jobb.ansokan.epostadress }}</div><div style="color:rgb(255, 238, 194)">Sista ansökningsdag {{ jobb.ansokan.sista_ansokningsdag | date:'yyyy-MM-dd' }}</div>
+	<div class="jobInfo" ng-hide="loading">
+		<center><h2>{{ jobMatch.annons.annonsrubrik }}</h2></center>
+		<p style="white-space: pre-line">{{ jobDescription }}</p>
+		<!-- <p> Antal platser: {{ jobMatch.annons.antalplatserVisa}} </p> -->
+		<p> Kommun: {{ jobMatch.annons.kommunnamn}} </p>
+		<p> Publicerad: {{ jobPublished}} </p>
+		<p> Dagar sedan publicering: {{ daysSincePublish }}
+		<div>{{ jobMatch.ansokan.epostadress }}</div>
+		<div>Sista ansökningsdag {{ jobMatch.ansokan.sista_ansokningsdag | date:'yyyy-MM-dd' }}</div>
+	</div>
 </div>
