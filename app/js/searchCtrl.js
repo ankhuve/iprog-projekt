@@ -6,14 +6,14 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	$scope.selectedCounty = "";
 	$scope.selectedLineOfWork = "";
 
-	Jobb.getCategory.get(
+	Jobb.getCategory.get( // Get all the counties listed by arbetsförmedlingen
 		{type:'lan'},
 		function(data){
 			$scope.counties = data.soklista.sokdata;
 		}
 	);
 
-	Jobb.getCategory.get(
+	Jobb.getCategory.get( // Get all the lines of work listed by arbetsförmedlingen
 		{type:'yrkesomraden'},
 		function(data){
 			$scope.linesOfWork = data.soklista.sokdata;
@@ -69,6 +69,7 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		sida:$scope.sida,
 	};
 
+
 	$scope.resetFilters = function(){
 		$scope.searchOptions = {
 			nyckelord: $scope.query,
@@ -80,8 +81,7 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	}
 
 	$scope.updateSearchOptions = function(param, val){
-		//Om det är Län som väljs så hämta alla kommuner för detta län. 
-		if(param === 'lanid'){
+		if(param === 'lanid'){ // If the user chooses county, get all the municipalties in that county
 			Jobb.getKommun.get(
 				{lanid: $scope.getSelectedID('county')}, 
 				function(data){
@@ -89,7 +89,7 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 				}
 			);
 		}
-		if(param === 'yrkesomradeid'){
+		if(param === 'yrkesomradeid'){ // If the user chooses line of work, get all the professions within that line of work
 			Jobb.getYrkesgrupper.get(
 				{yrkesomradeid:$scope.getSelectedID('lineOfWork')},
 				function(data){
@@ -97,13 +97,11 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 				}
 			)
 		}
-		console.log("Adding param to searchOptions...");
-		console.log("Param: "+param+", val: "+val);
+
 		$scope.searchOptions[param] = val;
 	};
 
-	$scope.addPending = function(annonsID){
-		console.log(annonsID);
+	$scope.addPending = function(annonsID){ // Add pending job id for single job view
 		Jobb.addPendingID(annonsID);
 	};
 
@@ -132,21 +130,52 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		$scope.searchOptions["nyckelord"] = keyword;
 		console.log($scope.searchOptions);
 		Jobb.getJobs.get($scope.searchOptions, function(data){
-			console.log(data);
-			Jobb.setNumHits(data.matchningslista.antal_platsannonser);
 			$scope.loading = false;
+			$scope.numPages = data.matchningslista.antal_sidor;
+			Jobb.setNumHits(data.matchningslista.antal_platsannonser);
+			
 			if(data.matchningslista.antal_platsannonser === 0){
 				Jobb.addSearchResults([]);
 			} else {
 				Jobb.addSearchResults(data.matchningslista.matchningdata);
 			}
-			$scope.forceShowResults = true;
+			$scope.forceShowResults = true; // Show number of hits, even when there are 0 hits.
 		});
 	}
 
-	if(Jobb.getPendingQuery()!=undefined){
+	if(Jobb.getPendingQuery()!=undefined){ // If you search from the home page, run the query.
 		$scope.search(Jobb.getPendingQuery(),$scope.sida);
 		$scope.query = Jobb.getPendingQuery();
 		Jobb.removePendingQuery();
+	}
+
+	$scope.isFirstPage = function(){
+		if($scope.sida === 1){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	$scope.isLastPage = function(){
+		if($scope.sida === $scope.numPages){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	$scope.changePage = function(target){
+		if(target === 'next'){
+			$scope.sida++;
+		} else if(target === 'previous'){
+			$scope.sida--;
+		} else if(target === 'first'){
+			$scope.sida = 1;
+		} else {
+			$scope.sida = $scope.numPages;
+		}
+		$scope.updateSearchOptions("sida",$scope.sida);
+		$scope.search($scope.query,$scope.sida);
 	}
 });

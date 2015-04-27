@@ -246,6 +246,34 @@ nav{
 	transition: 0.3s ease;
 }
 
+.pageSelector{
+	color: white;
+	font-size: 14pt;
+	/*position: absolute;*/
+	/*bottom: 320px;*/
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	margin-bottom:30px;
+}
+
+.pageSelectorButton{
+	background-color:rgb(221, 86, 37);
+	border:none;
+	padding:15px;
+	border-radius: 5px;
+}
+
+.viewingPageNumber{
+	margin-left:10px;
+	margin-right:20px;
+}
+
+.pageSelectorButton:disabled{
+	background-color: #535353;
+	color:#8A8A8A;
+}
+
 .filtersAnimation{
 	padding-top: 10px;
 	-webkit-transition: 0.3s ease; /* Safari */
