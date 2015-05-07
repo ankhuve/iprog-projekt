@@ -58,8 +58,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	initiateLinesOfWork();
 
 
-
-
 	$scope.showingResults = function(){
 		if(Jobb.getSearchResults().length>0){
 			$("#numSearchResults").animate({opacity: 1}, 300);
@@ -146,8 +144,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 				Jobb.getYrkesgrupper.get(
 					{yrkesomradeid:$scope.getSelectedID('lineOfWork')},
 					function(data){
-						console.log("GOT YRKESGRUPPER");
-						console.log(data);
 						Jobb.addProfessions(data.soklista.sokdata);
 					}
 				)
@@ -227,12 +223,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		});
 	}
 
-	if(Jobb.getPendingQuery()!=undefined){ // If you search from the home page, run the query.
-		$scope.query = Jobb.getPendingQuery();
-		$scope.search(Jobb.getPendingQuery(),false);
-		Jobb.removePendingQuery();
-	}
-
 	$scope.isFirstPage = function(){
 		if($scope.sida() === 1){
 			return true;
@@ -300,17 +290,26 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 	$scope.pageNavSizeTest(); // Determine the size of the navigation buttons of the bottom of the menu depending of the screen size. 
 
-		// Check if the model contains any search params
+	// Check if the model contains any search params
 	if(Object.keys(Jobb.getSearchParams()).length === 0){ // No search params in model
-		
 		Jobb.addSearchParam('nyckelord',"");
 		Jobb.addSearchParam('antalrader',10);
 		Jobb.addSearchParam('sida',1);
 
 	} else {
 		var searchParams = Jobb.getSearchParams();
+		for(param in searchParams){
+			console.log(param);
+			console.log(searchParams[param]);
+		}
 		if(Object.keys(Jobb.getSearchParams()).length > 3){
 			$scope.toggleFilter();
 		}
+	}
+
+	if(Jobb.getPendingQuery()!=undefined){ // If you search from the home page, run the query.
+		$scope.query = Jobb.getPendingQuery();
+		$scope.search(Jobb.getPendingQuery(),false);
+		Jobb.removePendingQuery();
 	}
 });

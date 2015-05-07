@@ -13,6 +13,8 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   var counties = [];
   var linesOfWork = [];
 
+  // Eventuellt lägga till pendingSearchOptions
+
   this.addCounties = function(data){
     var defaultOption = {namn:"Välj län...", id:null};
     counties.push(defaultOption);
@@ -31,7 +33,6 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     for(line in data){
       linesOfWork.push(data[line]);
     }
-    // linesOfWork = data;
   }
 
   this.getLinesOfWork = function(){
