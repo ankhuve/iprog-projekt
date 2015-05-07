@@ -5,20 +5,19 @@
 
 				<input class="jobSearchForm searchPage" ng-model="query" placeholder="Hitta ett jobb" autofocus="autofocus"></input>
 				<span id="searchBarIcon" class="searchPage"></span>
-				<button class="searchButton searchPage" ng-click="search(query, sida)">SÖK</button>
+				<button class="searchButton searchPage" ng-click="search(query, false)">SÖK</button>
 
 				<div class="filters">
-					<select ng-show="counties" class="dropdown searchFilter" ng-options="county.namn for county in counties" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedID('county'))">
-						<option value="" disabled selected>Välj län...</option>
+					<select class="dropdown searchFilter" ng-options="county.namn for county in counties()" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedID('county'))">
 					</select>
-					<select ng-show="countySelected()" class="dropdown searchFilter" ng-options="municipality.namn for municipality in municipalties" ng-model="selectedMunicipality" ng-change="updateSearchOptions('kommunid', getSelectedID('municipality'))">
-						<option value="" disabled selected>Välj kommun...</option>
+					<select ng-show="countySelected()" class="dropdown searchFilter municipalitySelect" ng-options="municipality.namn for municipality in municipalities()" ng-model="selectedMunicipality" ng-change="updateSearchOptions('kommunid', getSelectedID('municipality'))">
+						<option value="" class="noValueSelected" disabled selected>Välj kommun...</option>
 					</select>
-					<select ng-show="linesOfWork" class="dropdown searchFilter" ng-options="lineOfWork.namn for lineOfWork in linesOfWork" ng-model="selectedLineOfWork" ng-change="updateSearchOptions('yrkesomradeid', getSelectedID('lineOfWork'))">
-						<option value="" disabled selected>Välj yrkesområde...</option>
+					<select ng-show="linesOfWork" class="dropdown searchFilter linesOfWorkSelect" ng-options="lineOfWork.namn for lineOfWork in linesOfWork()" ng-model="selectedLineOfWork" ng-change="updateSearchOptions('yrkesomradeid', getSelectedID('lineOfWork'))">
+						<!-- <option value="" class="noValueSelected" disabled selected>Välj yrkesområde...</option> -->
 					</select>
-					<select ng-show="lineOfWorkSelected()" class="dropdown searchFilter" ng-options="profession.namn for profession in professions" ng-model="selectedProfession" ng-change="updateSearchOptions('yrkesgruppid', getSelectedID('professionGroup'))">
-						<option value="" disabled selected>Välj yrkesgrupp...</option>
+					<select ng-show="lineOfWorkSelected()" class="dropdown searchFilter professionSelect" ng-options="profession.namn for profession in professions()" ng-model="selectedProfession" ng-change="updateSearchOptions('yrkesgruppid', getSelectedID('professionGroup'))">
+						<option value="" class="noValueSelected" disabled selected>Välj yrkesgrupp...</option>
 					</select>
 				</div>
 

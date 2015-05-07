@@ -5,6 +5,67 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   var pendingQuery;
   var requestedUserType = "user";
   var numHits = 0;
+  var numPages;
+  var currentPage = 1;
+  var searchParams = {};
+  var municipalities = [];
+  var professions = [];
+  var counties = [];
+  var linesOfWork = [];
+
+  // Eventuellt lägga till pendingSearchOptions
+
+  this.addCounties = function(data){
+    var defaultOption = {namn:"Välj län...", id:null};
+    counties.push(defaultOption);
+    for(county in data){
+      counties.push(data[county]);
+    }
+  }
+
+  this.getCounties = function(){
+    return counties;
+  }
+
+  this.addLinesOfWork = function(data){
+    var defaultOption = {namn: "Välj yrkesområde...", id:null};
+    linesOfWork.push(defaultOption);
+    for(line in data){
+      linesOfWork.push(data[line]);
+    }
+  }
+
+  this.getLinesOfWork = function(){
+    return linesOfWork;
+  }
+
+  this.addSearchParam = function(param, val){
+    searchParams[param] = val;
+  }
+
+  this.getSearchParams = function(){
+    return searchParams;
+  }
+
+  this.resetSearchParams = function(){
+    searchParams = {};
+  }
+
+  this.addMunicipalities = function(data){
+    municipalities = data;
+  }
+
+  this.getMunicipalities = function(){
+    return municipalities;
+  }
+
+  this.addProfessions = function(data){
+    professions = data;
+  }
+
+  this.getProfessions = function(){
+    return professions;
+  }
 
   if($cookieStore.get("pendingID")!=undefined){
     var pendingID = $cookieStore.get("pendingID");
@@ -117,6 +178,22 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
 
   this.getNumHits = function(){
     return numHits;
+  }
+
+  this.setNumPages = function(pages){
+    numPages = pages;
+  }
+
+  this.getNumPages = function(){
+    return numPages;
+  }
+
+  this.setCurrentPage = function(page){
+    currentPage = page;
+  }
+
+  this.getCurrentPage = function(){
+    return currentPage;
   }
 
   this.addSavedJob = function(job){
