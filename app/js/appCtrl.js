@@ -46,5 +46,9 @@ jobbaExtraApp.controller('AppCtrl', function ($scope,$location,Jobb) {
 		$(".navLinks").removeClass("navLinksAnimation");
 		$(".navLink").removeClass("navLinkAnimation");
 		$scope.active = false;
-	}		
+	}	
+
+	$scope.numSavedJobs = function(){
+		return Jobb.getSavedJobs().length;
+	}	
 })
