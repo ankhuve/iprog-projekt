@@ -7,65 +7,14 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   var numHits = 0;
   var numPages;
   var currentPage = 1;
-  var searchParams = {};
+  // var searchParams = {};
   var municipalities = [];
   var professions = [];
   var counties = [];
   var linesOfWork = [];
+  var appliedSearchParams = {};
+  var currentInputSearchParams = {};
 
-  // Eventuellt lägga till pendingSearchOptions
-
-  this.addCounties = function(data){
-    var defaultOption = {namn:"Välj län...", id:null};
-    counties.push(defaultOption);
-    for(county in data){
-      counties.push(data[county]);
-    }
-  }
-
-  this.getCounties = function(){
-    return counties;
-  }
-
-  this.addLinesOfWork = function(data){
-    var defaultOption = {namn: "Välj yrkesområde...", id:null};
-    linesOfWork.push(defaultOption);
-    for(line in data){
-      linesOfWork.push(data[line]);
-    }
-  }
-
-  this.getLinesOfWork = function(){
-    return linesOfWork;
-  }
-
-  this.addSearchParam = function(param, val){
-    searchParams[param] = val;
-  }
-
-  this.getSearchParams = function(){
-    return searchParams;
-  }
-
-  this.resetSearchParams = function(){
-    searchParams = {};
-  }
-
-  this.addMunicipalities = function(data){
-    municipalities = data;
-  }
-
-  this.getMunicipalities = function(){
-    return municipalities;
-  }
-
-  this.addProfessions = function(data){
-    professions = data;
-  }
-
-  this.getProfessions = function(){
-    return professions;
-  }
 
   if($cookieStore.get("pendingID")!=undefined){
     var pendingID = $cookieStore.get("pendingID");
@@ -162,17 +111,93 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
   }
 
   this.addSearchResults = function(results){
-    // console.log(results);
     searchResults = results;
   }
 
+  this.applySearchParams = function(){
+    appliedSearchParams = $.extend(true,{},currentInputSearchParams);
+  }
+
+  this.addSearchParam = function(param, val){
+    currentInputSearchParams[param] = val;
+  }
+
+  this.addAppliedSearchParam = function(param, val){
+    appliedSearchParams[param] = val;
+  }
+
+  this.removeSearchParam = function(param){
+    delete currentInputSearchParams[param];
+  }
+
+  this.resetSearchParams = function(){
+    currentInputSearchParams = {};
+  }
+
+  this.getSearchParams = function(){
+    return appliedSearchParams;
+  }
+
+  this.getSearchParamsNotApplied = function(){
+    return currentInputSearchParams;
+  }
+  
+  this.addCounties = function(data){
+    var defaultOption = {namn:"Välj län...", id:null};
+    counties.push(defaultOption);
+    for(county in data){
+      counties.push(data[county]);
+    }
+  }
+
+  this.getCounties = function(){
+    return counties;
+  }
+
+  this.addLinesOfWork = function(data){
+    var defaultOption = {namn: "Välj yrkesområde...", id:null};
+    linesOfWork.push(defaultOption);
+    for(line in data){
+      linesOfWork.push(data[line]);
+    }
+  }
+
+  this.getLinesOfWork = function(){
+    return linesOfWork;
+  }
+
+  this.addMunicipalities = function(data){
+    municipalities = [];
+    var defaultOption = {namn: "Välj kommun...", id:null};
+    municipalities.push(defaultOption);
+    for(line in data){
+      municipalities.push(data[line]);
+    }
+    // municipalities = data;
+  }
+
+  this.getMunicipalities = function(){
+    return municipalities;
+  }
+
+  this.addProfessions = function(data){
+    professions = [];
+    var defaultOption = {namn: "Välj yrkesgrupp...", id:null};
+    professions.push(defaultOption);
+    for(line in data){
+      professions.push(data[line]);
+    }
+  }
+
+  this.getProfessions = function(){
+    return professions;
+  }
+
   this.getSearchResults = function(){
-    // console.log("Get search results called!");
     return searchResults;
   }
 
   this.setNumHits = function(hits){
-    // console.log("Set num hits to: "+hits);
     numHits = hits;
   }
 

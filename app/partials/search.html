@@ -10,18 +10,19 @@
 				<div class="filters">
 					<select class="dropdown searchFilter" ng-options="county.namn for county in counties()" ng-model="selectedCounty" ng-change="updateSearchOptions('lanid', getSelectedID('county'))">
 					</select>
+
 					<select ng-show="countySelected()" class="dropdown searchFilter municipalitySelect" ng-options="municipality.namn for municipality in municipalities()" ng-model="selectedMunicipality" ng-change="updateSearchOptions('kommunid', getSelectedID('municipality'))">
-						<option value="" class="noValueSelected" disabled selected>Välj kommun...</option>
 					</select>
+
 					<select ng-show="linesOfWork" class="dropdown searchFilter linesOfWorkSelect" ng-options="lineOfWork.namn for lineOfWork in linesOfWork()" ng-model="selectedLineOfWork" ng-change="updateSearchOptions('yrkesomradeid', getSelectedID('lineOfWork'))">
-						<!-- <option value="" class="noValueSelected" disabled selected>Välj yrkesområde...</option> -->
 					</select>
+
 					<select ng-show="lineOfWorkSelected()" class="dropdown searchFilter professionSelect" ng-options="profession.namn for profession in professions()" ng-model="selectedProfession" ng-change="updateSearchOptions('yrkesgruppid', getSelectedID('professionGroup'))">
-						<option value="" class="noValueSelected" disabled selected>Välj yrkesgrupp...</option>
 					</select>
+
 				</div>
 
-				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()">FILTRERA<br/><span id="filterToggleArrow" class="glyphicon glyphicon-chevron-down"></span></button>
+				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()"> Filtrera <br/><span id="filterToggleArrow" class="glyphicon glyphicon-chevron-down"></span></button>
 
 				<button class="searchButton filterButton searchPage" ng-click="resetFilters()"> Återställ filter </button>
 
