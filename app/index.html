@@ -40,7 +40,7 @@
 	<nav id="header">
 		<a class="headerLogo" ng-click="closeMenu()" ng-href="#/home"><img src="img/jobbaextra_logo.png"></a>
 		<div class="loggedInHeader" ng-show="loggedIn()"> 
-			Du &auml;r inloggad som <strong>{{ username() }}</strong> med <strong>{{numSavedJobs()}}</strong> sparade annonser! 
+			Du &auml;r inloggad som <strong>{{ username() }}</strong>, du har <strong>{{numSavedJobs()}}</strong> sparade annonser! 
 			<button class="logoutButton" ng-click="logout()">Logga ut</button>
 		</div>
 		<img id="hamburgerIcon" src="img/thin_burger.png" ng-click="toggleMenu()">

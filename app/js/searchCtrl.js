@@ -22,6 +22,18 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 						$scope.selectedCounty = counties[county];
 					}
 				}
+				if(Jobb.getSearchParams().kommunid){
+					var municipalities = Jobb.getMunicipalities();
+					var selectedMunicipality = Jobb.getSearchParams().kommunid;
+
+					for(m in municipalities){
+						if(municipalities[m].id === selectedMunicipality){
+							$scope.selectedMunicipality = municipalities[m];
+						}
+					}
+				} else {
+					$scope.selectedMunicipality = Jobb.getMunicipalities()[0];
+				}
 			} else {
 				$scope.selectedCounty = Jobb.getCounties()[0];
 			}
@@ -49,6 +61,17 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 						$scope.selectedLineOfWork = linesOfWork[lineOfWork];
 					}
 				}
+				if(Jobb.getSearchParams().yrkesgruppid){
+					var professions = Jobb.getProfessions();
+					var selectedProfession = Jobb.getSearchParams().yrkesgruppid;
+					for(p in professions){
+						if(professions[p].id === selectedProfession){
+							$scope.selectedProfession = professions[p];
+						}
+					}
+				} else {
+					$scope.selectedProfession = Jobb.getProfessions()[0];
+				}
 			} else {
 				$scope.selectedLineOfWork = Jobb.getLinesOfWork()[0];
 			}
@@ -56,7 +79,6 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	}
 
 	initiateLinesOfWork();
-
 
 	$scope.showingResults = function(){
 		if(Jobb.getSearchResults().length>0){
@@ -68,10 +90,10 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	};
 
 	$scope.countySelected = function(){
-		if(Jobb.getSearchParams().lanid === undefined){
+		if(Jobb.getSearchParamsNotApplied().lanid === undefined){
 			return false;
 		} else {
-			if(!Jobb.getSearchParams().lanid){
+			if(!Jobb.getSearchParamsNotApplied().lanid){
 				return false;
 			} else {
 				return true;
@@ -80,10 +102,14 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	};
 
 	$scope.lineOfWorkSelected = function(){
-		if(Jobb.getSearchParams().yrkesomradeid === undefined){
+		if(Jobb.getSearchParamsNotApplied().yrkesomradeid === undefined){
 			return false;
 		} else {
-			return true;
+			if(!Jobb.getSearchParamsNotApplied().yrkesomradeid){
+				return false;
+			} else {
+				return true;
+			}
 		}
 	};
 
@@ -105,27 +131,37 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		return Jobb.getSearchResults();
 	};
 
+	var resetFilters = function(type){
+		if(type === "county"){
+			if($scope.selectedCounty){
+				$scope.selectedCounty = $scope.counties()[0];
+			}
+		} else if(type === "municipality"){
+			if($scope.selectedMunicipality){
+				$scope.selectedMunicipality = $scope.municipalities()[0];
+			}
+		} else if(type === "lineOfWork"){
+			if($scope.selectedLineOfWork){
+				$scope.selectedLineOfWork = $scope.linesOfWork()[0];
+			}
+		} else if (type === "profession"){
+			if($scope.selectedProfession){
+				$scope.selectedProfession = $scope.professions()[0];
+			}
+		}
+	}
+
 
 	$scope.resetFilters = function(){
-
-		console.log("----------------------------");
-		console.log("Search params before reset:");
-		console.log(Jobb.getSearchParams());
-		console.log("----------------------------");
 		Jobb.resetSearchParams();
 		Jobb.addSearchParam('nyckelord',"");
 		Jobb.addSearchParam('antalrader',10);
 		Jobb.addSearchParam('sida',Jobb.getCurrentPage());
 
-		console.log("Search params after reset:");
-		console.log(Jobb.getSearchParams());
-		console.log("----------------------------");
-
 		$scope.selectedCounty = $scope.counties()[0];
 		$scope.selectedLineOfWork = $scope.linesOfWork()[0];
 		Jobb.addMunicipalities([]);
 		Jobb.addProfessions([]);
-		console.log($scope.selectedCounty);
 	};
 
 	$scope.updateSearchOptions = function(param, val){
@@ -135,8 +171,12 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 					{lanid: $scope.getSelectedID('county')}, 
 					function(data){
 						Jobb.addMunicipalities(data.soklista.sokdata);
+						$scope.selectedMunicipality = Jobb.getMunicipalities()[0];
 					}
 				);
+			} else {
+				Jobb.removeSearchParam("lanid");
+				Jobb.removeSearchParam("kommunid");
 			}
 		}
 		if(param === 'yrkesomradeid'){ // If the user chooses line of work, get all the professions within that line of work
@@ -145,20 +185,24 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 					{yrkesomradeid:$scope.getSelectedID('lineOfWork')},
 					function(data){
 						Jobb.addProfessions(data.soklista.sokdata);
+						$scope.selectedProfession = Jobb.getProfessions()[0];
 					}
 				)
+			} else {
+				Jobb.removeSearchParam("yrkesomradeid");
+				Jobb.removeSearchParam("yrkesgruppid");
 			}
 		}
 		Jobb.addSearchParam(param,val);
-	};
+	}
 
 	$scope.municipalities = function(){
 		return Jobb.getMunicipalities();
-	};
+	}
 
 	$scope.professions = function(){
 		return Jobb.getProfessions();
-	};
+	}
 
 	$scope.counties = function(){
 		return Jobb.getCounties();
@@ -170,7 +214,7 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 
 	$scope.addPending = function(annonsID){ // Add pending job id for single job view
 		Jobb.addPendingID(annonsID);
-	};
+	}
 
 	$scope.antalAnnonser = function(){
 		return Jobb.getNumHits();
@@ -201,12 +245,16 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 	}
 
 	$scope.search = function(keyword,pageChange){
-		if(!pageChange){
+		$scope.loading = true;
+		if(!pageChange){ // NEW SEARCH
 			Jobb.setCurrentPage(1);
 			$scope.updateSearchOptions("sida",1);
+			$scope.updateSearchOptions("nyckelord", keyword);
+			Jobb.applySearchParams();
+
+		} else { // PAGE CHANGE
+			Jobb.addAppliedSearchParam("sida", Jobb.getCurrentPage());
 		}
-		$scope.loading = true;
-		Jobb.addSearchParam('nyckelord',keyword);
 		console.log(Jobb.getSearchParams());
 		Jobb.getJobs.get(Jobb.getSearchParams(), function(data){
 			$scope.loading = false;
@@ -246,10 +294,10 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 			Jobb.setCurrentPage(Jobb.getCurrentPage() - 1);
 		} else if(target === 'first'){
 			Jobb.setCurrentPage(1);
-		} else {
+		} else { // Last page
 			Jobb.setCurrentPage(Jobb.getNumPages());
 		}
-		$scope.updateSearchOptions("sida",$scope.sida());
+		// $scope.updateSearchOptions("sida",$scope.sida());
 		$scope.search($scope.query,true);
 	}
 
@@ -295,19 +343,25 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		Jobb.addSearchParam('nyckelord',"");
 		Jobb.addSearchParam('antalrader',10);
 		Jobb.addSearchParam('sida',1);
-
 	} else {
-		var searchParams = Jobb.getSearchParams();
-		for(param in searchParams){
-			console.log(param);
-			console.log(searchParams[param]);
-		}
+		// var searchParams = Jobb.getSearchParams();
+		// for(param in searchParams){
+		// 	console.log(param);
+		// 	console.log(searchParams[param]);
+		// }
 		if(Object.keys(Jobb.getSearchParams()).length > 3){
 			$scope.toggleFilter();
 		}
 	}
 
 	if(Jobb.getPendingQuery()!=undefined){ // If you search from the home page, run the query.
+		Jobb.resetSearchParams();
+		Jobb.addSearchParam("sida", 1);
+		Jobb.addSearchParam("antalrader", 10);
+		resetFilters("county");
+		resetFilters("municipality");
+		resetFilters("lineOfWork");
+		resetFilters("profession");
 		$scope.query = Jobb.getPendingQuery();
 		$scope.search(Jobb.getPendingQuery(),false);
 		Jobb.removePendingQuery();
