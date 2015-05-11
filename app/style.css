@@ -98,6 +98,7 @@ nav{
 
 #hamburgerIcon{
 	display: none;
+	cursor: pointer;
 }
 
 #linksRow{
@@ -148,11 +149,12 @@ nav{
 }
 
 .searchBar.searchPage{
-	width: 700px;
+	width: 100%;
+  	max-width: 700px;
 }
 
 #orangeBG.searchPage{
-	width: 600px;
+	width: 85.71428571428571%;
 	height: 70px;
 	border-radius: 3px;
 }
@@ -160,7 +162,7 @@ nav{
 .jobSearchForm.searchPage{
 	height: 64px;
 	font-size: 28px;
-	width: 490px;
+	width: 80%;
 	border-radius: 3px;
 	text-indent: 10px;
 }
@@ -176,7 +178,15 @@ nav{
 #searchBarIcon.searchPage{
 	position: relative;
 	top: 25px;
-	left: -475px;
+	left: -78%;
+}
+
+.filterButtons{
+	display: table-caption;
+}
+
+.resetFilters{
+
 }
 
 .filterButton.searchButton{
@@ -187,7 +197,7 @@ nav{
 	width: 110px;
 	font-size: 16px;
 	margin: 0;
-	margin-left: 245px;
+	/*margin-left: 245px;*/
 	background-color: #DF582D;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
@@ -203,7 +213,7 @@ nav{
 .filters{
 	display: inline-table;
 	background-color: #303030;
-	width: 555px;
+	width: 90%;
 	color:#FFEEC2;
 	margin-left: 25px;
 	padding-top: 0;
@@ -340,7 +350,7 @@ nav{
 	display: inline-block;
 	position: relative;
 	opacity: 0;
-	margin-top: 50px;
+	margin-top: 90px;
 	margin-bottom: 30px;
 	width: 100%;
 }
@@ -348,7 +358,6 @@ nav{
 #numSearchResults h4{
 	display: inline;
 	background-color:rgba(47,47,47,0.65);
-	/*width: 220px;*/
 	height: 2.2em;
 	padding: 0.4em;
 	margin-top: 15px;
@@ -555,6 +564,10 @@ nav{
 	color: #71CBD9;
 }
 
+/*.extraJobInfo{
+
+}*/
+
 .underlined{
 	border-bottom: solid #ff6e3f 2px;
 }
@@ -738,23 +751,34 @@ h4 small{
 }
 
 .singleJob{
-	width: 900px;
+	width: 80%;
+	max-width: 1000px;
 	color:#E9DEBE;
 	background-color: #ff6e3f;
   	margin-left: auto;
   	margin-right: auto;
-  	border-top-right-radius:30px;
-	border-top-left-radius: 30px;
+  	/*margin-bottom: 100px;*/
+  	border-top-right-radius:31px;
+	border-top-left-radius: 31px;
 }
 
 .jobInfo{
 	padding: 20px;
 }
 
+.jobInfo h2{
+	padding-bottom: 10px;
+}
+
+.moreInfo{
+	padding: 30px;
+	background-color: #BD4C27;
+}
+
 .jobButtons{
 	background-color:rgb(47,47,47);
-	border-top-right-radius:30px;
-	border-top-left-radius: 30px;
+	border-top-right-radius:25px;
+	border-top-left-radius: 25px;
 }
 
 .singleJobButton{
@@ -873,6 +897,17 @@ h4 small{
 	padding-bottom:10px;
 	padding-top: 5px;
 	margin-top:25px;
+}
+
+.savedJob {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.removeSavedJob{
+	padding-right: 5px;
+	cursor: pointer;
+	color: rgb(192, 48, 29);
 }
 
 #splash.sideHeader {
@@ -1022,12 +1057,17 @@ h4 small{
 		width:90%;
 		margin-left:5%;
 		margin-right:5%;
-		margin-top:15px;
+		margin-top:0px;
 		min-width:250px;
 	}
+
+
 }
 
 @media (max-width: 503px){ /* Mobile */
+	.view{
+		padding-top: 50px;
+	}
 
 	.aboutInfo {
 		width: 80%;
@@ -1056,8 +1096,29 @@ h4 small{
 		left: 18px;
 	}
 
+	.searchButton.searchPage{
+		font-size: 26px;
+	}
+
+	.searchButton.searchPage.filterButton{
+		font-size: 16px;
+	}
+
 	.jobSearchForm{
 		width: 260px;
+	}
+
+	.dropdown.searchFilter{
+		width: 47%;
+	}
+
+	.singleJob{
+		width: 100%;
+	}
+
+	.singleJobButton{
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	body {
@@ -1126,8 +1187,24 @@ h4 small{
 }
 
 @media (max-width: 360px){
+	h2{
+		font-size: 25pt;
+	}
+
+	.jobInfo {
+	  padding: 10px;
+	}
+
+	.singleJobButton{
+		font-size: 12px;
+	}
+
 	#orangeBG{
 		width: 95%;
+	}
+
+	#orangeBG.searchPage{
+		width: 100%;
 	}
 
 	.searchBar{

@@ -21,11 +21,11 @@
 					</select>
 
 				</div>
+				<div class="filterButtons">
+					<button class="searchButton filterButton searchPage" ng-click="toggleFilter()"> Filtrera <br/><span id="filterToggleArrow" class="glyphicon glyphicon-chevron-down"></span></button>
 
-				<button class="searchButton filterButton searchPage" ng-click="toggleFilter()"> Filtrera <br/><span id="filterToggleArrow" class="glyphicon glyphicon-chevron-down"></span></button>
-
-				<button class="searchButton filterButton searchPage" ng-click="resetFilters()"> Återställ filter </button>
-
+					<button class="searchButton filterButton searchPage resetFilters" ng-click="resetFilters()"> Återställ filter </button>
+				</div>
 				<!-- Loading spinner -->
 				<div class="spinner" ng-show="loading">
 					<div class="spinner-container container1">

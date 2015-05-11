@@ -13,10 +13,12 @@
 		<center><h2>{{ jobMatch.annons.annonsrubrik }}</h2></center>
 		<p style="white-space: pre-line">{{ jobDescription }}</p>
 		<!-- <p> Antal platser: {{ jobMatch.annons.antalplatserVisa}} </p> -->
-		<p> Kommun: {{ jobMatch.annons.kommunnamn}} </p>
-		<p> Publicerad: {{ jobPublished}} </p>
-		<p> Dagar sedan publicering: {{ daysSincePublish }}
+	</div>
+	<div class="moreInfo">
+		<p class="extraJobInfo"> Kommun: {{ jobMatch.annons.kommunnamn}} </p>
+		<p class="extraJobInfo"> Publicerad: {{ jobPublished}} </p>
+		<p class="extraJobInfo"> Dagar sedan publicering: {{ daysSincePublish }}
 		<div>{{ jobMatch.ansokan.epostadress }}</div>
-		<div>Sista ansökningsdag {{ jobMatch.ansokan.sista_ansokningsdag | date:'yyyy-MM-dd' }}</div>
+		<div class="extraJobInfo">Sista ansökningsdag {{ jobMatch.ansokan.sista_ansokningsdag | date:'yyyy-MM-dd' }}</div>
 	</div>
 </div>
