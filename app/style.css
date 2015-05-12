@@ -167,12 +167,17 @@ nav{
 	text-indent: 10px;
 }
 
+.searchButton{
+	cursor: pointer;
+}
+
 .searchButton.searchPage{
 	position: absolute;
 	height: 70px;
 	font-size: 30px;
 	margin-left: -62px;
 	width: 100px;
+	float: none;
 }
 
 #searchBarIcon.searchPage{
@@ -182,32 +187,60 @@ nav{
 }
 
 .filterButtons{
-	display: table-caption;
+	display: table;
+	width: 100%;
 }
 
-.resetFilters{
+.searchButton.resetFilters{
+	background-color: #DF582D;
+	width: 8%;
+	min-width: 30px;
+	height: 40px;
+	margin: 0;
+	margin-right: 15%;
+	display: table-cell;
+	font-size: 130%;
+	float: right;
+	padding-top: 10px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
+.resetFiltersAnimation{
+	margin-bottom: 8px;
+	margin-left: 5px;
+	margin-right: 4px;
+	height: 30px;
+	-webkit-transition: 0.3s ease; /* Safari */
+	transition: 0.3s ease;
 }
 
 .filterButton.searchButton{
 	position: relative;
+	display: inline-block;
 	padding-top: 8px;
 	height: 40px;
 	line-height: 16px;
-	width: 110px;
 	font-size: 16px;
 	margin: 0;
-	/*margin-left: 245px;*/
+	margin-left: 0;
 	background-color: #DF582D;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	-moz-box-shadow: inset 0 5px 10px -5px #000000;
 	-webkit-box-shadow: inset 0 5px 10px -5px #000000;
 	box-shadow: inset 0 5px 10px -5px #000000;
+	/*-webkit-transition: 0.3s ease; /* Safari */
+	/*transition: 0.3s ease;*/
 }
 
 .filterButton.searchButton span{
 	font-size: 10px;
+	top: -15px;
+}
+
+.filterButton.searchButton p{
+	margin: 0;
 }
 
 .filters{
@@ -215,7 +248,7 @@ nav{
 	background-color: #303030;
 	width: 90%;
 	color:#FFEEC2;
-	margin-left: 25px;
+	margin-left: 5%;
 	padding-top: 0;
 	height: auto;
 	border-bottom-left-radius: 3px;
@@ -350,7 +383,7 @@ nav{
 	display: inline-block;
 	position: relative;
 	opacity: 0;
-	margin-top: 90px;
+	margin-top: 70px;
 	margin-bottom: 30px;
 	width: 100%;
 }
@@ -1143,7 +1176,8 @@ h4 small{
 	}
 
 	.dropdown.searchFilter{
-		width: 47%;
+		width: 46%;
+		font-size: 12px;
 	}
 
 	.singleJob{
@@ -1243,6 +1277,10 @@ h4 small{
 
 	.searchBar{
 		width: 95%;
+	}
+
+	.dropdown.searchFilter{
+		font-size: 12px;
 	}
 
 	#searchBarIcon{

@@ -113,6 +113,16 @@ jobbaExtraApp.controller('SearchCtrl', function ($scope,Jobb) {
 		}
 	};
 
+	$scope.isAFilterUsed = function(){ // Currently only used for showing the reset filters button, hence the specific css
+		if($scope.lineOfWorkSelected() || $scope.countySelected()){
+			$(".searchButton.filterButton").css({"marginLeft": "23%"});
+			return true
+		} else{
+			$(".searchButton.filterButton").css({"marginLeft": 0});
+			return false
+		}
+	};
+
 	$scope.getSelectedID = function(type){
 		if(type==='county'){
 			return($scope.selectedCounty['id']);
