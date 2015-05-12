@@ -395,10 +395,26 @@ nav{
 
 /* ############### START LOADING ANIMATION ###############*/
 
+.loadingAnimation{
+	position: absolute;
+	background-color: rgba(36, 36, 36, 0.8);
+	width: 200px;
+	height: 140px;
+	border-radius: 10px;
+	display: inline-block;
+	margin-left: -98px;
+}
+
 .spinner {
 	position: relative;
 	left: 74%;
 	top: 23px;
+}
+
+.spinner.job{
+	position: relative;
+	left: 65px;
+	top: 35px;
 }
 
 .container1 > div, .container2 > div, .container3 > div {
@@ -414,10 +430,25 @@ nav{
 	animation-fill-mode: both;
 }
 
+.spinner-container div.lightBlue{
+	background-color: #71CBD9;
+}
+
+.spinner-container.job div{
+	width: 15px;
+	height: 15px;
+}
+
 .spinner .spinner-container {
 	position: absolute;
 	width: 20px;
 	height: 20px;
+}
+
+.spinner .spinner-container.job {
+	position: absolute;
+	width: 70px;
+	height: 70px;
 }
 
 .container2 {
