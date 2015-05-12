@@ -40,14 +40,17 @@
 
 					<select ng-show="lineOfWorkSelected()" class="dropdown searchFilter professionSelect" ng-options="profession.namn for profession in professions()" ng-model="selectedProfession" ng-change="updateSearchOptions('yrkesgruppid', getSelectedID('professionGroup'))">
 					</select>
-
 				</div>
+
 				<div class="filterButtons">
-					<button class="searchButton filterButton searchPage" ng-click="toggleFilter()"> Filtrera <br/><span id="filterToggleArrow" class="glyphicon glyphicon-chevron-down"></span></button>
-
-					<button class="searchButton filterButton searchPage resetFilters" ng-click="resetFilters()"> Återställ filter </button>
+					<div class="searchButton filterButton searchPage" ng-click="toggleFilter()"> 
+						<p>Filtrera</p> <br/>
+						<span id="filterToggleArrow" class="glyphicon glyphicon-chevron-down"></span>
+					</div>
+					<div class="searchButton resetFilters" ng-click="resetFilters()" ng-show="isAFilterUsed()" title="Återställ alla filter">
+						<span class="glyphicon glyphicon-trash"></span>
+					</div>
 				</div>
-				
 
 			</form>
 		</div>
