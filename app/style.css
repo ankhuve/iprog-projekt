@@ -397,9 +397,8 @@ nav{
 
 .spinner {
 	position: relative;
-	float: right;
-	left: -153px;
-	top: -45px;
+	left: 74%;
+	top: 23px;
 }
 
 .container1 > div, .container2 > div, .container3 > div {
@@ -1106,6 +1105,10 @@ h4 small{
 
 	.jobSearchForm{
 		width: 260px;
+	}
+
+	.spinner {
+		left: 70%;
 	}
 
 	.dropdown.searchFilter{
