@@ -29,16 +29,23 @@ jobbaExtraApp.controller('LoginCtrl',function ($scope, $location, Jobb) {
   $scope.login = function (credentials) {
     Jobb.login.get({email:credentials['email'],password:credentials['password']},function(data){
       if(data['valid']){
+        console.log(data);
         Jobb.setLoginMessage("");
         Jobb.setLoggedIn(true);
         Jobb.setLoggedInUser(data["username"]);
         Jobb.setRole(data["role"]);
         Jobb.createSession(data['sessionID'],data['userID'],data['role'],data['username'],data["token"]);
-        Jobb.getSavedJobsFromDb.get(function(data){
+        Jobb.getSavedJobsFromDb.get({"userID" : data["userID"]},function(data){
           for(job in data.savedJobs){
             Jobb.addSavedJob(data.savedJobs[job]);
           };
-          $location.path("/home");
+          if(data["role"] === "company"){
+            $location.path("/company");
+          } else if(data["role"] = "user"){
+            $location.path("/profile");
+          } else {
+            $location.path("/home");
+          }
         });
       } else {
         Jobb.setLoginMessage("Ogiltigt användarnamn eller lösenord, försök igen!");

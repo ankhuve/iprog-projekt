@@ -18,13 +18,6 @@ jobbaExtraApp.controller('JobCtrl', function ($scope, $location, $http, Jobb) {
 		$location.path("/search");
 	}
 
-	// $scope.jobDescription = function(){
-	// 	console.log($scope.jobMatch);
-	// 	var description = $scope.jobMatch.annons.annonstext;
-	// 	// console.log(description);
-	// 	return description;
-	// }
-
 	$scope.loggedIn = function(){
 		return Jobb.isLoggedIn();
 	}

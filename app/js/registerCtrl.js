@@ -91,8 +91,13 @@ jobbaExtraApp.controller('RegisterCtrl', function ($scope,$location,Jobb) {
 		Jobb.killSession();
 	}
 
+	$scope.message = function(){
+		return Jobb.getLoginMessage();
+	}
+
 	$scope.register = function(credentials){
 		$scope.loading = true;
+		$scope.hasError = false;
 		$.ajax({
 			url: 'php/newUser.php',
 			type: 'POST',
@@ -120,8 +125,13 @@ jobbaExtraApp.controller('RegisterCtrl', function ($scope,$location,Jobb) {
 	      				}
 	    			});
 				}else{
+					if(data["userExists"]){
+						$scope.loginErrorMessage = "Det finns redan en användare registrerad med den angivna mailen!";
+						$scope.loginFailed = true; 
+					}
 					$scope.loading = false;
 					$scope.hasError = true;
+					$scope.$apply();
 					
 				} 
 			},
