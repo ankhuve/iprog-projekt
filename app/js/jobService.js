@@ -24,13 +24,26 @@ jobbaExtraApp.factory('Jobb',function ($resource, $cookieStore, $http) {
     var loggedIn = true;
     var role = $cookieStore.get("role");
     var loggedInUser = $cookieStore.get("username");
-    $http.get('php/getSavedJobs.php').success(function(data){
-      if(data["valid"]){
-        savedJobs = data["savedJobs"];
-      } else {
-        console.log("Invalid token!");
-      }
+    var req = {
+      url: "php/getSavedJobs.php",
+      method: "GET",
+      params: {userID:$cookieStore.get("userID")}
+    }
+    $http(req).success(function(data){
+      savedJobs = data["savedJobs"];
     })
+ //    {
+ //    url: user.details_path, 
+ //    method: "GET",
+ //    params: {user_id: user.id}
+ // }
+ //    $http.get({"url":'php/getSavedJobs.php',"dataParams").success(function(data){
+ //      // if(data["valid"]){
+ //      savedJobs = data["savedJobs"];
+      // } else {
+        // console.log("Invalid token!");
+      // }
+    // })
   } else {
     var loggedIn = false;
     var role = "guest";

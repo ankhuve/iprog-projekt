@@ -7,6 +7,10 @@
 		<button class="logoutButton" ng-click="logout()"> Logga ut </button> </div>
 	</div>
 
+	<div class="messageBox" ng-show="loginFailed">
+		<div ng-bind="loginErrorMessage"></div>
+	</div>
+
 	<div class="loginContainer" ng-hide="loggedIn()">
 		<h2 id="loginHeader">Registrera</h2>
 		<form name="registerForm" ng-submit="register(credentials)" novalidate>
