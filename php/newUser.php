@@ -56,10 +56,10 @@
 		$emailSubject = "Välkommen till JobbaExtra.com!";
 		$emailMessage = "
 		<h1>Hej och välkommen till JobbaExtra.com!</h1><br/>
-		För att verifiera ditt konto, klicka på <a href='http://xml.csc.kth.se/~rbergel/iprog/app/php/validateUser.php?token=".$validationToken."'>denna länk.</a> <br/>
+		För att verifiera ditt konto, klicka på <a href='http://jobbaextra.bergeling.com/php/validateUser.php?token=".$validationToken."'>denna länk.</a> <br/>
 		
 		Om du inte kan klicka på länken så får du kopiera nedanstående länk och klistra in i din webbläsare. <br/>
-		http://xml.csc.kth.se/~rbergel/iprog/app/php/validateUser.php?token=".$validationToken."
+		http://jobbaextra.bergeling.com/php/validateUser.php?token=".$validationToken."
 		
 		Varma hälsningar, <br/>
 

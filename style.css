@@ -244,13 +244,14 @@ nav{
 }
 
 .filters{
-	display: inline-table;
+	/*display: inline-table;*/
+	overflow: hidden;
 	background-color: #303030;
 	width: 90%;
 	color:#FFEEC2;
 	margin-left: 5%;
 	padding-top: 0;
-	height: auto;
+	height: 0;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	border-top: 0;
@@ -318,6 +319,7 @@ nav{
 }
 
 .filtersAnimation{
+	height:auto;
 	padding-top: 10px;
 	-webkit-transition: 0.3s ease; /* Safari */
 	transition: 0.3s ease;
